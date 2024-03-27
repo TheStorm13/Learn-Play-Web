@@ -48,13 +48,22 @@ body {
     padding: 20px;
 }
 
-.button {
+.btn {
     background: white;
     padding: 11px 48px;
     font-size: 20px;
     color: #8B4F9B;
     border-radius: 30px;
 
+}
+
+.text {
+    width: 270px;
+    height: 32px;
+}
+
+.but {
+    padding: 5px;
 }
 
 
