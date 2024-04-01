@@ -13,6 +13,7 @@
     background-color: #251135;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
+    border-right: 2px solid #FFFFFF;
   }
   
   /* The navigation menu links */
@@ -74,11 +75,10 @@
     left: 1;
     right: 10%;
     top: 10%;
-    border: 2px solid #73AD21;
+    border: 2px solid #EEAFAF;
     border-radius: 15px;
     padding: 20px;
-    color: #FFFFFF;
-    
+    color: #FFFFFF; 
   }
 
   .modul {
@@ -97,7 +97,7 @@
     /* opacity: 0.59; */
     margin-left: auto;
 	  margin-right: auto;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     width: 360px;
     height: 110px;
     border-radius: 10px;
@@ -144,51 +144,84 @@
     
   } */
 
-.button1 {
-background-color: #73AD21;
-width: 40px;
-height: 30px;
-}
+  .box {
+    display: flex;
+    flex-direction: column;
+  }      
+  .box__level_0 {
+      margin: auto;
+      padding: 8px;
+      margin-bottom: 12px; 
+      margin-top: 12px;
+    }
+  
+  .box__level_1_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      border: none;
+    
+      left: -75px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
-  .level_0 {
-    left: 0px; 
-    margin-bottom: 0px; 
-    margin-top: 24px;
-  }
+    .box__level_2_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: -120px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
-  .level_1_left {
-    left: -40px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
+    .box__level_3_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: -60px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
-  .level_2_left {
-    left: -80px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
+    .box__level_1_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 80px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
+    .box__level_2_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 120px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
-  .level_3_left {
-    left: -60px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
+    .box__level_3_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 60px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
 
-  .level_1_right {
-    left: 40px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
-
-  .level_2_right {
-    left: 80px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
-
-  .level_3_right {
-    left: 60px; 
-    margin-bottom: 0px; 
-    margin-top: 12px;
-  }
+    /* номер задания */
+    .num {
+      position: absolute;
+      margin: 8px;
+      margin-left: 30px;
+      font-size: 24px;
+      font-weight: 600;
+    }
