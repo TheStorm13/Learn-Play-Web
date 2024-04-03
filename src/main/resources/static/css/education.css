@@ -1,0 +1,227 @@
+/* The sidebar menu */
+.body {
+  background-color: #251135;
+}
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 240px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #251135;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    border-right: 2px solid #FFFFFF;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 36px;
+    text-decoration: none;
+    text-align: -webkit-match-parent;
+    font-size: 20px;
+    color: #f1f1f1;
+    display: block;
+  }
+
+  .sidenav p {
+    padding: 6px 8px 6px 36px;
+    text-decoration: none;
+    text-align: -webkit-match-parent;
+    font-size: 30px;
+    color: #FFFFFF;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .main {
+    margin-left: 240px; /* Same as the width of the sidebar */
+    padding: 0px 0px;
+    background-color: #251135;
+    color:#FFFFFF;
+  }
+  
+  .alert-user {
+    margin-top: 60px; /* Same as the width of the sidebar */
+  }
+  /* Style page content */
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .fixed-block h1 {
+    padding: 3px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .fixed-block p {
+    font-size: 16px;
+  }
+
+  .fixed-block {
+    position: fixed;
+    /* margin-left: auto;
+	  margin-right: auto; */
+    left: 1;
+    right: 10%;
+    top: 10%;
+    border: 2px solid #EEAFAF;
+    border-radius: 15px;
+    padding: 20px;
+    color: #FFFFFF; 
+  }
+
+  .modul {
+    color: #FFFFFF;
+    opacity: 0.55;
+    padding-top: 10px;
+    margin: 0px;
+    text-align: center;
+    background-color: #251135;
+  }
+
+  .chapter {
+    background-color: rgba(107, 10, 143, 0.59);
+    /* background-color: #6B0A8F; */
+    color: #FFFFFF;
+    /* opacity: 0.59; */
+    margin-left: auto;
+	  margin-right: auto;
+    margin-bottom: 40px;
+    width: 360px;
+    height: 110px;
+    border-radius: 10px;
+    padding: 12px;
+  }
+  
+  .chapter_elem button{
+    background: #781490;
+    font-size: 15px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .chapter_elem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .chapter_elem p{
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+
+  .section {
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%
+  }
+
+  .pos_elem {
+    position: relative;
+    align-items: center;
+    display: flex;
+    padding: 0 10px;
+  }
+/* 
+  .rigth-person {
+
+  }
+
+  .left-person {
+    
+  } */
+
+  .box {
+    display: flex;
+    flex-direction: column;
+  }      
+  .box__level_0 {
+      margin: auto;
+      padding: 8px;
+      margin-bottom: 12px; 
+      margin-top: 12px;
+    }
+  
+  .box__level_1_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      border: none;
+    
+      left: -75px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .box__level_2_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: -120px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .box__level_3_left {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: -60px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .box__level_1_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 80px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .box__level_2_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 120px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .box__level_3_right {
+      margin: auto;
+      /* border: 1px solid; */
+      padding: 8px;
+      left: 60px; 
+      margin-bottom: 12px; 
+      margin-top: 12px;
+      position: relative;
+    }
+
+    /* номер задания */
+    .num {
+      position: absolute;
+      margin: 8px;
+      margin-left: 30px;
+      font-size: 24px;
+      font-weight: 600;
+    }
