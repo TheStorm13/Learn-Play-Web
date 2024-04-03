@@ -1,22 +1,14 @@
 package ru.lp.learnandplay.model;
 
 public class test {
-    private Long id;
+    //private Long id;
 
     private String name;
+    private int age;
 
-    //Конструкторы и getter, setter нужны, чтобы обернуть класс в json
-    public test(Long id, String name) {
-        this.id = id;
+    public test(String name, int age) {
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.age = age;
     }
 
     public String getName() {
@@ -25,5 +17,13 @@ public class test {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
