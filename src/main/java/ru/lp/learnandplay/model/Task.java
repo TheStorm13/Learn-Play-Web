@@ -1,6 +1,6 @@
 package ru.lp.learnandplay.model;
 
-public class test {
+public class Task {
     private Long idTask;
     private Long idTopic;
     private String quotation;
@@ -10,7 +10,7 @@ public class test {
     private String image;
 
 
-    public test(Long id, Long idTopic, String quotation, String addText, String answer, int exp, String image) {
+    public Task(Long id, Long idTopic, String quotation, String addText, String answer, int exp, String image) {
         this.idTask = id;
         this.idTopic = idTopic;
         this.quotation = quotation;
