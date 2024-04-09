@@ -12,4 +12,5 @@ public class User {
     private float multiplier;
     private int idFrame;
 
+
 }
