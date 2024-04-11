@@ -1,29 +1,29 @@
 package ru.lp.learnandplay.model;
 
 public class Progress {
-    private int idUser;
-    private int idTopic;
+    private Long idUser;
+    private Long idTopic;
     private int step;
 
-    public Progress(int idUser, int idTopic, int step) {
+    public Progress(Long idUser, Long idTopic, int step) {
         this.idUser = idUser;
         this.idTopic = idTopic;
         this.step = step;
     }
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
-    public int getIdTopic() {
+    public Long getIdTopic() {
         return idTopic;
     }
 
-    public void setIdTopic(int idTopic) {
+    public void setIdTopic(Long idTopic) {
         this.idTopic = idTopic;
     }
 

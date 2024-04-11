@@ -1,21 +1,29 @@
 package ru.lp.learnandplay.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "heroes")
 public class Hero {
-    private int idHero;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idHero;
     private int idUser;
     private String image;
 
-    public Hero(int idHero, int idUser, String image) {
-        this.idHero = idHero;
+    public Hero() {
+    }
+
+    public Hero(int idUser, String image) {
         this.idUser = idUser;
         this.image = image;
     }
 
-    public int getIdHero() {
+    public Long getIdHero() {
         return idHero;
     }
 
-    public void setIdHero(int idHero) {
+    public void setIdHero(Long idHero) {
         this.idHero = idHero;
     }
 

@@ -1,29 +1,29 @@
 package ru.lp.learnandplay.model;
 
 public class ResolvedTask {
-    private int idUser;
-    private int idTask;
+    private Long idUser;
+    private Long idTask;
     private int count;
 
-    public ResolvedTask(int idUser, int idTask, int count) {
+    public ResolvedTask(Long idUser, Long idTask, int count) {
         this.idUser = idUser;
         this.idTask = idTask;
         this.count = count;
     }
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
-    public int getIdTask() {
+    public Long getIdTask() {
         return idTask;
     }
 
-    public void setIdTask(int idTask) {
+    public void setIdTask(Long idTask) {
         this.idTask = idTask;
     }
 

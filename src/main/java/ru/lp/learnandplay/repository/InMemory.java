@@ -1,4 +1,4 @@
 package ru.lp.learnandplay.repository;
 
-public class InMemory {
+public interface InMemory {
 }

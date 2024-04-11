@@ -1,20 +1,20 @@
 package ru.lp.learnandplay.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "topics")
 public class Topic {
-    private int idTopic;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idTopic;
     private String nameTopic;
 
-    public Topic(int idTopic, String nameTopic) {
-        this.idTopic = idTopic;
+    public Topic() {
+    }
+
+    public Topic(String nameTopic) {
         this.nameTopic = nameTopic;
-    }
-
-    public int getIdTopic() {
-        return idTopic;
-    }
-
-    public void setIdTopic(int idTopic) {
-        this.idTopic = idTopic;
     }
 
     public String getNameTopic() {
