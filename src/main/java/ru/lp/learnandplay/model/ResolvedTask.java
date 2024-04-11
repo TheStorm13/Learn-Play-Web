@@ -3,7 +3,7 @@ package ru.lp.learnandplay.model;
 public class ResolvedTask {
     private Long idUser;
     private Long idTask;
-    private int count;
+    private int count=0;
 
     public ResolvedTask(Long idUser, Long idTask, int count) {
         this.idUser = idUser;

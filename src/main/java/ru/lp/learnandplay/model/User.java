@@ -12,15 +12,15 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private int exp;
-    private boolean dailyQuest;
-    private float multiplier;
-    private int idFrame;
+    private int exp=0;
+    private boolean dailyQuest = false;
+    private float multiplier = 1;
+    private Long idFrame = 0l;
 
     public User() {
     }
 
-    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, int idFrame) {
+    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Long idFrame) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -86,11 +86,11 @@ public class User {
         this.multiplier = multiplier;
     }
 
-    public int getIdFrame() {
+    public Long getIdFrame() {
         return idFrame;
     }
 
-    public void setIdFrame(int idFrame) {
+    public void setIdFrame(Long idFrame) {
         this.idFrame = idFrame;
     }
 }

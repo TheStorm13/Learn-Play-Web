@@ -14,7 +14,6 @@ public class mainController {
     @Autowired
     private UsersRepository usersRepository;
 
-
     @PostMapping("/add")
     public void addUser(@RequestBody User user) {
         usersRepository.save(user);
@@ -23,6 +22,10 @@ public class mainController {
     @GetMapping("/getUsers")
     public List<User> getUser(){
         return usersRepository.findAll();
+    }
+    @GetMapping("/save")
+    public void saveUser(){
+        usersRepository.save(new User());
     }
 
 }

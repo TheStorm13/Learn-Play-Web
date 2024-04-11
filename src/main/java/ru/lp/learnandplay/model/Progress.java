@@ -3,7 +3,7 @@ package ru.lp.learnandplay.model;
 public class Progress {
     private Long idUser;
     private Long idTopic;
-    private int step;
+    private int step=1;
 
     public Progress(Long idUser, Long idTopic, int step) {
         this.idUser = idUser;

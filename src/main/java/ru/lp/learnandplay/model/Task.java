@@ -15,6 +15,8 @@ public class Task {
     private int exp;
     private String image;
 
+    public Task() {
+    }
 
     public Task(Long id, Long idTopic, String quotation, String addText, String answer, int exp, String image) {
         this.idTask = id;
