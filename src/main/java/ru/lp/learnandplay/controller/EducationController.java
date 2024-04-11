@@ -19,7 +19,7 @@ public class EducationController {
 
     // возвращает квест на roadmap'e
     @GetMapping("/topic{id_topic}step{step}")
-    public String getQuest(int id_topic, int step){
+    public String getQuest(){
         //todo
         return null;
     }
