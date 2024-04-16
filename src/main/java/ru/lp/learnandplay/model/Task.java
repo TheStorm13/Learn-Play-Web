@@ -6,8 +6,10 @@ import jakarta.persistence.*;
 @Table(name = "tasks")
 public class Task {
     @Id
+    @Column(name = "id_task")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTask;
+    @Column(name = "id_topic")
     private Long idTopic;
     private String quotation;
     private String addText;

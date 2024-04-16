@@ -8,14 +8,12 @@ public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHero;
-    private int idUser;
     private String image;
 
     public Hero() {
     }
 
     public Hero(int idUser, String image) {
-        this.idUser = idUser;
         this.image = image;
     }
 
@@ -25,14 +23,6 @@ public class Hero {
 
     public void setIdHero(Long idHero) {
         this.idHero = idHero;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 
     public String getImage() {
