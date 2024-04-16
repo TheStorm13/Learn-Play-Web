@@ -6,30 +6,22 @@ import jakarta.persistence.*;
 @Table(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "task_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTask;
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
-    @Column(name = "question")
-    private String question;
-    @Column(name = "add_text")
+    private Long idTopic;
+    private String quotation;
     private String addText;
-    @Column(name = "answer")
     private String answer;
-    @Column(name = "exp")
     private double exp;
-    @Column(name = "image")
     private String image;
 
     public Task() {
     }
 
-    public Task(Long id, Topic topic, String question, String addText, String answer, double exp, String image) {
+    public Task(Long id, Long idTopic, String quotation, String addText, String answer, double exp, String image) {
         this.idTask = id;
-        this.topic = topic;
-        this.question = question;
+        this.idTopic = idTopic;
+        this.quotation = quotation;
         this.addText = addText;
         this.answer = answer;
         this.exp = exp;
@@ -44,20 +36,20 @@ public class Task {
         this.idTask = idTask;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public Long getIdTopic() {
+        return idTopic;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setIdTopic(Long idTopic) {
+        this.idTopic = idTopic;
     }
 
     public String getQuotation() {
-        return question;
+        return quotation;
     }
 
-    public void setQuotation(String question) {
-        this.question = question;
+    public void setQuotation(String quotation) {
+        this.quotation = quotation;
     }
 
     public String getAnswer() {
