@@ -24,6 +24,10 @@ public class Progress {
         this.step = step;
     }
 
+    public Progress() {
+
+    }
+
     public User getUser() {
         return user;
     }
