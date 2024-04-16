@@ -2,8 +2,10 @@ package ru.lp.learnandplay.controller;
 
 
 import org.springframework.web.bind.annotation.*;
+import ru.lp.learnandplay.dto.ResolvedTaskDTO;
 import ru.lp.learnandplay.dto.TaskDTO;
 import ru.lp.learnandplay.model.Task;
+import ru.lp.learnandplay.repository.ResolvedTaskRepository;
 import ru.lp.learnandplay.repository.TaskRepository;
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.Map;
 @RestController()
 public class QuestController {
     private final TaskRepository taskRepository;
+    private final ResolvedTaskRepository resolvedTaskRepository;
 
-    public QuestController(TaskRepository taskRepository) {
+    public QuestController(TaskRepository taskRepository, ResolvedTaskRepository resolvedTaskRepository) {
         this.taskRepository = taskRepository;
+        this.resolvedTaskRepository=resolvedTaskRepository;
     }
 
     @GetMapping("/historyQuest")
@@ -32,9 +36,9 @@ public class QuestController {
 
 
     @PutMapping("/successTask")
-    public boolean successTask(@RequestBody String idTask) {
+    public boolean successTask(@RequestBody ResolvedTaskDTO resolvedTaskDTO) {
         //todo поменять статус у задания для конкретного пользователя
-
+        resolvedTaskRepository.updateCount(resolvedTaskDTO.getTaskId(), resolvedTaskDTO.getUserId());
 
         return false;
     }
@@ -42,6 +46,7 @@ public class QuestController {
     @PutMapping("/successQuest")
     public boolean successTask(@RequestBody String idTopic, @RequestBody int step) {
         //todo поменять статус у квеста для конкретного пользователя
+
         return false;//todo
     }
 
