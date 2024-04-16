@@ -1,51 +1,37 @@
 package ru.lp.learnandplay.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "progress")
 public class Progress {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long idUser;
+    private Long idTopic;
+    private int step = 1;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
-
-    @Column(name = "step")
-    private Short step;
-
-    public Progress(User user, Topic topic, Short step) {
-        this.user = user;
-        this.topic = topic;
+    public Progress(Long idUser, Long idTopic, int step) {
+        this.idUser = idUser;
+        this.idTopic = idTopic;
         this.step = step;
     }
 
-    public User getUser() {
-        return user;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public Long getIdTopic() {
+        return idTopic;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setIdTopic(Long idTopic) {
+        this.idTopic = idTopic;
     }
 
-    public Short getStep() {
+    public int getStep() {
         return step;
     }
 
-    public void setStep(Short step) {
+    public void setStep(int step) {
         this.step = step;
     }
-
 }

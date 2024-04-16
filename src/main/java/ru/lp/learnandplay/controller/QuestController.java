@@ -34,7 +34,9 @@ public class QuestController {
     @PutMapping("/successTask")
     public boolean successTask(@RequestBody String idTask) {
         //todo поменять статус у задания для конкретного пользователя
-        return false;//todo
+
+
+        return false;
     }
 
     @PutMapping("/successQuest")
