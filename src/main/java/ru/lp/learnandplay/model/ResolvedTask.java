@@ -24,10 +24,6 @@ public class ResolvedTask {
         this.count = count;
     }
 
-    public ResolvedTask() {
-
-    }
-
     public User getUser() {
         return user;
     }
