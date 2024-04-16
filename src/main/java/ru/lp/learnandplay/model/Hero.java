@@ -7,15 +7,18 @@ import jakarta.persistence.*;
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hero_id")
     private Long idHero;
-    private int idUser;
+    @Column(name = "name_hero")
+    private String nameHero;
+    @Column(name = "image")
     private String image;
 
     public Hero() {
     }
 
-    public Hero(int idUser, String image) {
-        this.idUser = idUser;
+    public Hero(String nameHero, String image) {
+        this.nameHero = nameHero;
         this.image = image;
     }
 
@@ -27,12 +30,12 @@ public class Hero {
         this.idHero = idHero;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getNameHero() {
+        return nameHero;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setNameHero(String nameHero) {
+        this.nameHero = nameHero;
     }
 
     public String getImage() {

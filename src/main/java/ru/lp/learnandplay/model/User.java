@@ -7,27 +7,36 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
+    @Column(name = "name_user", length = 30)
     private String name;
+    @Column(name = "email", unique = true)
     private String email;
+    @Column(name = "password")
     private String password;
+    @Column(name = "exp")
     private int exp=0;
+    @Column(name = "is_daily")
     private boolean dailyQuest = false;
+    @Column(name = "multiplier")
     private float multiplier = 1;
-    private Long idFrame = 0l;
+    @ManyToOne
+    @JoinColumn(name = "hero_id")
+    private Hero hero;
 
     public User() {
     }
 
-    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Long idFrame) {
+    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Hero hero) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.exp = exp;
         this.dailyQuest = dailyQuest;
         this.multiplier = multiplier;
-        this.idFrame = idFrame;
+        this.hero = hero;
     }
 
     public Long getId() {
@@ -86,11 +95,11 @@ public class User {
         this.multiplier = multiplier;
     }
 
-    public Long getIdFrame() {
-        return idFrame;
+    public Hero getHero() {
+        return hero;
     }
 
-    public void setIdFrame(Long idFrame) {
-        this.idFrame = idFrame;
+    public void setHero(Hero hero) {
+        this.hero = hero;
     }
 }
