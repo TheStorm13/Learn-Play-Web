@@ -14,11 +14,11 @@ import java.util.Map;
 @RestController()
 public class QuestController {
     private final TaskRepository taskRepository;
-    private final ResolvedTaskRepository resolvedTaskRepository;
 
-    public QuestController(TaskRepository taskRepository, ResolvedTaskRepository resolvedTaskRepository) {
+
+    public QuestController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.resolvedTaskRepository=resolvedTaskRepository;
+
     }
 
     @GetMapping("/historyQuest")
@@ -34,7 +34,7 @@ public class QuestController {
         return tasks;
     }
 
-
+/*
     @PutMapping("/successTask")
     public boolean successTask(@RequestBody ResolvedTaskDTO resolvedTaskDTO) {
         //todo поменять статус у задания для конкретного пользователя
@@ -42,7 +42,7 @@ public class QuestController {
 
         return false;
     }
-
+*/
     @PutMapping("/successQuest")
     public boolean successTask(@RequestBody String idTopic, @RequestBody int step) {
         //todo поменять статус у квеста для конкретного пользователя
