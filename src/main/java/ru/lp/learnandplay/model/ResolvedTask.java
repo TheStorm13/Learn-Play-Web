@@ -1,30 +1,47 @@
 package ru.lp.learnandplay.model;
 
-public class ResolvedTask {
-    private Long idUser;
-    private Long idTask;
-    private int count=0;
+import jakarta.persistence.*;
 
-    public ResolvedTask(Long idUser, Long idTask, int count) {
-        this.idUser = idUser;
-        this.idTask = idTask;
+@Entity
+@Table(name = "resolved_task")
+public class ResolvedTask {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
+
+    @Column(name = "count")
+    private int count;
+
+    public ResolvedTask(User user, Task task, int count) {
+        this.user = user;
+        this.task = task;
         this.count = count;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public ResolvedTask() {
+
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public User getUser() {
+        return user;
     }
 
-    public Long getIdTask() {
-        return idTask;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setIdTask(Long idTask) {
-        this.idTask = idTask;
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public int getCount() {
