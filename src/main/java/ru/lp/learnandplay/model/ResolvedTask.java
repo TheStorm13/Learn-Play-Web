@@ -16,12 +16,16 @@ public class ResolvedTask {
     private Task task;
 
     @Column(name = "count")
-    private int count;
+    private int count=0;
 
     public ResolvedTask(User user, Task task, int count) {
         this.user = user;
         this.task = task;
         this.count = count;
+    }
+
+    public ResolvedTask() {
+
     }
 
     public User getUser() {
