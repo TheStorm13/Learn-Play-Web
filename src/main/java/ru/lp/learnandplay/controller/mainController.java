@@ -19,6 +19,11 @@ public class mainController {
         usersRepository.save(user);
     }
 
+    @PutMapping("/successtask")
+    public Long addUser(@RequestBody Long idTask) {
+        return idTask;
+    }
+
     @GetMapping("/getUsers")
     public List<User> getUser(){
         return usersRepository.findAll();

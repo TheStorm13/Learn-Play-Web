@@ -12,13 +12,13 @@ public class Task {
     private String quotation;
     private String addText;
     private String answer;
-    private int exp;
+    private double exp;
     private String image;
 
     public Task() {
     }
 
-    public Task(Long id, Long idTopic, String quotation, String addText, String answer, int exp, String image) {
+    public Task(Long id, Long idTopic, String quotation, String addText, String answer, double exp, String image) {
         this.idTask = id;
         this.idTopic = idTopic;
         this.quotation = quotation;
@@ -60,11 +60,11 @@ public class Task {
         this.answer = answer;
     }
 
-    public int getExp() {
+    public double getExp() {
         return exp;
     }
 
-    public void setExp(int exp) {
+    public void setExp(double exp) {
         this.exp = exp;
     }
 
