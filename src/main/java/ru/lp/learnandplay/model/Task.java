@@ -1,6 +1,8 @@
 package ru.lp.learnandplay.model;
 
+
 public class Task {
+
     private Long idTask;
     private Long idTopic;
     private String quotation;
