@@ -219,9 +219,20 @@
 
     /* номер задания */
     .num {
+      background-image: url(../images/button.png) ;
       position: absolute;
       margin: 8px;
       margin-left: 30px;
       font-size: 24px;
       font-weight: 600;
     }
+
+.num {
+  background-image: url(../images/button.png) ;
+  height: 60px;
+  /*text-align: center;*/
+  width: 80px;
+  color: white;
+  font-size: 20px;
+  border-radius: 32px;
+}
