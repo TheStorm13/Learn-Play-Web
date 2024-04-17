@@ -13,7 +13,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Query(value = """
             SELECT * FROM tasks t
-            WHERE t.id_topic = :idTopic
+            WHERE t.topic_id = :topicId
             """, nativeQuery = true)
-    List<Task> findAllByIdTopic(@Param("idTopic") Long idTopic);
+    List<Task> findAllByIdTopic(@Param("topicId") Long topicId);
 }

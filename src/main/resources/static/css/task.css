@@ -1,0 +1,52 @@
+body {
+    background: url(../images/waterfall.png) no-repeat center bottom 75% ;
+    background-size: cover;
+}
+div {
+    color: #781490;
+    padding: 0.7em;
+}
+.task {
+    background: #FFFFFF;
+    border-radius: 30px;
+    margin: 0 auto;
+    height: 30%;
+    width: 60%;
+}
+
+label {
+    font-size:24px;
+    /*margin-left: 60%;*/
+}
+
+form {
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    width: 60%;
+    background-color: #b7b7b7;
+    border: #b7b7b7;
+    border-radius: 15px;
+}
+button {
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    background-color: #781490;
+    color: #FFFFFF;
+    border-radius: 15px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+p {
+    font-size: 20px;
+}

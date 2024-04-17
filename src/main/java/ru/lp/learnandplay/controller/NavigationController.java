@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NavigationController { //контроллер для перехода по панели навигации
+    /*
     @GetMapping("/education")
     public String getEducationPage() {
         return "education";
     }
-
+*/
     //ЭТИХ СТРАНИЧЕК КРОМЕ EDUCATION ЕЩЕ НЕТ!!!
 
     @GetMapping("/rating")
