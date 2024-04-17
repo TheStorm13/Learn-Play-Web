@@ -1,6 +1,8 @@
 //работающая штука
     var data_server;
-    fetch('http://localhost:8080/getTask')
+    fetch('http://localhost:8080/getTask', { headers: {
+    'Accept': 'application/json'}
+})
         .then((response) => {
             var last_task = response.json()
             return last_task
