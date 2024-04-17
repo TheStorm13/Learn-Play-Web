@@ -28,8 +28,8 @@ public class QuestController {
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
     @GetMapping("/getNewTask")
-    public Task getNewTask(@RequestBody TaskDTO taskDTO) {
-        List<Task> tasks = taskRepository.findAllByIdTopic(taskDTO.getIdTopic());
+    public Task getNewTask() {
+        List<Task> tasks = taskRepository.findAllByIdTopic(1l);
         return tasks.get(r.nextInt(tasks.size()));
     }
 
