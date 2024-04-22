@@ -1,4 +1,4 @@
-package ru.lp.learnandplay.dto;
+package ru.lp.learnandplay.dto.request;
 
 public class TaskDTO {
     private Long idTopic;

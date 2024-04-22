@@ -228,7 +228,7 @@
     }
 
 .num {
-  background-image: url(../images/button.png) ;
+  background: url(../images/button.png) no-repeat;
   height: 60px;
   /*text-align: center;*/
   width: 80px;

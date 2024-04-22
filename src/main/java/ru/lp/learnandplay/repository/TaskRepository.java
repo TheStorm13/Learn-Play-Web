@@ -8,12 +8,11 @@ import ru.lp.learnandplay.model.Task;
 
 import java.util.List;
 
-@Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Query(value = """
             SELECT * FROM tasks t
             WHERE t.topic_id = :topicId
             """, nativeQuery = true)
-    List<Task> findAllByIdTopic(@Param("topicId") Long topicId);
+    List<Task> findAllByIdTopic(Long topicId);
 }

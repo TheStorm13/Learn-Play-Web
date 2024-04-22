@@ -1,9 +1,7 @@
 package ru.lp.learnandplay.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.lp.learnandplay.dto.TaskDTO;
 import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.repository.TaskRepository;
 
