@@ -6,15 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "task_id")
     private Long idTask;
     @ManyToOne
     @JoinColumn(name = "topic_id")
     private Topic topic;
-    @Column(name = "question")
+    @Column(name = "question", columnDefinition = "text")
     private String question;
-    @Column(name = "add_text")
+    @Column(name = "add_text", columnDefinition = "text")
     private String addText;
     @Column(name = "answer")
     private String answer;
