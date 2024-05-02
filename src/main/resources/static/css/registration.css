@@ -1,0 +1,129 @@
+* {
+    border: none;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background: url(../images/bg-2.png) no-repeat;
+    background-size: cover;
+    color: #FFFFFF;
+
+}
+
+.right {
+    right: 0;
+    background-color: #251135;
+}
+
+.centered {
+    position: absolute;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 24px;
+    padding: 10%;
+    padding-bottom: 0;
+}
+img {
+    padding: 8%;
+}
+
+.inter-h2_left {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0;
+    font-size: 40px;
+}
+
+.inter-p_left {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0;
+    font-size: 22px;
+    padding: 2%;
+}
+
+.btn_entry {
+    background: black;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 11px 38px;
+    font-size: 24px;
+    border-radius: 20px;
+    color: white;
+}
+
+.inter-h2_right {
+    color: #CF38A5;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0;
+    font-size: 40px;
+    padding-top: 20%;
+}
+
+.inter-p_right {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+            "slnt" 0;
+    font-size: 22px;
+    padding: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-decoration: none;
+    color: white;
+}
+
+
+input[type=password], input[type=text] {
+    background-color: #621A84;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+input[type=submit] {
+    /*margin: 10px;*/
+    margin: 100px;
+    margin-top: 20px;
+    background: #8B4F9B;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 11px 38px;
+    font-size: 24px;
+    border-radius: 20px;
+    color: white;
+}
+
+input::placeholder { color: white; }
+
+
