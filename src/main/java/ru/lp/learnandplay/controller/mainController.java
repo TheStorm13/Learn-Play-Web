@@ -1,10 +1,9 @@
 package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.repository.UsersRepository;
+import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @RestController
 public class mainController {
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository usersRepository;
 
     @PostMapping("/add")
     public void addUser(@RequestBody User user) {
@@ -25,12 +24,14 @@ public class mainController {
     }
 
     @GetMapping("/getUsers")
-    public List<User> getUser(){
+    public List<User> getUser() {
         return usersRepository.findAll();
     }
+
     @GetMapping("/save")
-    public void saveUser(){
+    public void saveUser() {
         usersRepository.save(new User());
     }
+
 
 }

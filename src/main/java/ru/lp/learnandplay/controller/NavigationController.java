@@ -4,14 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class NavigationController { //контроллер для перехода по панели навигации
-    /*
+public class NavigationController {
+    //контроллер для перехода по панели навигации
     @GetMapping("/education")
     public String getEducationPage() {
-        return "education";
+        return "education.html";
     }
-*/
-    //ЭТИХ СТРАНИЧЕК КРОМЕ EDUCATION ЕЩЕ НЕТ!!!
 
     @GetMapping("/rating")
     public String getRatingPage() {
