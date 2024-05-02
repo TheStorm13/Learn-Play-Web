@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
     @Column(name = "name_user", length = 30)
@@ -25,6 +25,8 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "hero_id")
     private Hero hero;
+    @Column(name = "role")
+    private String role;
 
     public User() {
     }
@@ -101,5 +103,13 @@ public class User {
 
     public void setHero(Hero hero) {
         this.hero = hero;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

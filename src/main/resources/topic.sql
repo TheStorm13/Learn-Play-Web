@@ -1,0 +1,18 @@
+INSERT INTO public.topics VALUES (1, 'Вероятность и статистика') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (2, 'Алгебраические выражения. Степени и корни') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (3, 'Анализ геометрических высказываний') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (4, 'Расчёты по формулам') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (5, 'Практические расчетные задачи') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (6, 'Неравенства, координатная прямая') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (7, 'Уравнения и системы уравнений (1 часть)') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (8, 'Графики функций') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (9, 'Неравенства и системы неравенств (1 часть)') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (10, 'Вычисления и преобразования') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (11, 'Алгебраические выражения. Формулы сокращённого умножения') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (12, 'Прогрессии') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (13, 'Треугольники') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (14, 'Прямоугольный треугольник') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (15, 'Четырехугольники') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (16, 'Окружность') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (17, 'Площади фигур') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (18, 'Фигуры на квадратной решетки') ON CONFLICT DO NOTHING;
