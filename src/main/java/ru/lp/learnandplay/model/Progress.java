@@ -17,11 +17,14 @@ public class Progress {
 
     @Column(name = "step")
     private Short step;
+    @Column(name = "count")
+    private int count = 0;
 
-    public Progress(User user, Topic topic, Short step) {
+    public Progress(User user, Topic topic, Short step, int count) {
         this.user = user;
         this.topic = topic;
         this.step = step;
+        this.count = count;
     }
 
     public User getUser() {
@@ -48,4 +51,11 @@ public class Progress {
         this.step = step;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

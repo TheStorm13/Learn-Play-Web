@@ -13,7 +13,7 @@ public class EntryController {
     @Autowired
     private UserServiceImpl userService;
     @GetMapping("/getUser")
-    public Optional<User> getUser(){
+    public User getUser(){
         return userService.getUser();
     }
 }

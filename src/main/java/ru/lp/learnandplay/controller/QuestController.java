@@ -15,7 +15,6 @@ public class QuestController {
 
     public QuestController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-
     }
 
     @GetMapping("/historyQuest")

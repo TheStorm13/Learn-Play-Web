@@ -2,7 +2,6 @@ package ru.lp.learnandplay.dto.request;
 
 public class ResolvedTaskDTO {
     private Long userId;
-
     private Long taskId;
 
     public ResolvedTaskDTO(Long userId, Long taskId) {

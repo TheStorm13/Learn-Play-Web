@@ -21,9 +21,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<String> addUser(@RequestBody User user) {
-        if(!userService.addUser(user))
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка при добавлении пользователя");;
-        return ResponseEntity.status(HttpStatus.OK).body("Пользователь успешно добавлен");// Вернуть успешный статус и сообщение;
+    public boolean addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 }

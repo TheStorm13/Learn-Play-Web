@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.UsersRepository;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean addUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()) == null)
+        if (userRepository.findByEmail(user.getEmail()).isEmpty())
             return false;
         user.setMultiplier(1);
         user.setExp(0);
@@ -38,9 +40,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> getUser() {
+    public User getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> user = userRepository.findByEmail(authentication.getName());
-        return user;
+        return user.get();
     }
 }
