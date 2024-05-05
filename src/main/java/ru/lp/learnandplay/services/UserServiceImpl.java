@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.User;
+import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.UsersRepository;
 
 import java.util.HashMap;
@@ -20,14 +21,12 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
     @Autowired
     private HeroServiceImpl heroService;
-
-    public UserServiceImpl(UsersRepository repository) {
-        this.userRepository = repository;
-    }
+    @Autowired
+    private ProgressRepository progressRepository;
 
     @Override
     public boolean addUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()).isEmpty())
+        if (userRepository.findByEmail(user.getEmail()).isPresent())
             return false;
         user.setMultiplier(1);
         user.setExp(0);
@@ -36,11 +35,14 @@ public class UserServiceImpl implements UserService{
         user.setHero(heroService.getHeroById(1L));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        user.setRankPlace((int) (long) user.getId());
+        progressRepository.addProgressForUserWithDefaultValues(user);
         return true;
     }
 
     @Override
     public User getUser() {
+        //todo ускорить
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> user = userRepository.findByEmail(authentication.getName());
         return user.get();

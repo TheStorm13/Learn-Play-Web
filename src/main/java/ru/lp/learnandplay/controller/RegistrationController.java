@@ -21,7 +21,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public boolean addUser(@RequestBody User user) {
-        return userService.addUser(user);
+    public ResponseEntity<String> addUser(@RequestBody User user) {
+        if (userService.addUser(user))
+            return ResponseEntity.status(HttpStatus.CREATED).body("Пользователь успешно добавлен");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("Пользователь уже существует");
     }
 }

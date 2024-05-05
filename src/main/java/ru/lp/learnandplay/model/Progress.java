@@ -3,24 +3,25 @@ package ru.lp.learnandplay.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "progress")
+@Table(name = "progress", uniqueConstraints= @UniqueConstraint(columnNames={"user_id", "topic_id"}))
 public class Progress {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @Id
     @ManyToOne
     @JoinColumn(name = "topic_id")
     private Topic topic;
 
     @Column(name = "step")
-    private Short step;
+    private Short step = 0;
     @Column(name = "count")
     private int count = 0;
 
-    public Progress(User user, Topic topic, Short step, int count) {
+    public Progress(Long id, User user, Topic topic, Short step, int count) {
+        this.id = id;
         this.user = user;
         this.topic = topic;
         this.step = step;
@@ -57,5 +58,13 @@ public class Progress {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

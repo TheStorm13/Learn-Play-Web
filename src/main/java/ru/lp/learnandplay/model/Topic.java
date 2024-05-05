@@ -33,4 +33,12 @@ public class Topic {
     public void setCountTask(int countTask) {
         this.countTask = countTask;
     }
+
+    public Long getIdTopic() {
+        return idTopic;
+    }
+
+    public void setIdTopic(Long idTopic) {
+        this.idTopic = idTopic;
+    }
 }

@@ -6,6 +6,7 @@ import ru.lp.learnandplay.dto.request.ProfileDTO;
 import ru.lp.learnandplay.model.Hero;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.HeroesRepository;
+import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.TopicsRepository;
 import ru.lp.learnandplay.repository.UsersRepository;
 
@@ -17,7 +18,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private UserServiceImpl userService;
     @Autowired
-    private TopicsRepository topicsRepository;
+    private ProgressRepository progressRepository;
     @Autowired
     private HeroesRepository heroesRepository;
     @Autowired
@@ -26,21 +27,22 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public ProfileDTO profileInfo() {
         User user = userService.getUser();
-        List<Object[]> achievement = topicsRepository.findTopicsWithResolvedTasksByUser(user);
-        int top = usersRepository.getUserRankByExp(user.getId());
-        return new ProfileDTO(user.getName(), user.getExp(), user.getMultiplier(),top, achievement);
+        List<Object[]> achievement = progressRepository.findTopicsWithResolvedTasksByUser(user);
+        return new ProfileDTO(user.getName(), user.getExp(), user.getMultiplier(),user.getRankPlace(), achievement);
     }
 
+    @Override
+    public void changeName(String name) {
+        User user = userService.getUser();
+        user.setName(name);
+    }
+
+    @Override
     public boolean changeHero(Long heroId) {
         Optional<Hero> hero = heroesRepository.findById(heroId);
         if (hero.isEmpty()) return false;
         User user = userService.getUser();
         user.setHero(hero.get());
         return true;
-    }
-
-    public void changeName(String name) {
-        User user = userService.getUser();
-        user.setName(name);
     }
 }
