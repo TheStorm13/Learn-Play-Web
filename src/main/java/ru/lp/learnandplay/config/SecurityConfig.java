@@ -27,15 +27,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", /*"/entry.html",*/ "/", "/registration"/*, "/entry"*/).permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration", "/registration/addUser", "/entry").permitAll()
                         .requestMatchers("/**").authenticated())
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-                /*.formLogin((form) -> form
+                /*.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)*/
+                .formLogin((form) -> form
                         .loginPage("/entry")
                         .permitAll()
-                        .defaultSuccessUrl("/education")
                 )
-                .logout((logout) -> logout.permitAll())*/
+                .logout((logout) -> logout.permitAll())
                 .build();
     }
 
