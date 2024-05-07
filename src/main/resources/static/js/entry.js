@@ -1,29 +1,29 @@
 document.querySelector('form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = encodeURIComponent(document.getElementById('email').value);
+        const password = encodeURIComponent(document.getElementById('password').value);
 
-    const userData = {
-                username: email,
-                password: password
-    };
+    const userData = `username=${email}&password=${password}`;
 
     try {
         const response = await fetch('/entry', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(userData)
+            body: userData
         });
 
-        if (response.ok) {
+        if (response.status === 200) {
                 window.location.href = '/education';
-        } else {
-            const errorMessageElement = document.getElementById('error-message');
-            errorMessageElement.textContent = 'Неверный email или пароль!';
         }
+        if (response.status === 401) {
+        const errorMessageElement = document.getElementById('error-message');
+        errorMessageElement.textContent = 'Неверный email или пароль!';
+        }
+
+        console.log(response.text())
     } catch (error) {
         console.error('Ошибка при выполнении запроса:', error);
     }

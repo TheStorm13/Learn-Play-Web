@@ -1,5 +1,6 @@
 package ru.lp.learnandplay.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,12 +28,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration", "/registration/addUser", "/entry").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/registration", "/entry").anonymous()
+                        .requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration/addUser").permitAll()
                         .requestMatchers("/**").authenticated())
                 /*.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)*/
                 .formLogin((form) -> form
                         .loginPage("/entry")
                         .permitAll()
+                        .successHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                        })
+                        .failureHandler((request, response, exception) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                        })
                 )
                 .logout((logout) -> logout.permitAll())
                 .build();
