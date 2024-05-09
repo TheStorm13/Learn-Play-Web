@@ -32,7 +32,6 @@ public class NotificationController {
         //todo должно ли быть тело у запроса
         //todo прописать необходимые функции в сервисах
         return false;
-
     }
 
 
