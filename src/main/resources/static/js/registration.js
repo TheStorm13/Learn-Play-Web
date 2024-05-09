@@ -27,7 +27,26 @@ document.querySelector('form').addEventListener('submit', async function(event) 
             });
 
             if (response.status === 201) {
-                window.location.href = '/education'; // Перенаправление на страницу '/education' при успешной отправке данных
+                //window.location.href = '/education'; // Перенаправление на страницу '/education' при успешной отправке данных
+
+                const userDataEntry = `username=${email}&password=${password}`;
+
+                try {
+                    const response = await fetch('/entry', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: userDataEntry
+                    });
+
+                    if (response.status === 200) {
+                        window.location.href = '/education';
+                    }
+                    console.log(response.text())
+                } catch (error) {
+                    console.error('Ошибка при выполнении запроса:', error);
+                }
             } else if (response.status === 409) {
                 const errorMessageElement = document.getElementById('error-message');
                 errorMessageElement.textContent = 'Пользователь с таким email уже существует!';

@@ -1,44 +1,45 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/registration.css" />
-  <meta charset="UTF-8" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/registration.css"/>
+    <meta charset="UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="split left">
-  <div class="centered">
-    <h2 class="inter-h2_left">Учись играючи!</h2>
-    <p class="inter-p_left">Пора повеселиться, достигая своих целей!
-      Присоединяйся к нам и улучшай свои оценки
-      выполняя задания одно за другим.</p>
-    <div>
-      <img src="./images/elem_on_registation.png">
+    <div class="centered">
+        <h2 class="inter-h2_left">Учись играючи!</h2>
+        <p class="inter-p_left">Пора повеселиться, достигая своих целей!
+            Присоединяйся к нам и улучшай свои оценки
+            выполняя задания одно за другим.</p>
+        <div>
+            <img src="./images/elem_on_registation.png">
+        </div>
+        <a href='/registration'>
+            <button class="btn_entry" id="entry" type="button">Регистрация</button>
+        </a>
     </div>
-    <a href ='/entry'><button class="btn_entry" id="entry" type="button">Регистрация</button></a>
-  </div>
 </div>
 
 <div class="split right">
-  <div class="centered">
-    <h2 class="inter-h2_right">Вход в учетную запись</h2>
-    <p class="inter-p_right">Введите ваше имя и пароль</p>
-    <p id="error-message"></p>
-    <div class="wrapper">
-      <form action="" method="post">
-        <input type="text" id="email" name="email" placeholder="Почта" required>
-        <input type="password" id="password" name="password" placeholder="Пароль" required>
-        <a href ='/entry' class="inter-p_right">Забыли пароль?</a>
-        <input type="submit" value="Войти">
-      </form>
+    <div class="centered">
+        <h2 class="inter-h2_right">Вход в учетную запись</h2>
+        <p class="inter-p_right">Введите ваше имя и пароль</p>
+        <p id="error-message"></p>
+        <div class="wrapper">
+            <form action="" method="post">
+                <input type="text" id="email" name="email" placeholder="Почта" required>
+                <input type="password" id="password" name="password" placeholder="Пароль" required>
+                <a href='/entry' class="inter-p_right">Забыли пароль?</a>
+                <input type="submit" value="Войти">
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 <script src="./js/entry.js"></script>
 </body>
