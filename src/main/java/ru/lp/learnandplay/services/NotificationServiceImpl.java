@@ -23,4 +23,13 @@ public class NotificationServiceImpl implements NotificationService {
         User user = userService.getUser();
         return notificationRepository.findAllByUserOrderByDateDesc(user);
     }
+
+    @Override
+    public Notification addNotification(){
+        Notification notification= new Notification();
+        User user = userService.getUser();
+        notification.setUser(user);
+        notificationRepository.save(notification);
+        return notification;
+    }
 }
