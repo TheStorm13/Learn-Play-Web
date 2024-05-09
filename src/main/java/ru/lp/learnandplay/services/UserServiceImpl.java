@@ -6,20 +6,20 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.repository.UsersRepository;
+import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
-    private UsersRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private HeroServiceImpl heroService;
 
-    public UserServiceImpl(UsersRepository repository) {
+    public UserServiceImpl(UserRepository repository) {
         this.userRepository = repository;
     }
 

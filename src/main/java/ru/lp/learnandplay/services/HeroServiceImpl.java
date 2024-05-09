@@ -2,13 +2,13 @@ package ru.lp.learnandplay.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.Hero;
-import ru.lp.learnandplay.repository.HeroesRepository;
+import ru.lp.learnandplay.repository.HeroRepository;
 
 @Service
 public class HeroServiceImpl implements HeroService {
 
     @Autowired
-    private HeroesRepository heroRepository;
+    private HeroRepository heroRepository;
 
     @Override
     public Hero saveHero(Hero hero) {

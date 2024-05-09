@@ -15,11 +15,6 @@ public class RegistrationController {
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("/registration")
-    public String getRegistrationPage() {
-        return "registration.html";
-    }
-
     @PostMapping("/registration")
     public ResponseEntity<String> addUser(@RequestBody User user) {
         if(!userService.addUser(user))
