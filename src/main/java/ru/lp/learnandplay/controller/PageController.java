@@ -20,6 +20,11 @@ public class PageController {
         return "registration.html";
     }
 
+    @GetMapping("/registration")
+    public String getRegistrationPage() {
+        return "registration.html";
+    }
+
     @GetMapping("/quest")
     public String getQuestPage() {
         return "task.html";

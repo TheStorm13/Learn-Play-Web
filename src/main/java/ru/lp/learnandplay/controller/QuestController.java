@@ -2,12 +2,8 @@ package ru.lp.learnandplay.controller;
 
 
 import org.springframework.web.bind.annotation.*;
-import ru.lp.learnandplay.dto.request.SuccessQuestDTO;
-import ru.lp.learnandplay.dto.request.SuccessTaskDTO;
 import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.TaskRepository;
-import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.List;
 import java.util.Random;
@@ -15,46 +11,37 @@ import java.util.Random;
 @RestController()
 public class QuestController {
     private final TaskRepository taskRepository;
-    private final UserRepository userRepository;
     Random r = new Random();
 
-    public QuestController(TaskRepository taskRepository, UserRepository userRepository) {
+    public QuestController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.userRepository = userRepository;
     }
 
-    @GetMapping("/historyQuest/{topic_id}/{topic_step}")
-    public Task getHistoryQuest(@PathVariable(name = "topic_id") Long topic_id, @PathVariable(name = "topic_step") int topic_step) {
+    @GetMapping("/historyQuest")
+    public Task getHistoryQuest(@RequestParam String nameTopic, @RequestParam int step) {
         //todo
-        return new Task();
+        return null;
     }
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
-    @GetMapping("/getNewTask/{topic_id}/{dif_level}")
-    public Task getNewTask(@PathVariable(name = "topic_id") Long topic_id,@PathVariable(name = "dif_level") int dif_level) {
-        //todo diff_level
-        List<Task> tasks = taskRepository.findAllByIdTopicAndExp(topic_id,dif_level);
+    @GetMapping("/getNewTask")
+    public Task getNewTask() {
+        List<Task> tasks = taskRepository.findAllByIdTopic(1l);
         return tasks.get(r.nextInt(tasks.size()));
     }
 
-    @PutMapping("/successTask/{task_id}")
-    public boolean successTask(@RequestBody SuccessTaskDTO successTaskDTO) {
-        //получить пользователя
-        //++count в ResolvedTasks конкретного задания и пользователя
+    @PutMapping("/successTask")
+    public boolean successTask() {
         //todo поменять статус у задания для конкретного пользователя
 
         return false;
     }
 
     @PutMapping("/successQuest")
-    public int successQuest(@RequestBody SuccessQuestDTO successQuestDTO) {
-        User user = new User();
-        user.setId(1l);
-        //userRepository.save(user);
-
+    public boolean successTask(@RequestBody String idTopic, @RequestBody int step) {
         //todo поменять статус у квеста для конкретного пользователя
 
-        return successQuestDTO.getTopicStep();//todo
+        return false;//todo
     }
 
 }

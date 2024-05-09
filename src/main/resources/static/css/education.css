@@ -15,6 +15,27 @@
     padding-top: 20px;
     border-right: 2px solid #FFFFFF;
   }
+
+.btn_entry{
+  background: #251135;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: white;
+  border: none;
+}
+
+.btn_entry :hover  {
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+img {
+  pointer-events: none;
+}
   
   /* The navigation menu links */
   .sidenav a {
@@ -219,7 +240,6 @@
 
     /* номер задания */
     .num {
-      background-image: url(../images/button.png) ;
       position: absolute;
       margin: 8px;
       margin-left: 30px;
@@ -227,12 +247,13 @@
       font-weight: 600;
     }
 
-.num {
-  background: url(../images/button.png) no-repeat;
-  height: 60px;
-  /*text-align: center;*/
-  width: 80px;
-  color: white;
-  font-size: 20px;
-  border-radius: 32px;
-}
+    .btn_elem {
+      background: url(../images/button.png) no-repeat;
+      height: 60px;
+      /*text-align: center;*/
+      width: 80px;
+      color: white;
+      font-size: 20px;
+      border-radius: 32px;
+      border: #251135;
+    }

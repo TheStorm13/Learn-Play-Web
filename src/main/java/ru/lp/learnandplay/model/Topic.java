@@ -12,11 +12,10 @@ public class Topic {
     @Column(name = "name_topic")
     private String nameTopic;
 
-    public Topic() {
-    }
+    @Column(name = "count_task")
+    private int countTask;
 
-    public Topic(String nameTopic) {
-        this.nameTopic = nameTopic;
+    public Topic() {
     }
 
     public String getNameTopic() {
@@ -25,5 +24,21 @@ public class Topic {
 
     public void setNameTopic(String nameTopic) {
         this.nameTopic = nameTopic;
+    }
+
+    public int getCountTask() {
+        return countTask;
+    }
+
+    public void setCountTask(int countTask) {
+        this.countTask = countTask;
+    }
+
+    public Long getIdTopic() {
+        return idTopic;
+    }
+
+    public void setIdTopic(Long idTopic) {
+        this.idTopic = idTopic;
     }
 }

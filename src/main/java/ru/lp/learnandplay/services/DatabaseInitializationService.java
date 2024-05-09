@@ -41,7 +41,6 @@ public class DatabaseInitializationService {
         Long heroId = 1l;
         String imagePath = "path/to/image.jpg";
         String heroName = "Superman";
-
         jdbcTemplate.update(sql, heroId, imagePath, heroName);
     }
 }

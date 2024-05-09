@@ -27,11 +27,13 @@ public class User {
     private Hero hero;
     @Column(name = "role")
     private String role;
+    @Column(name = "rank_place")
+    private int rankPlace;
 
     public User() {
     }
 
-    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Hero hero) {
+    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Hero hero, int rankPlace) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -39,6 +41,7 @@ public class User {
         this.dailyQuest = dailyQuest;
         this.multiplier = multiplier;
         this.hero = hero;
+        this.rankPlace = rankPlace;
     }
 
     public Long getId() {
@@ -111,5 +114,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getRankPlace() {
+        return rankPlace;
+    }
+
+    public void setRankPlace(int rankPlace) {
+        this.rankPlace = rankPlace;
     }
 }
