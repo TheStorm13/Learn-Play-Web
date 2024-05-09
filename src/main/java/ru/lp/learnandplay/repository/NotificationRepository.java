@@ -10,7 +10,7 @@ import ru.lp.learnandplay.model.User;
 import java.util.List;
 
 @Repository
-public interface NotificationRepository extends JpaRepository<Long, Notification> {
+public interface NotificationRepository extends JpaRepository<Notification,Long> {
     @Query("SELECT n FROM Notification n WHERE n.user = :user ORDER BY n.date DESC")
     List<Notification> findAllByUserOrderByDateDesc(@Param("user") User user);
 }
