@@ -21,7 +21,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public List<Notification> getListNotification(){
         User user = userService.getUser();
-        return notificationRepository.findAllByUserOrderByDateDesc(user);
+        return null;//notificationRepository.findAllByUserOrderByDateDesc(user);
     }
 
     @Override

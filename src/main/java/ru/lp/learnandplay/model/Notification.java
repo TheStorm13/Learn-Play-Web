@@ -14,25 +14,21 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Column(name = "label")
-    private String label;
-    @Column(name = "message")
-    private String message;
-    @Column(name = "link")
-    private String link;
-    @Column(name = "date")
-    private LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "note_obj_id")
+    private NottificationObject notificationObject;
+    @Column(name = "is_view")
+    private boolean isView;
+
 
     public Notification() {
     }
 
-    public Notification(Long id, User user, String label, String message, String link, LocalDate date) {
+    public Notification(Long id, User user, NottificationObject notificationObject, boolean isView) {
         this.id = id;
         this.user = user;
-        this.label = label;
-        this.message = message;
-        this.link = link;
-        this.date = date;
+        this.notificationObject = notificationObject;
+        this.isView = isView;
     }
 
     public Long getId() {
@@ -51,35 +47,19 @@ public class Notification {
         this.user = user;
     }
 
-    public String getLabel() {
-        return label;
+    public NottificationObject getNotificationObject() {
+        return notificationObject;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setNotificationObject(NottificationObject notificationObject) {
+        this.notificationObject = notificationObject;
     }
 
-    public String getMessage() {
-        return message;
+    public boolean isView() {
+        return isView;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setView(boolean view) {
+        isView = view;
     }
 }

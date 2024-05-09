@@ -23,7 +23,7 @@ public class NotificationController {
     public List<Notification> getListNotification() {
         //todo проверять есть ли уведомление о дейлике за сегодня, если нет, то создавать его
         //создать для всего этого функции в сервисах
-        return notificationService.getListNotification();
+        return null;
     }
 
     @DeleteMapping("deleteNotofocations")
