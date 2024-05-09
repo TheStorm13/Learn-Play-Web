@@ -20,18 +20,18 @@ public class NotificationController {
     private NotificationServiceImpl notificationService;
 
     @GetMapping("/getListNotification")
-    public List<Notification> getListNotification(){
+    public List<Notification> getListNotification() {
         //todo проверять есть ли уведомление о дейлике за сегодня, если нет, то создавать его
         //создать для всего этого функции в сервисах
         return notificationService.getListNotification();
     }
 
     @DeleteMapping("deleteNotofocations")
-    public boolean deleteNotification(){
+    public boolean deleteNotification() {
         //todo изменить возвращаемый тип
         //todo должно ли быть тело у запроса
         //todo прописать необходимые функции в сервисах
-
+        return false;
 
     }
 

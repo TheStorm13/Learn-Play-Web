@@ -10,7 +10,13 @@ import java.util.List;
 
 @Controller("/education")
 public class EducationController {
-    @GetMapping("/runQuest")
+    //todo получение на каком шаге находятся пользователь
+
+
+
+
+
+    @GetMapping("/startQuest")
     public String getQuest(@RequestBody int id_topic, @RequestBody int step){
         //todo отправляет html для начала задания
         return null;

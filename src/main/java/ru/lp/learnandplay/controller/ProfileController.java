@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.lp.learnandplay.dto.request.ProfileDTO;
+import ru.lp.learnandplay.dto.response.ProfileDTO;
 import ru.lp.learnandplay.services.ProfileServiceImpl;
 import ru.lp.learnandplay.services.UserServiceImpl;
 
@@ -14,8 +14,6 @@ import ru.lp.learnandplay.services.UserServiceImpl;
 public class ProfileController {
     @Autowired
     private ProfileServiceImpl profileService;
-    @Autowired
-    private UserServiceImpl userService;
 
 
     @GetMapping("/info")

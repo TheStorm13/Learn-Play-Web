@@ -8,7 +8,7 @@ import ru.lp.learnandplay.model.User;
 import java.util.Optional;
 
 @Repository
-public interface UsersRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     @Query(value = "SELECT COUNT(*) + 1 FROM users WHERE exp > (SELECT exp FROM users WHERE user_id = ?1)", nativeQuery = true)

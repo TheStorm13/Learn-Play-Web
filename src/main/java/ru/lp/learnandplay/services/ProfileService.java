@@ -1,6 +1,6 @@
 package ru.lp.learnandplay.services;
 
-import ru.lp.learnandplay.dto.request.ProfileDTO;
+import ru.lp.learnandplay.dto.response.ProfileDTO;
 
 public interface ProfileService {
     public ProfileDTO profileInfo();

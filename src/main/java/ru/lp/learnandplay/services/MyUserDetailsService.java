@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.config.MyUserDetails;
 import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.repository.UsersRepository;
+import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UsersRepository repository;
+    private UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

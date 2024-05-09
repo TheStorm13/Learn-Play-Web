@@ -1,4 +1,4 @@
-package ru.lp.learnandplay.dto.request;
+package ru.lp.learnandplay.dto.response;
 
 import java.util.List;
 
