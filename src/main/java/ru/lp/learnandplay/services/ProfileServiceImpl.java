@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.dto.request.ProfileDTO;
 import ru.lp.learnandplay.model.Hero;
 import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.repository.HeroesRepository;
+import ru.lp.learnandplay.repository.HeroRepository;
 import ru.lp.learnandplay.repository.ProgressRepository;
-import ru.lp.learnandplay.repository.TopicsRepository;
-import ru.lp.learnandplay.repository.UsersRepository;
+import ru.lp.learnandplay.repository.TopicRepository;
+import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,9 +20,9 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private ProgressRepository progressRepository;
     @Autowired
-    private HeroesRepository heroesRepository;
+    private HeroRepository heroRepository;
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     @Override
     public ProfileDTO profileInfo() {
@@ -39,7 +39,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public boolean changeHero(Long heroId) {
-        Optional<Hero> hero = heroesRepository.findById(heroId);
+        Optional<Hero> hero = heroRepository.findById(heroId);
         if (hero.isEmpty()) return false;
         User user = userService.getUser();
         user.setHero(hero.get());

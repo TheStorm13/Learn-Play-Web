@@ -10,6 +10,6 @@ import ru.lp.learnandplay.model.User;
 import java.util.List;
 
 @Repository
-public interface TopicsRepository extends JpaRepository<Topic, Long> {
+public interface TopicRepository extends JpaRepository<Topic, Long> {
     List<Topic> findAll();
 }

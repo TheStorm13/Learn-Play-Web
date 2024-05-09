@@ -8,7 +8,7 @@ import ru.lp.learnandplay.model.User;
 import java.util.Optional;
 
 @Repository
-public interface HeroesRepository extends JpaRepository<Hero, Long> {
+public interface HeroRepository extends JpaRepository<Hero, Long> {
     @Override
     Optional<Hero> findById(Long id);
 }

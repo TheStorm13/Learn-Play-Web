@@ -28,7 +28,7 @@ public class User {
     @Column(name = "role")
     private String role;
     @Column(name = "rank_place")
-    private int rankPlace;
+    private int rankPlace=0;
 
     public User() {
     }

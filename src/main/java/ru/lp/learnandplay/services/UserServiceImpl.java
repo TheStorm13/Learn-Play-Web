@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.ProgressRepository;
-import ru.lp.learnandplay.repository.UsersRepository;
+import ru.lp.learnandplay.repository.UserRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
-    private UsersRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
