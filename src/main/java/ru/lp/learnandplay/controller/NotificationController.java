@@ -1,6 +1,7 @@
 package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.lp.learnandplay.model.Notification;
@@ -20,8 +21,20 @@ public class NotificationController {
 
     @GetMapping("/getListNotification")
     public List<Notification> getListNotification(){
+        //todo проверять есть ли уведомление о дейлике за сегодня, если нет, то создавать его
+        //создать для всего этого функции в сервисах
         return notificationService.getListNotification();
     }
+
+    @DeleteMapping("deleteNotofocations")
+    public boolean deleteNotification(){
+        //todo изменить возвращаемый тип
+        //todo должно ли быть тело у запроса
+        //todo прописать необходимые функции в сервисах
+
+
+    }
+
 
 //    @GetMapping("/getDailyNotification")
 //    public Task getDailyNotification() {
