@@ -11,6 +11,7 @@ import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.UserRepository;
 import ru.lp.learnandplay.services.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,6 +77,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RankDTO> getRankList() {
-        return List.of();
+         List<User> listUser=userRepository.findTop3ByOrderByRankPlaceDesc();
+         List<RankDTO> listUserDTO=new ArrayList<RankDTO>();
+         for (User user:listUser) {
+             listUserDTO.add(new RankDTO(user));
+         }
+         return listUserDTO;
     }
 }

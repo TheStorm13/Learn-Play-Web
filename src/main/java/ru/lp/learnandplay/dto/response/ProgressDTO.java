@@ -17,7 +17,6 @@ public class ProgressDTO {
     }
 
     public ProgressDTO(Progress progress) {
-        System.out.println(progress.toString());
         this.topicId = progress.getTopic().getIdTopic();
         this.topicName = progress.getTopic().getNameTopic();
         this.step = progress.getStep();

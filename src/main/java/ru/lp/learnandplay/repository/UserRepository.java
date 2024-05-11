@@ -14,9 +14,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT COUNT(*) + 1 FROM users WHERE exp > (SELECT exp FROM users WHERE user_id = ?1)", nativeQuery = true)
     int getUserRankByExp(Long userId);
+
+    //todo добавить тригер на место в рейтинге и заменить exp на rank_place
     @Query(value = """
-            SELECT * FROM users u 
-            ORDER BY rank_place DESC  3
-            """,nativeQuery = true)
-    List<User> findTo();
+            SELECT * FROM users 
+            ORDER BY exp DESC
+            LIMIT 2
+            """, nativeQuery = true)
+    List<User> findTop3ByOrderByRankPlaceDesc();
 }
