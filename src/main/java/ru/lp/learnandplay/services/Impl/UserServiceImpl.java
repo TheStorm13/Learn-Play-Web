@@ -1,18 +1,21 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.lp.learnandplay.dto.response.RankDTO;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.UserRepository;
+import ru.lp.learnandplay.services.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService{
         user.setDailyQuest(false);
         user.setRole("ROLE_USER");
         user.setHero(heroService.getHeroById(1L));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(encryptPassword(user.getPassword()));
         userRepository.save(user);
         user.setRankPlace((int) (long) user.getId());
         progressRepository.addProgressForUserWithDefaultValues(user);
@@ -44,5 +47,35 @@ public class UserServiceImpl implements UserService{
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> user = userRepository.findByEmail(authentication.getName());
         return user.get();
+    }
+
+    @Override
+    public String encryptPassword(String password) {
+        return passwordEncoder.encode(password);
+    }
+
+    @Override
+    public boolean changePassword(String oldPassword, String newPassword) {
+        User user = getUser();
+        if (user.getPassword().equals(encryptPassword(oldPassword))) {
+            user.setPassword(encryptPassword(newPassword));
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeEmail(String newEmail) {
+        User user = getUser();
+        user.setEmail(newEmail);
+        userRepository.save(user);
+        return true;
+
+    }
+
+    @Override
+    public List<RankDTO> getRankList() {
+        return List.of();
     }
 }

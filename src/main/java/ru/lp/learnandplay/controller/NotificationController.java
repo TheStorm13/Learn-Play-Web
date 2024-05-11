@@ -5,11 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.lp.learnandplay.model.Notification;
-import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.services.NotificationServiceImpl;
-import ru.lp.learnandplay.services.UserService;
-import ru.lp.learnandplay.services.UserServiceImpl;
+import ru.lp.learnandplay.services.Impl.NotificationServiceImpl;
 
 import java.util.List;
 

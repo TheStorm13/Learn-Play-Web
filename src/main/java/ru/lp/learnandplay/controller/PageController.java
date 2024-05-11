@@ -2,6 +2,7 @@ package ru.lp.learnandplay.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PageController {
@@ -45,20 +46,27 @@ public class PageController {
         return "profile";
     }
 
+    @GetMapping("/profile/changeHero")
+    public String getChangeHeroPage() {
+        //todo
+        return null;
+    }
+
     @GetMapping("/tutorial")
     public String getTutorialPage() {
         return "tutorial";
+    }
+
+    @GetMapping("/tutorial/{topicId}")
+    public String getPageOfTutorial(@PathVariable(name = "topicId") Long topicId) {
+        //todo протестить
+        return "tutorial_" + topicId.toString();
     }
 
     @GetMapping("/settings")
     public String getSettingsPage() {
         return "settings";
     }
-
-
-
-
-
 
 
 }

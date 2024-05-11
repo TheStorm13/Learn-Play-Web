@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.services.UserServiceImpl;
+import ru.lp.learnandplay.services.Impl.UserServiceImpl;
 
 @RestController
 @RequestMapping("/registration")
@@ -19,6 +19,4 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
-
-    //todo rating
 }

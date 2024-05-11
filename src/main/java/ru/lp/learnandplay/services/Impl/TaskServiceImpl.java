@@ -1,13 +1,12 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.ResolvedTask;
 import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.ResolvedTaskRepository;
 import ru.lp.learnandplay.repository.TaskRepository;
-import ru.lp.learnandplay.repository.UserRepository;
+import ru.lp.learnandplay.services.TaskService;
 
 import java.util.List;
 

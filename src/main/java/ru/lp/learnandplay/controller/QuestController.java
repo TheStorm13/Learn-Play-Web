@@ -3,35 +3,30 @@ package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.lp.learnandplay.dto.request.SuccessQuestDTO;
-import ru.lp.learnandplay.dto.request.SuccessTaskDTO;
 import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.repository.TaskRepository;
-import ru.lp.learnandplay.services.TaskServiceImpl;
-
-import java.util.List;
-import java.util.Random;
+import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
 
 @RestController()
+//@RequestMapping("/quest")
 public class QuestController {
     @Autowired
     private TaskServiceImpl taskService;
 
 
-    @GetMapping("/historyQuest/{topic_id}/{topic_step}")
-    public Task getHistoryQuest(@PathVariable(name = "topic_id") Long topic_id, @PathVariable(name = "topic_step") int topic_step) {
+    @GetMapping("/historyQuest/{topicId}/{topicStep}")
+    public Task getHistoryQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
         //todo
         return new Task();
     }
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
-    @GetMapping("/getNewTask/{topic_id}/{dif_level}")
-    public Task getNewTask(@PathVariable(name = "topic_id") Long topic_id,@PathVariable(name = "dif_level") int dif_level) {
-       return taskService.getRandomTask(topic_id, dif_level);
+    @GetMapping("/getNewTask/{topicId}/{difLevel}")
+    public Task getNewTask(@PathVariable(name = "topicId") Long topicId,@PathVariable(name = "difLevel") int difLevel) {
+       return new Task();//taskService.getRandomTask(topicId, difLevel);
     }
 
-    @PutMapping("/successTask")
-    public boolean successTask(@RequestBody SuccessTaskDTO successTaskDTO) {
+    @PutMapping("/successTask/{taskId}")
+    public boolean successTask(@PathVariable(name = "taskId") Long taskId) {
         //получить пользователя
         //++count в ResolvedTasks конкретного задания и пользователя
         //todo поменять статус у задания для конкретного пользователя
@@ -39,12 +34,12 @@ public class QuestController {
         return false;
     }
 
-    @PutMapping("/successQuest")
-    public int successQuest(@RequestBody SuccessQuestDTO successQuestDTO) {
+    @PutMapping("/successQuest/{topicId}/{topicStep}")
+    public int successQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
 
         //todo поменять статус у квеста для конкретного пользователя
 
-        return successQuestDTO.getTopicStep();//todo
+        return 0;//todo
     }
 
 }

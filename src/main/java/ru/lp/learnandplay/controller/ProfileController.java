@@ -1,13 +1,9 @@
 package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.dto.response.ProfileDTO;
-import ru.lp.learnandplay.services.ProfileServiceImpl;
-import ru.lp.learnandplay.services.UserServiceImpl;
+import ru.lp.learnandplay.services.Impl.ProfileServiceImpl;
 
 @RestController
 @RequestMapping("/profile")
@@ -21,13 +17,13 @@ public class ProfileController {
         return profileService.profileInfo();
     }
 
-    @PostMapping("/changeHero")
-    public void changeHero(Long heroId) {
+    @PutMapping("/changeHero/{heroId}")
+    public void changeHero(@PathVariable(name = "heroId")Long heroId) {
         profileService.changeHero(heroId);
     }
 
-    @PostMapping("/changeName")
-    public void changeName(String name) {
-        profileService.changeName(name);
+    @PutMapping("/changeName/{newName}")
+    public void changeName(@PathVariable(name = "newName")String newName) {
+        profileService.changeName(newName);
     }
 }

@@ -1,11 +1,11 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import ru.lp.learnandplay.model.Notification;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.NotificationRepository;
+import ru.lp.learnandplay.services.NotificationService;
 
 import java.util.List;
 

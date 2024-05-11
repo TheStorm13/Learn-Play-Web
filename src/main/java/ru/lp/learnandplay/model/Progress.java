@@ -28,6 +28,10 @@ public class Progress {
         this.count = count;
     }
 
+    public Progress() {
+
+    }
+
     public User getUser() {
         return user;
     }
@@ -66,5 +70,16 @@ public class Progress {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Progress{" +
+                "id=" + id +
+                ", user=" + user +
+                ", topic=" + topic +
+                ", step=" + step +
+                ", count=" + count +
+                '}';
     }
 }

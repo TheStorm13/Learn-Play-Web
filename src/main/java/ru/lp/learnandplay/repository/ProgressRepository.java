@@ -25,4 +25,6 @@ public interface ProgressRepository extends JpaRepository<Progress, Long> {
     @Query("INSERT INTO Progress (user, topic, step, count) " +
             "SELECT :user, t, 0, 0 FROM Topic t")
     void addProgressForUserWithDefaultValues(@Param("user") User user);
+
+    List<Progress> findByUserOrderById(User user);
 }
