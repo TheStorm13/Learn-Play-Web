@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.dto.request.SuccessQuestDTO;
 import ru.lp.learnandplay.dto.request.SuccessTaskDTO;
 import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.repository.TaskRepository;
-import ru.lp.learnandplay.services.TaskServiceImpl;
-
-import java.util.List;
-import java.util.Random;
+import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
 
 @RestController()
 public class QuestController {

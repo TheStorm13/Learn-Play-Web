@@ -1,4 +1,4 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.util.ResourceUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 @Service
 public class DatabaseInitializationService {

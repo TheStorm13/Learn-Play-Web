@@ -1,8 +1,9 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.Hero;
 import ru.lp.learnandplay.repository.HeroRepository;
+import ru.lp.learnandplay.services.HeroService;
 
 @Service
 public class HeroServiceImpl implements HeroService {

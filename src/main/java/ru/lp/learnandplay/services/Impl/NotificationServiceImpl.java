@@ -1,11 +1,11 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import ru.lp.learnandplay.model.Notification;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.NotificationRepository;
+import ru.lp.learnandplay.services.NotificationService;
 
 import java.util.List;
 
@@ -18,18 +18,27 @@ public class NotificationServiceImpl implements NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
+
     @Override
-    public List<Notification> getListNotification(){
+    public List<Notification> getListNotification() {
         User user = userService.getUser();
-        return null;//notificationRepository.findAllByUserOrderByDateDesc(user);
+        //todo
+        return null;
     }
 
     @Override
-    public Notification addNotification(){
-        Notification notification= new Notification();
+    public Notification addNotification() {
+        Notification notification = new Notification();
         User user = userService.getUser();
         notification.setUser(user);
         notificationRepository.save(notification);
         return notification;
+    }
+
+    @Override
+    public boolean deleteNotification() {
+        //todo должно ли быть тело у запроса?
+        //todo прописать необходимые функции в сервисах
+        return false;
     }
 }

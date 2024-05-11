@@ -17,18 +17,18 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "note_obj_id")
     private NottificationObject notificationObject;
-    @Column(name = "is_view")
-    private boolean isView;
+    @Column(name = "viewed")
+    private boolean viewed;
 
 
     public Notification() {
     }
 
-    public Notification(Long id, User user, NottificationObject notificationObject, boolean isView) {
+    public Notification(Long id, User user, NottificationObject notificationObject, boolean viewed) {
         this.id = id;
         this.user = user;
         this.notificationObject = notificationObject;
-        this.isView = isView;
+        this.viewed = viewed;
     }
 
     public Long getId() {
@@ -56,10 +56,10 @@ public class Notification {
     }
 
     public boolean isView() {
-        return isView;
+        return viewed;
     }
 
-    public void setView(boolean view) {
-        isView = view;
+    public void setView(boolean viewed) {
+        this.viewed = viewed;
     }
 }

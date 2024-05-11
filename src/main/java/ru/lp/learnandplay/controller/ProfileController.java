@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.lp.learnandplay.dto.response.ProfileDTO;
-import ru.lp.learnandplay.services.ProfileServiceImpl;
-import ru.lp.learnandplay.services.UserServiceImpl;
+import ru.lp.learnandplay.services.Impl.ProfileServiceImpl;
 
 @RestController
 @RequestMapping("/profile")

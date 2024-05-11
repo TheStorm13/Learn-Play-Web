@@ -9,4 +9,5 @@ public interface NotificationService {
 
     public Notification addNotification();
 
+    public boolean deleteNotification();
 }

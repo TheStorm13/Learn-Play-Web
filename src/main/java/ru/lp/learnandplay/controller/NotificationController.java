@@ -1,15 +1,9 @@
 package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.model.Notification;
-import ru.lp.learnandplay.model.Task;
-import ru.lp.learnandplay.model.User;
-import ru.lp.learnandplay.services.NotificationServiceImpl;
-import ru.lp.learnandplay.services.UserService;
-import ru.lp.learnandplay.services.UserServiceImpl;
+import ru.lp.learnandplay.services.Impl.NotificationServiceImpl;
 
 import java.util.List;
 
@@ -22,17 +16,17 @@ public class NotificationController {
     @GetMapping("/getListNotification")
     public List<Notification> getListNotification() {
         //todo проверять есть ли уведомление о дейлике за сегодня, если нет, то создавать его
-        //создать для всего этого функции в сервисах
+        //todo возвращать список всех уведомлений у конкретного пользователя, которые не прочитаны
         return null;
     }
 
-    @DeleteMapping("deleteNotofocations")
-    public boolean deleteNotification() {
-        //todo изменить возвращаемый тип
-        //todo должно ли быть тело у запроса
-        //todo прописать необходимые функции в сервисах
+    @PutMapping("/viewedNotification")
+    public boolean viewedNotification(@RequestBody Notification notification) {
+        //todo обновлять статус у уведомления у конкретного пользователя на прочитано
         return false;
     }
+
+
 
 
 //    @GetMapping("/getDailyNotification")

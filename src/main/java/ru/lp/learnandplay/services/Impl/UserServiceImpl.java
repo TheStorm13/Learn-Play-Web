@@ -1,4 +1,4 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.UserRepository;
+import ru.lp.learnandplay.services.UserService;
 
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired

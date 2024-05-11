@@ -1,4 +1,4 @@
-package ru.lp.learnandplay.services;
+package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +8,7 @@ import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.HeroRepository;
 import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.repository.UserRepository;
+import ru.lp.learnandplay.services.ProfileService;
 
 import java.util.List;
 import java.util.Optional;
