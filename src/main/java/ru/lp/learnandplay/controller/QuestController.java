@@ -13,7 +13,7 @@ import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
 import ru.lp.learnandplay.services.Impl.UserServiceImpl;
 
 @RestController()
-//@RequestMapping("/quest")
+@RequestMapping("/quest")
 public class QuestController {
     @Autowired
     private TaskServiceImpl taskService;
@@ -48,15 +48,17 @@ public class QuestController {
     }
 
 
-    @GetMapping("/historyQuest/{topicId}/{topicStep}")
+    @GetMapping("/historyQuest")
     public Task getHistoryQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
+        //todo {topicId}/{topicStep}
         //todo
         return new Task();
     }
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
-    @GetMapping("/getNewTask/{topicId}/{difLevel}")
-    public Task getNewTask(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "difLevel") int difLevel) {
+    @GetMapping("/getNewTask")
+    public Task getNewTask() {
+        //todo
         return taskService.getRandomTask(topicId, difLevel);
     }
 
@@ -76,10 +78,12 @@ public class QuestController {
         return false;
     }
 
-    @PutMapping("/successQuest/{topicId}/{topicStep}")
-    public boolean successQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
+    //todo страничка с завершением квеста
+    @GetMapping("/successQuest")
+    public boolean successQuest() {
+        //todo {topicId}/{topicStep}
         if (questService.isSuccessQuest(quest)) {
-            progressService.incrementStep(topicId,topicStep);
+            progressService.incrementStep(topicId, topicStep);
             userService.addExp(2);
             return true;
         }
