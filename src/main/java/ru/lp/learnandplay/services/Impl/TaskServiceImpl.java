@@ -28,10 +28,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getRandomTask(long topic_id, int dif_level) {
-//todo
-
-        return null;
+    public Task getRandomTask(Long topic_id, int dif_level) {
+        return taskRepository.findRandomTaskByTopicAndExp(topic_id, dif_level);
     }
 
     @Override

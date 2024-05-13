@@ -8,7 +8,7 @@ INSERT INTO public.topics VALUES (59, 7, 'Уравнения и системы �
 INSERT INTO public.topics VALUES (60, 8, 'Графики функций') ON CONFLICT DO NOTHING;
 INSERT INTO public.topics VALUES (60, 9, 'Неравенства и системы неравенств (1 часть)') ON CONFLICT DO NOTHING;
 INSERT INTO public.topics VALUES (60, 10, 'Вычисления и преобразования') ON CONFLICT DO NOTHING;
-INSERT INTO public.topics VALUES (60, 11, 'Алгебраические выражения. Формулы сокращённого умножения') ON CONFLICT DO NOTHING;
+INSERT INTO public.topics VALUES (60, 11, 'Алгебраические выражения. ФСУ') ON CONFLICT DO NOTHING;
 INSERT INTO public.topics VALUES (53, 12, 'Прогрессии') ON CONFLICT DO NOTHING;
 INSERT INTO public.topics VALUES (57, 13, 'Треугольники') ON CONFLICT DO NOTHING;
 INSERT INTO public.topics VALUES (48, 14, 'Прямоугольный треугольник') ON CONFLICT DO NOTHING;

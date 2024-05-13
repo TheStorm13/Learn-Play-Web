@@ -176,7 +176,7 @@ img {
       margin-top: 12px;
     }
   
-  .box__level_1_left {
+  .box__level_1 {
       margin: auto;
       /* border: 1px solid; */
       padding: 8px;
@@ -188,7 +188,7 @@ img {
       position: relative;
     }
 
-    .box__level_2_left {
+    .box__level_2 {
       margin: auto;
       /* border: 1px solid; */
       padding: 8px;
@@ -198,7 +198,7 @@ img {
       position: relative;
     }
 
-    .box__level_3_left {
+    .box__level_3 {
       margin: auto;
       /* border: 1px solid; */
       padding: 8px;
@@ -208,9 +208,16 @@ img {
       position: relative;
     }
 
-    .box__level_1_right {
+    .box__level_4 {
+          margin: auto;
+          padding: 8px;
+          margin-bottom: 12px;
+          margin-top: 12px;
+    }
+
+    /*.box__level_1_right {
       margin: auto;
-      /* border: 1px solid; */
+      *//* border: 1px solid; *//*
       padding: 8px;
       left: 80px; 
       margin-bottom: 12px; 
@@ -220,7 +227,7 @@ img {
 
     .box__level_2_right {
       margin: auto;
-      /* border: 1px solid; */
+      *//* border: 1px solid; *//*
       padding: 8px;
       left: 120px; 
       margin-bottom: 12px; 
@@ -230,13 +237,13 @@ img {
 
     .box__level_3_right {
       margin: auto;
-      /* border: 1px solid; */
+      *//* border: 1px solid; *//*
       padding: 8px;
       left: 60px; 
       margin-bottom: 12px; 
       margin-top: 12px;
       position: relative;
-    }
+    }*/
 
     /* номер задания */
     .num {

@@ -21,8 +21,8 @@ public class QuestController {
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
     @GetMapping("/getNewTask/{topicId}/{difLevel}")
-    public Task getNewTask(@PathVariable(name = "topicId") Long topicId,@PathVariable(name = "difLevel") int difLevel) {
-       return new Task();//taskService.getRandomTask(topicId, difLevel);
+    public Task getNewTask(@PathVariable(name = "topicId") long topicId,@PathVariable(name = "difLevel") int difLevel) {
+       return taskService.getRandomTask((Long) topicId, difLevel);
     }
 
     @PutMapping("/successTask/{taskId}")
