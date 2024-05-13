@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProgressService {
     public List<ProgressDTO> getListProgress();
+    public void incrementCount(Long topicId);
 }

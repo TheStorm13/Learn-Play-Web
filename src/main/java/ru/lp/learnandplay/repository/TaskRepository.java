@@ -17,6 +17,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             WHERE t.topic_id = :topicId
             """, nativeQuery = true)
     List<Task> findAllByIdTopic(Long topicId);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM tasks WHERE topic_id = :topicId AND exp = :exp ORDER BY RANDOM() LIMIT 1")
+    Task findRandomTaskByTopicAndExp(@Param("topicId") Long topicId, @Param("exp") int exp);
+
     @Query(value = """
             SELECT topic_id FROM tasks t
             WHERE t.task_id = :taskId

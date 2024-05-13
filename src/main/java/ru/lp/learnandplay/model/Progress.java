@@ -16,7 +16,7 @@ public class Progress {
     private Topic topic;
 
     @Column(name = "step")
-    private Short step = 0;
+    private Short step = 1;
     @Column(name = "count")
     private int count = 0;
 

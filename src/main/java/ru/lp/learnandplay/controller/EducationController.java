@@ -22,11 +22,6 @@ public class EducationController {
         return progressService.getListProgress();
     }
 
-    @GetMapping("/startQuest/{topicId}/{topicStep}")
-    public String getQuest(@PathVariable(name = "topicId") Long topic_id, @PathVariable(name = "topicStep") int topicStep) {
-        //todo отправляет html для начала задания
-        //cookie
-        return null;
-    }
+
 
 }

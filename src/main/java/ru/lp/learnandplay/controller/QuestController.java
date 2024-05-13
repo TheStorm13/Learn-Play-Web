@@ -7,6 +7,7 @@ import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.model.Session.Quest;
 import ru.lp.learnandplay.model.Task;
+import ru.lp.learnandplay.services.Impl.ProgressServiceImpl;
 import ru.lp.learnandplay.services.Impl.QuestServiceImpl;
 import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
 
@@ -17,6 +18,8 @@ public class QuestController {
     private TaskServiceImpl taskService;
     @Autowired
     private QuestServiceImpl questService;
+    @Autowired
+    private ProgressServiceImpl progressService;
     @Autowired
     Quest quest;
 
@@ -51,9 +54,7 @@ public class QuestController {
     //должен возвращать рандомную задачу на определенную тему определенного уровня
     @GetMapping("/getNewTask/{topicId}/{difLevel}")
     public Task getNewTask(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "difLevel") int difLevel) {
-        //todo
-        //taskService.getRandomTask(topicId, difLevel);
-        return null;
+        return taskService.getRandomTask(topicId, difLevel);
     }
 
     @PutMapping("/successTask/{taskId}")
@@ -74,12 +75,13 @@ public class QuestController {
 
     @PutMapping("/successQuest/{topicId}/{topicStep}")
     public boolean successQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
-        if (questService.isSuccessQuest(quest)) {
+        //if (questService.isSuccessQuest(quest)) {
+            //todo добавить проверку на последнее доступное задание
+            progressService.incrementCount(topicId);
             return true;
-        }
-        //todo поменять статус у квеста для конкретного пользователя
+        //}
 
-        return false;
+        //return false;
     }
 
 }
