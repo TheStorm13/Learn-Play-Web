@@ -21,22 +21,23 @@ public class TaskServiceImpl implements TaskService {
     private UserServiceImpl userService;
 
     @Override
-    public List<Task> getListTask(long topic_id, int dif_level) {
+    public List<Task> getListTask(Long topic_id, int dif_level) {
 //todo
 
         return null;
     }
 
     @Override
-    public Task getRandomTask(long topic_id, int dif_level) {
+    public Task getRandomTask(Long topic_id, int dif_level) {
 //todo
 
         return null;
     }
 
     @Override
-    public void solvedTask(long taskId) {
-        resolvedTaskRepository.updateTaskByIdTask(taskId);
+    public void successTask(Long taskId) {
+
+        //resolvedTaskRepository.updateTaskByIdTask(taskId);
     }
 
     @Override
@@ -44,6 +45,12 @@ public class TaskServiceImpl implements TaskService {
         ResolvedTask resolvedTask = new ResolvedTask();
         resolvedTask.setUser(userService.getUser());
         resolvedTaskRepository.save(resolvedTask);
+    }
+
+    @Override
+    public Long getTopicId(Long taskId) {
+        System.out.println(taskRepository.findTopicIdByTaskId(taskId));
+        return null;
     }
 
 }

@@ -19,4 +19,8 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
+    @GetMapping("/my")
+    public User getMyUser() {
+        return userService.getUser();
+    }
 }

@@ -14,22 +14,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/education")
 public class EducationController {
-    //todo получение на каком шаге находятся пользователь
-@Autowired
-private ProgressServiceImpl progressService;
+    @Autowired
+    private ProgressServiceImpl progressService;
+
     @GetMapping("/getListProgress")
-    public List<ProgressDTO> getListProgress(){
+    public List<ProgressDTO> getListProgress() {
         return progressService.getListProgress();
     }
 
     @GetMapping("/startQuest/{topicId}/{topicStep}")
-    public String getQuest(@PathVariable(name = "topicId") Long topic_id, @PathVariable(name = "topicStep") int topicStep){
+    public String getQuest(@PathVariable(name = "topicId") Long topic_id, @PathVariable(name = "topicStep") int topicStep) {
         //todo отправляет html для начала задания
         //cookie
         return null;
     }
-
-    //возвращает страничку справочника
-
 
 }
