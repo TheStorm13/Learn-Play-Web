@@ -10,6 +10,7 @@ import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.services.Impl.ProgressServiceImpl;
 import ru.lp.learnandplay.services.Impl.QuestServiceImpl;
 import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
+import ru.lp.learnandplay.services.Impl.UserServiceImpl;
 
 @RestController()
 //@RequestMapping("/quest")
@@ -20,6 +21,8 @@ public class QuestController {
     private QuestServiceImpl questService;
     @Autowired
     private ProgressServiceImpl progressService;
+    @Autowired
+    private UserServiceImpl userService;
     @Autowired
     Quest quest;
 
@@ -75,13 +78,12 @@ public class QuestController {
 
     @PutMapping("/successQuest/{topicId}/{topicStep}")
     public boolean successQuest(@PathVariable(name = "topicId") Long topicId, @PathVariable(name = "topicStep") int topicStep) {
-        //if (questService.isSuccessQuest(quest)) {
-            //todo добавить проверку на последнее доступное задание
-            progressService.incrementCount(topicId);
+        if (questService.isSuccessQuest(quest)) {
+            progressService.incrementStep(topicId,topicStep);
+            userService.addExp(2);
             return true;
-        //}
-
-        //return false;
+        }
+        return false;
     }
 
 }

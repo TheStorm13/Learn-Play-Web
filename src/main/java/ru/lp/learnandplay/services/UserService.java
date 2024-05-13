@@ -17,4 +17,6 @@ public interface UserService {
     public boolean changeEmail(String newEmail);
 
     public List<RankDTO> getRankList();
+
+    public void addExp(int exp);
 }

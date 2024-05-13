@@ -11,6 +11,8 @@ import ru.lp.learnandplay.services.QuestService;
 public class QuestServiceImpl implements QuestService {
     @Autowired
     private TaskServiceImpl taskService;
+    @Autowired
+    private UserServiceImpl userService;
 
     @Override
     public Quest createUserQuest(UserQuestDTO userQuestDTO) {
@@ -29,6 +31,7 @@ public class QuestServiceImpl implements QuestService {
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
         quest.setSuccessTask(quest.getSuccessTask() + 1);
+        userService.addExp(taskService.getExp(taskId));
         return quest;
     }
 

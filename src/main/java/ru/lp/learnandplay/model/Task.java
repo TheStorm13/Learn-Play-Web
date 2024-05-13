@@ -19,14 +19,14 @@ public class Task {
     @Column(name = "answer")
     private String answer;
     @Column(name = "exp")
-    private double exp;
+    private int exp;
     @Column(name = "image")
     private String image;
 
     public Task() {
     }
 
-    public Task(Long id, Topic topic, String question, String addText, String answer, double exp, String image) {
+    public Task(Long id, Topic topic, String question, String addText, String answer, int exp, String image) {
         this.idTask = id;
         this.topic = topic;
         this.question = question;
@@ -68,11 +68,11 @@ public class Task {
         this.answer = answer;
     }
 
-    public double getExp() {
+    public int getExp() {
         return exp;
     }
 
-    public void setExp(double exp) {
+    public void setExp(int exp) {
         this.exp = exp;
     }
 

@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.lp.learnandplay.model.Progress;
-import ru.lp.learnandplay.model.Topic;
 import ru.lp.learnandplay.model.User;
 
 import java.util.List;
@@ -27,9 +26,11 @@ public interface ProgressRepository extends JpaRepository<Progress, Long> {
             "SELECT :user, t, 1, 0 FROM Topic t")
     void addProgressForUserWithDefaultValues(@Param("user") User user);
 
-@Query(value= """
-SELECT * FROM Progress p WHERE p.user = :userId AND p.topic.topic_id = :topicId
-""",nativeQuery = true)
-    Progress findByUserIdAndTopicId(User userId, Long topicId);
+
+    @Query(value= "SELECT * FROM Progress p WHERE p.user_id = :userId AND p.topic_id = :topicId", nativeQuery = true)
+    Progress findByUserIdAndTopicId(Long userId, Long topicId);
+
+    Progress findByUser(User user);
+
     List<Progress> findByUserOrderById(User user);
 }

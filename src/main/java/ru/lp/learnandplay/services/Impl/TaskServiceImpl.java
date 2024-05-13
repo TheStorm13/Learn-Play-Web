@@ -33,9 +33,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void successTask(Long taskId) {
-
-        //resolvedTaskRepository.updateTaskByIdTask(taskId);
+    public int getExp(Long taskId) {
+        return taskRepository.findById(taskId).get().getExp();
     }
 
     @Override
