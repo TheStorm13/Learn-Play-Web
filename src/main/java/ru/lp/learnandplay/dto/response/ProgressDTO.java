@@ -5,9 +5,9 @@ import ru.lp.learnandplay.model.Progress;
 public class ProgressDTO {
     private Long topicId;
     private String topicName;
-    private Short step;
+    private int step;
 
-    public ProgressDTO(Long topicId, String topicName, Short step) {
+    public ProgressDTO(Long topicId, String topicName, int step) {
         this.topicId = topicId;
         this.topicName = topicName;
         this.step = step;
@@ -38,11 +38,11 @@ public class ProgressDTO {
         this.topicName = topicName;
     }
 
-    public Short getStep() {
+    public int getStep() {
         return step;
     }
 
-    public void setStep(Short step) {
+    public void setStep(int step) {
         this.step = step;
     }
 }

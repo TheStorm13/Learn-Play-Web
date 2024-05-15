@@ -6,7 +6,6 @@ import ru.lp.learnandplay.dto.response.ProgressDTO;
 import ru.lp.learnandplay.model.Progress;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.ProgressRepository;
-import ru.lp.learnandplay.repository.TopicRepository;
 import ru.lp.learnandplay.services.ProgressService;
 
 import java.util.ArrayList;
@@ -18,8 +17,6 @@ public class ProgressServiceImpl implements ProgressService {
     private UserServiceImpl userService;
     @Autowired
     private ProgressRepository progressRepository;
-    @Autowired
-    private TopicRepository topicRepository;
 
     @Override
     public List<ProgressDTO> getListProgress() {
