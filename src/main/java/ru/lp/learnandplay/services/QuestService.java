@@ -12,9 +12,9 @@ public interface QuestService {
 
     public Task getTaskQuest(Quest quest);
 
-    public Quest successTaskInQuest(Quest quest, Long taskId);
+    public boolean successTaskInQuest(Quest quest, Long taskId);
 
-    public Quest failedTaskInQuest(Quest quest, Long taskId);
+    public boolean failedTaskInQuest(Quest quest, Long taskId);
 
     public boolean isSuccessQuest(Quest quest);
 

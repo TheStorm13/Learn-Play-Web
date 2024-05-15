@@ -3,6 +3,7 @@ package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.model.Session.Quest;
@@ -12,6 +13,7 @@ import ru.lp.learnandplay.services.Impl.UserServiceImpl;
 
 @RestController()
 @RequestMapping("/quest")
+
 public class QuestController {
     @Autowired
     private QuestServiceImpl questService;
@@ -36,10 +38,10 @@ public class QuestController {
         return quest;
     }
 
-//    @GetMapping("/getQuest")
-//    public Quest getQuest() {
-//        return quest;
-//    }
+    @GetMapping("/getQuest")
+    public Quest getQuest() {
+        return quest;
+    }
 
 
     @GetMapping("/historyQuest")
@@ -56,12 +58,10 @@ public class QuestController {
 
     @PutMapping("/successTask/{taskId}")
     public boolean successTask(@PathVariable(name = "taskId") Long taskId) {
-        questService.successTaskInQuest(quest, taskId);
+        return questService.successTaskInQuest(quest, taskId);
         //получить пользователя
         //++count в ResolvedTasks конкретного задания и пользователя
         //todo поменять статус у задания для конкретного пользователя
-
-        return true;
     }
 
     @PutMapping("/failedTask/{taskId}")
@@ -72,10 +72,13 @@ public class QuestController {
 
     //todo страничка с завершением квеста
     @GetMapping("/successQuest")
-    public boolean successQuest() {
-        if (questService.isSuccessQuest(quest)) {
+    public boolean successQuest(SessionStatus status) {
+        if (quest != null & questService.isSuccessQuest(quest)) {
             userService.addExp(2);
             questService.successTopicQuest(quest);
+            quest = null;
+            //todo не работает очищение объекта
+            status.setComplete();
             return true;
         }
         return false;

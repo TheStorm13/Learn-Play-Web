@@ -38,20 +38,24 @@ public class QuestServiceImpl implements QuestService {
     }
 
     @Override
-    public Quest successTaskInQuest(Quest quest, Long taskId) {
+    public boolean successTaskInQuest(Quest quest, Long taskId) {
+        if (quest==null)
+            return false;
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
         quest.setSuccessTask(quest.getSuccessTask() + 1);
         userService.addExp(taskService.getExp(taskId));
-        return quest;
+        return true;
     }
 
     @Override
-    public Quest failedTaskInQuest(Quest quest, Long taskId) {
+    public boolean failedTaskInQuest(Quest quest, Long taskId) {
+        if (quest==null)
+            return false;
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
         quest.setFailedTask(quest.getFailedTask() + 1);
-        return quest;
+        return true;
     }
 
     @Override
