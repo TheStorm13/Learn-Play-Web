@@ -14,7 +14,6 @@ public class Progress {
     @ManyToOne
     @JoinColumn(name = "topic_id")
     private Topic topic;
-
     @Column(name = "step")
     private Short step = 1;
     @Column(name = "count")
