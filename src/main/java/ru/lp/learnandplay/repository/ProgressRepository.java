@@ -26,5 +26,11 @@ public interface ProgressRepository extends JpaRepository<Progress, Long> {
             "SELECT :user, t, 1, 0 FROM Topic t")
     void addProgressForUserWithDefaultValues(@Param("user") User user);
 
+
+    @Query(value= "SELECT * FROM Progress p WHERE p.user_id = :userId AND p.topic_id = :topicId", nativeQuery = true)
+    Progress findByUserIdAndTopicId(Long userId, Long topicId);
+
+    Progress findByUser(User user);
+
     List<Progress> findByUserOrderById(User user);
 }

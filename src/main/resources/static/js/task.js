@@ -1,10 +1,7 @@
 //работающая штука
-var data_server;
-const urlParams = new URLSearchParams(window.location.search);
-const value1 = urlParams.get('topicId');
-const value2 = urlParams.get('value') % 3 + 1;
+var data_server;+ 1;
 
-fetch('http://localhost:8080/getNewTask/' + value1 + '/' + value2)
+fetch('/quest/getNewTask')
         .then((response) => {
             return response.json();
         })
@@ -34,6 +31,7 @@ fetch('http://localhost:8080/getNewTask/' + value1 + '/' + value2)
                     labelResult.innerHTML = data_server['answer'];
                     labelResult.setAttribute('style', 'margin-left:64%; margin-right:2%; color:#ff0000');
                 }
+                //
                 label.remove();
                 form.removeChild(input);
                 form.removeChild(button);

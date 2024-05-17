@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Обучение</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/constructor.css"/>
+    <link rel="stylesheet" href="./css/education.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,700&display=swap" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<div class="sidenav">
+    <p>Learn&Play</p>
+    <div class="btn_entry">
+        <a href ='/education'><img src="./images/icons/education.png"> Обучение</a>
+    </div>
+    <div class="btn_entry">
+        <a href ='#'><img src="./images/icons/rating.png"> Рейтинг</a>
+    </div>
+    <div class="btn_entry">
+        <a href ='#'><img src="./images/icons/tasks.png"> Задания</button></a>
+    </div>
+    <div class="btn_entry">
+        <a href ='/profile'><img src="./images/icons/user.png"> Профиль</a>
+    </div>
+    <div class="btn_entry">
+        <a href ='/tutorial'><img src="./images/icons/guide.png"> Справочник</button></a>
+    </div>
+    <div class="btn_entry">
+        <a href ='#'><img src="./images/icons/settings.png"> Настройки</button></a>
+    </div>
+
+</div>
+
+<div>
+    <p class="text">Задания</p>
+</div>
+<div class="btn_l_r">
+    <button class="btn_left" >Рандомное задание</button>
+    <button class="btn_right">Ежедневное задание</button>
+</div>
+
+<div class="fixed-btn">
+    <button class="btn_fixed" id="GET_btn" >Составить</button>
+</div>
+
+<table class="text_task">
+    <tbody>
+    <tr>
+        <td style="text-align: center; width: 10%">Количество</td>
+        <td>Тема</td>
+    </tr>
+    <tr>
+        <td >
+            <div class="counter">
+                <button class="minus" id="minus1">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus1">+</button>
+            </div>
+        </td>
+        <td >1. Вероятность и статистика</td>
+    </tr>
+    <tr >
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus2">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus2">+</button>
+            </div>
+        </td>
+        <td>2. Алгебраические выражения. Степени и корни</td>
+    </tr>
+    <tr>
+        <td class="left_elem_table">
+            <div class="counter">
+                <button class="minus" id="minus3">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus3">+</button>
+            </div>
+        </td>
+        <td>3. Анализ геометрических высказываний</td>
+    </tr>
+    <tr>
+        <td class="left_elem_table">
+            <div class="counter">
+                <button class="minus" id="minus4">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus4">+</button>
+            </div>
+        </td>
+        <td>4. Расчёты по формулам</td>
+    </tr>
+    <tr>
+        <td class="left_elem_table">
+            <div class="counter">
+                <button class="minus" id="minus5">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus5">+</button>
+            </div>
+        </td>
+        <td>5. Практические расчетные задачи</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus6">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus6">+</button>
+            </div>
+        </td>
+        <td>6. Неравенства, координатная прямая</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus7">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus7">+</button>
+            </div>
+        </td>
+        <td>7. Уравниения и системы уравнений (1 часть)</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus8">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus8">+</button>
+            </div>
+        </td>
+        <td>8. Графики функций</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus9">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus9">+</button>
+            </div>
+        </td>
+        <td>9. Неравенства и системы неравенств (1 часть)</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus10">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus10">+</button>
+            </div>
+        </td>
+        <td>10. Вычисления и преобразования </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus11">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus11">+</button>
+            </div>
+        </td>
+        <td>11. Алгебрические выражения. ФСУ</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus12">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus12">+</button>
+            </div>
+        </td>
+        <td>12. Прогрессии</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus13">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus13">+</button>
+            </div>
+        </td>
+        <td>13. Треугольники</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus14">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus14">+</button>
+            </div>
+        </td>
+        <td>14. Прямоугольный треугольник</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus15">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus15">+</button>
+            </div>
+        </td>
+        <td>15. Четырехугольники</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus16">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus16">+</button>
+            </div>
+        </td>
+        <td>16. Окружность</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus17">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus17">+</button>
+            </div>
+        </td>
+        <td>17. Площади фигур</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="counter">
+                <button class="minus" id="minus18">-</button>
+                <span class="count">0</span>
+                <button class="plus" id="plus18">+</button>
+            </div>
+        </td>
+        <td>18. Фигуры на квадратной решетки</td>
+    </tr>
+<!--    <tr>-->
+<!--        <td>-->
+<!--            <div class="counter">-->
+<!--                <button class="minus" id="minus19">-</button>-->
+<!--                <span class="count">0</span>-->
+<!--                <button class="plus" id="plus19">+</button>-->
+<!--            </div>-->
+<!--        </td>-->
+<!--        <td>19. Анализ геометрических высказываний</td>-->
+<!--    </tr>-->
+
+    </tbody>
+</table>
+
+<script src="./js/counter.js"></script>
+
+</body>
+</html>

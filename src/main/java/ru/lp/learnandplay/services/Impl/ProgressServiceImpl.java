@@ -27,8 +27,18 @@ public class ProgressServiceImpl implements ProgressService {
         for (Progress progress : listProgress) {
             listProgressDTO.add(new ProgressDTO(progress));
         }
-
         return listProgressDTO;
-
     }
+
+    @Override
+    public void incrementStep(Long topicId, int topicStep) {
+        User user = userService.getUser();
+        Progress progress = progressRepository.findByUserIdAndTopicId(user.getId(), topicId);
+        if (progress.getStep() == topicStep) {
+            progress.setStep((short) (progress.getStep()+1));
+            progressRepository.save(progress);
+            userService.addExp(2);
+        }
+    }
+
 }

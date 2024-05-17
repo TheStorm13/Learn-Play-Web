@@ -14,7 +14,6 @@ import java.nio.file.Files;
 public class DatabaseInitializationService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-/*
 
     @PostConstruct
     public void initDatabase() {
@@ -25,7 +24,6 @@ public class DatabaseInitializationService {
         count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM tasks", Long.class);
         if (count == 0) executeSqlScript("task.sql");
     }
-*/
 
     private void executeSqlScript(String fileName) {
         try {

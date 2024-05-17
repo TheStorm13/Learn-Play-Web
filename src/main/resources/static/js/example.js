@@ -1,97 +1,115 @@
 
 
-var data_server;
-const urlParams = new URLSearchParams(window.location.search);
-const value1 = urlParams.get('topicId');
-const value2 = urlParams.get('value') % 3 + 1;
-
-function fetchData(value1, value2) {
-    fetch('http://localhost:8080/getNewTask/' + value1 + '/' + value2)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            data_server = data;
-            //var elemBefore = document.getElementById("button");
-            let div = document.createElement('div');
-            const text_task = document.createElement('h1');
-            text_task.innerHTML = `Задание ${data['idTask']}`;
-            div.append(text_task);
-            const head = document.createElement('p');
-            head.innerHTML = data['quotation'];
-            div.append(head);
-            M.parseMath(div);
-
-            let form = document.createElement('form');
-            let label = document.createElement('label');
-            label.innerHTML = '<b>Ваш ответ: </b>';
-            label.setAttribute('style', 'color: black');
-            form.append(label);
-            const input = document.createElement('input');
-            input.setAttribute('type', 'text');
-            input.setAttribute('name', 'user_answer');
-            input.setAttribute('id', 'user_answer');
-            label.append(input);
-            const button = document.createElement('button');
-            button.setAttribute('type', 'submit');
-            button.innerHTML = 'Нанести удар';
-            form.append(button);
-            document.body.append(div); // добавляем div в тело документа
-            document.body.append(form); // добавляем form в тело документа
-        });
-}
-
-fetchData(value1, value2); // вызываем функцию с передачей параметров value1 и value2
-
-document.addEventListener(`DOMContentLoaded`, function () {
-
-    const form = document.getElementById(`form`);
-
-    const addButton = document.getElementById(`addInput`);
-    const newInput = document.createElement(`input`);
-
-    newInput.type = `text`;
-});
-
-function handleFormSubmit(event) {
-    event.preventDefault()
-    const name = form.querySelector('[name="user_answer"]');
-    const data = {
-        name: name.value,
-    };
-    if (data_server['idTask'] == name.value) {
-        var form_for_task = document.getElementById("form");
-        console.log('remove');
-        form_for_task.remove();
-        var elemBefore = document.getElementById("form");
-        let div = document.querySelector('div');
-        let div_elem = document.createElement('div_elem');
-        div.append(div_elem);
-        const label = document.createElement('label');
-        label.innerHTML = `<b>Правильно</b>`;
-        // label.setAttribute('style', 'color:green; ');
-        label.setAttribute('style', 'margin-left:64%; margin-right:2%; color:green; ');
-        div_elem.append(label);
-        const btn = document.createElement('button');
-        btn.innerHTML = `Продолжить`;
-        div_elem.append(btn);
-    } else {
-        var form_for_task = document.getElementById("form");
-        console.log('remove');
-        form_for_task.remove();
-        var elemBefore = document.getElementById("form");
-        let div = document.querySelector('div');
-        let div_elem = document.createElement('div_elem');
-        div.append(div_elem);
-        const label = document.createElement('label');
-        label.innerHTML = `<b>Неправильно</b>`;
-        label.setAttribute('style', 'margin-left:64%; margin-right:2%; color:#ff0000');
-        div_elem.append(label);
-        const btn = document.createElement('button');
-        btn.innerHTML = `Продолжить`;
-        div_elem.append(btn);
+async function startQuest(topicId, step) {
+  const data = {
+    topicId: topicId,
+    step: step
+  };
+  try {
+    const response = await fetch('/quest/startQuest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    window.location.href = '/quest';  // Переход на страницу '/quest' после успешного запроса
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);
+  }
 }
 
-const applicantForm = document.getElementById('form');
-applicantForm.addEventListener('submit', handleFormSubmit);
+async function getListProgress() {
+  try {
+    const response = await fetch('/education/getListProgress'); // Выполняем GET-запрос на сервер
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const progressList = await response.json(); // Получаем данные в формате JSON
+    console.log(progressList)
+    const mainParent = document.querySelector('.main');
+    progressList.forEach(progress => {
+          const chapterDiv = document.createElement('div');
+          chapterDiv.classList.add('chapter');
+
+          const chapterTitle = document.createElement('p');
+          chapterTitle.textContent = 'Раздел ' + progress.topicId;
+
+          const chapterElemDiv = document.createElement('div');
+          chapterElemDiv.classList.add('chapter_elem');
+
+          const chapterElemTitle = document.createElement('p');
+          chapterElemTitle.textContent = progress.topicName;
+
+          const btn = document.createElement('button');
+          btn.classList.add('btn');
+          btn.textContent = 'Справочник';
+
+          chapterElemDiv.appendChild(chapterElemTitle);
+          chapterElemDiv.appendChild(btn);
+
+          chapterDiv.appendChild(chapterTitle);
+          chapterDiv.appendChild(chapterElemDiv);
+
+          mainParent.appendChild(chapterDiv);
+
+          const section = document.createElement('section');
+          section.classList.add('box');
+
+          for (let i = 0; i < 5; i++) {
+            const boxLevel = document.createElement('div');
+            boxLevel.classList.add('box__level_' + i); // Добавляем класс box__level_0
+
+            const num = document.createElement('p');
+            num.classList.add('num');
+            num.textContent = i + 1; // Устанавливаем содержимое для тега p
+
+            const form = document.createElement('form');
+
+            const hiddenInput1 = document.createElement('input');
+            hiddenInput1.setAttribute('type', 'hidden');
+            hiddenInput1.setAttribute('name', 'topicId');
+            hiddenInput1.setAttribute('value', progress.topicId);
+
+            const hiddenInput2 = document.createElement('input');
+            hiddenInput2.setAttribute('type', 'hidden');
+
+            const input = document.createElement('input');
+            input.setAttribute('type', 'image');
+            if (i + 1 > progress.step) {
+            input.setAttribute('src', './images/button2.png');
+            }
+            else {
+            input.setAttribute('src', './images/button.png');
+            }
+            input.setAttribute('alt', progress.topicId + '?' + (i + 1));
+
+            form.appendChild(hiddenInput1);
+            form.appendChild(hiddenInput2);
+            form.appendChild(input);
+
+            form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Отменяем стандартное поведение формы
+            startQuest(progress.topicId, i + 1);  // Вызываем функцию для отправки POST-запроса
+            });
+
+            boxLevel.appendChild(num);
+            boxLevel.appendChild(form);
+            section.appendChild(boxLevel);
+          }
+
+          mainParent.appendChild(section);
+        });
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);
+  }
+}
+
+getListProgress();
+
+
+form.setAttribute('action', '/quest');
+form.setAttribute('method', 'GET');

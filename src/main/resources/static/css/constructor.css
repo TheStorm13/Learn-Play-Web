@@ -1,0 +1,119 @@
+* {
+    background-color: #251135;
+}
+
+
+.counter{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding: 10px 5px;
+    background-color: #251135;
+    color:#FFFFFF;
+    border: none;
+    font-family: "Montagu Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+button {
+    background-color: #251135;
+    color:#FFFFFF;
+    border: none;
+    font-family: "Montagu Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+
+    font-style: normal;
+}
+
+.text {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+    font-size: 43px;
+    margin: 2% 0 0  240px; /* Same as the width of the sidebar */
+    text-align: center;
+}
+
+.btn_l_r {
+    margin-left: 240px; /* Same as the width of the sidebar */
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    justify-content: center;
+    width: calc(100% - 240px); /* Ширина контента = 100% ширины экрана - ширина сайдбара */
+}
+.btn_left {
+    margin-right: 40px;
+    background-image: linear-gradient(to right, #3722B8, #6E13B6);
+    border-radius: 7px;
+    width: 248px;
+    height: 48px;
+}
+
+.btn_right{
+    background-image: linear-gradient(to right, #B83D22, #E5D012);
+    border-radius: 7px;
+    width: 248px;
+    height: 48px;
+}
+
+.text_task{
+    font-family: "Montagu Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    margin-left: 240px; /* Same as the width of the sidebar */
+    color: white;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+table {
+    width: calc(100% - 240px); /* Ширина контента = 100% ширины экрана - ширина сайдбара */
+    margin: 0 2% 0 2%;
+
+}
+img {
+    pointer-events: auto;
+}
+
+.guide_btn {
+    width: calc(110% - 240px); /* Ширина контента = 100% ширины экрана - ширина сайдбара */
+    margin: 2% 0 0 2%;
+    background: #44103C;
+    font-size: 24px;
+    padding: 10px;
+    text-align: left;
+    border-radius: 8px;
+}
+
+
+.guide_btn :hover  {
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.fixed-btn{
+    position: fixed;
+    /*left: 1;*/
+    right: 10%;
+    top: 27%;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 28px;
+}
+.btn_fixed {
+        background: #B846C2;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        padding: 11px 38px;
+        font-size: 24px;
+        border-radius: 20px;
+        color: white;
+}

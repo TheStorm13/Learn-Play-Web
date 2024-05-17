@@ -1,5 +1,25 @@
+async function startQuest(topicId, step) {
+  const data = {
+    topicId: topicId,
+    step: step
+  };
+  try {
+    const response = await fetch('/quest/startTopicQuest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    window.location.href = '/quest';
+  } catch (error) {
+    console.error('There has been a problem with your fetch operation:', error);
+  }
+}
 
-// Функция для выполнения GET-запроса на сервер
 async function getListProgress() {
   try {
     const response = await fetch('/education/getListProgress'); // Выполняем GET-запрос на сервер
@@ -46,39 +66,28 @@ async function getListProgress() {
             num.textContent = i + 1; // Устанавливаем содержимое для тега p
 
             const form = document.createElement('form');
-            form.setAttribute('action', '/quest');
-            form.setAttribute('method', 'GET');
-
-            const hiddenInput1 = document.createElement('input');
-            hiddenInput1.setAttribute('type', 'hidden');
-            hiddenInput1.setAttribute('name', 'topicId');
-            hiddenInput1.setAttribute('value', progress.topicId);
-
-            const hiddenInput2 = document.createElement('input');
-            hiddenInput2.setAttribute('type', 'hidden');
-            hiddenInput2.setAttribute('name', 'value');
-            hiddenInput2.setAttribute('value', (i+1));
 
             const input = document.createElement('input');
             input.setAttribute('type', 'image');
             if (i + 1 > progress.step) {
             input.setAttribute('src', './images/button2.png');
+            input.addEventListener('click', (event) => {
+                event.preventDefault();  // Предотвращаем стандартное поведение
+            });
             }
             else {
             input.setAttribute('src', './images/button.png');
+            input.addEventListener('click', async (event) => {
+              event.preventDefault();
+              await startQuest(progress.topicId, i + 1);
+            });
             }
-            input.setAttribute('alt', progress.topicId + '?' + (i + 1));
 
-            form.appendChild(hiddenInput1);
-            form.appendChild(hiddenInput2);
             form.appendChild(input);
-
             boxLevel.appendChild(num);
             boxLevel.appendChild(form);
-
             section.appendChild(boxLevel);
           }
-
           mainParent.appendChild(section);
         });
   } catch (error) {

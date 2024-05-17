@@ -38,12 +38,12 @@ public class PageController {
 
     @GetMapping("/tasks")
     public String getTasksPage() {
-        return "tasks";
+        return "constructor.html";
     }
 
     @GetMapping("/profile")
     public String getProfilePage() {
-        return "profile";
+        return "profile.html";
     }
 
     @GetMapping("/profile/changeHero")
@@ -54,7 +54,7 @@ public class PageController {
 
     @GetMapping("/tutorial")
     public String getTutorialPage() {
-        return "tutorial";
+        return "guide.html";
     }
 
     @GetMapping("/tutorial/{topicId}")

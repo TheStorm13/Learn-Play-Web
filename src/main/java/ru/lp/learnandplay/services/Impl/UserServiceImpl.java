@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser() {
-        //todo ускорить
+        //todo брать юзера из сессии
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> user = userRepository.findByEmail(authentication.getName());
         return user.get();
@@ -83,5 +83,12 @@ public class UserServiceImpl implements UserService {
              listUserDTO.add(new RankDTO(user));
          }
          return listUserDTO;
+    }
+
+    @Override
+    public void addExp(int exp){
+        User user = getUser();
+        user.setExp(user.getExp()+exp);
+        userRepository.save(user);
     }
 }
