@@ -57,10 +57,9 @@ public class PageController {
         return "tutorial";
     }
 
-    @GetMapping("/tutorial/{topicId}")
-    public String getPageOfTutorial(@PathVariable(name = "topicId") Long topicId) {
-        //todo протестить
-        return "tutorial_" + topicId.toString();
+    @GetMapping("/tutorial_page/{topicId}")
+    public String getPageOfTutorial(@PathVariable(name = "topicId") String topicId) {
+        return "index" + topicId;
     }
 
     @GetMapping("/settings")
