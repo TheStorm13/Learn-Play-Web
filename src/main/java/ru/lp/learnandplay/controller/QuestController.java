@@ -34,6 +34,8 @@ public class QuestController {
 
     @PostMapping("/startDailyQuest")
     public Quest startDailyQuest() {
+        //todo добавить логику на увеличение множителя после дейлика
+        //todo учитывать множитель при добавлении множитель
         quest = new Quest();
         return quest;
     }
@@ -70,14 +72,11 @@ public class QuestController {
         return true;
     }
 
-    //todo страничка с завершением квеста
     @GetMapping("/successQuest")
     public boolean successQuest(SessionStatus status) {
         //todo не работает очищение объекта
         quest = null;
         return questService.isSuccessQuest(quest);
-
-
     }
 
     @GetMapping("/isEndQuest")
