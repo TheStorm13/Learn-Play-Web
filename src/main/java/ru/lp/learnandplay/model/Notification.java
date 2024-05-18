@@ -2,8 +2,6 @@ package ru.lp.learnandplay.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "notification")
 public class Notification {
@@ -16,7 +14,7 @@ public class Notification {
     private User user;
     @ManyToOne
     @JoinColumn(name = "note_obj_id")
-    private NottificationObject notificationObject;
+    private NotificationObject notificationObject;
     @Column(name = "viewed")
     private boolean viewed;
 
@@ -24,7 +22,7 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(Long id, User user, NottificationObject notificationObject, boolean viewed) {
+    public Notification(Long id, User user, NotificationObject notificationObject, boolean viewed) {
         this.id = id;
         this.user = user;
         this.notificationObject = notificationObject;
@@ -47,11 +45,11 @@ public class Notification {
         this.user = user;
     }
 
-    public NottificationObject getNotificationObject() {
+    public NotificationObject getNotificationObject() {
         return notificationObject;
     }
 
-    public void setNotificationObject(NottificationObject notificationObject) {
+    public void setNotificationObject(NotificationObject notificationObject) {
         this.notificationObject = notificationObject;
     }
 

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "notification_object")
-public class NottificationObject {
+public class NotificationObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "note_obj_id")
@@ -23,10 +23,10 @@ public class NottificationObject {
     @Column(name = "date")
     private LocalDate date;
 
-    public NottificationObject() {
+    public NotificationObject() {
     }
 
-    public NottificationObject(Long id, Notification notification, String label, String message, String link, LocalDate date) {
+    public NotificationObject(Long id, Notification notification, String label, String message, String link, LocalDate date) {
         this.id = id;
         this.notification = notification;
         this.label = label;

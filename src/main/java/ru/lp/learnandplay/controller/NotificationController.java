@@ -3,6 +3,7 @@ package ru.lp.learnandplay.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.lp.learnandplay.model.Notification;
+import ru.lp.learnandplay.model.NotificationObject;
 import ru.lp.learnandplay.services.Impl.NotificationServiceImpl;
 
 import java.util.List;
@@ -14,15 +15,15 @@ public class NotificationController {
     private NotificationServiceImpl notificationService;
 
     @GetMapping("/getListNotification")
-    public List<Notification> getListNotification() {
-        //todo проверять есть ли уведомление о дейлике за сегодня, если нет, то создавать его
-        //todo возвращать список всех уведомлений у конкретного пользователя, которые не прочитаны
-        return null;
+    public List<NotificationObject> getListNotification() {
+        notificationService.isTodayDaily();
+        return notificationService.getListNotification();
     }
 
     @PutMapping("/viewedNotification")
     public boolean viewedNotification(@RequestBody Notification notification) {
         //todo обновлять статус у уведомления у конкретного пользователя на прочитано
+        
         return false;
     }
 

@@ -3,6 +3,7 @@ package ru.lp.learnandplay.services.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.Notification;
+import ru.lp.learnandplay.model.NotificationObject;
 import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.repository.NotificationRepository;
 import ru.lp.learnandplay.services.NotificationService;
@@ -20,9 +21,9 @@ public class NotificationServiceImpl implements NotificationService {
 
 
     @Override
-    public List<Notification> getListNotification() {
+    public List<NotificationObject> getListNotification() {
         User user = userService.getUser();
-        //todo
+        //todo возвращать по user активные уведомления
         return null;
     }
 
@@ -39,6 +40,25 @@ public class NotificationServiceImpl implements NotificationService {
     public boolean deleteNotification() {
         //todo должно ли быть тело у запроса?
         //todo прописать необходимые функции в сервисах
+
+        //todo удаляем старые уведомления спустя неделю при авторизации пользователя
         return false;
     }
+
+    @Override
+    public void isTodayDaily() {
+        User user = userService.getUser();
+        //todo проверяем для user дейлик на сегодня
+        //todo если его нет, то создаем
+
+    }
+
+    @Override
+    public void viewedNotification(NotificationObject notificationObject) {
+        User user = userService.getUser();
+        //todo найти у user уведомление с notificationObject и изменить его статус на прочитано
+
+    }
+
+
 }
