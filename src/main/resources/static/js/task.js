@@ -62,8 +62,23 @@ async function getNewTask() {
             const continueButton = document.createElement('button');
             continueButton.innerHTML = 'Продолжить';
             continueButton.setAttribute('type', 'button');
-            continueButton.addEventListener('click', function() {
-                getNewTask();
+            continueButton.addEventListener('click', async function() {
+                fetch('/quest/isEndQuest')
+                    .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                    .then(data => {
+                    console.log(data)
+                    if (data) {
+                        // Обработка, если квест завершен
+                        window.location.href = '/success';
+                    } else {
+                        // Обработка, если квест не завершен
+                        getNewTask();
+                    }
+                });
             });
             form.append(continueButton);
         });

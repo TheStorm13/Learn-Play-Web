@@ -28,7 +28,7 @@ public class QuestServiceImpl implements QuestService {
     public Quest createTopicQuest(TopicQuestDTO topicQuestDTO) {
         Long topicId = topicQuestDTO.getTopicId();
         int step = topicQuestDTO.getStep();
-        return new Quest(topicId, 10, step);
+        return new Quest(topicId, 5, step);
     }
 
     @Override

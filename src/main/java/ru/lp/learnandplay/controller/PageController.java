@@ -68,5 +68,9 @@ public class PageController {
         return "settings";
     }
 
+    @GetMapping("/success")
+    public String getSuccessPage() {
+        return "success.html";
+    }
 
 }
