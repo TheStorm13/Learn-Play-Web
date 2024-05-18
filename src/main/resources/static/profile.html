@@ -46,15 +46,58 @@
 
 <div class="any_elem">
     <div class="user_img">
-        <button class="button_user_img"><img src="./images/pen.png"></button>
+        <button class="button_user_img"></button>
     </div>
     <div class="user_name">
         <img src="./images/pen.png" class="img_user_name">
         <p  id="user_name" class="text" contenteditable="true"> Иван Иванов</p>
     </div>
     <script src="./js/profile.js"> </script>
-<!--<p class="text">Статистика</p>-->
+
+    <div class="statistic">
+        <p class="text">Статистика</p>
+        <div class="container_block">
+        <div class="block">
+            <h1 id="percent" class="text">%</h1>
+            <p class="back-text">Множители</p>
+        </div>
+        <div class="block">
+            <h1 id="exp"  class="text">EXP</h1>
+            <p class="back-text">Очки опыта</p>
+        </div>
+        </div>
+        <div class="container_block">
+            <div class="block">
+<!--               здесь будут появляться фото, в зависисмости от результатов бд-->
+                <p class="back-text">Текущая лига</p>
+            </div>
+            <div class="block">
+                <h1 id="top"  class="text">TOP</h1>
+                <p class="back-text">Топ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statistic">
+    <p class="text">Достижения</p>
+    <div class="block-progress">
+        <p class="back-text">Текущая лига</p>
+        <div class="progress-bar">
+         <div class="progress-fill"></div>
+     </div>
+    </div>
+    </div>
+
+    <script src="./js/profile-2.js"> </script>
+
+
+<!--    <div class="progress">-->
+<!--    <div class="progress-bar">-->
+<!--        <div class="progress-fill" style="width: 50%;"></div>-->
+<!--    </div>-->
+<!--    </div>-->
 </div>
+
 
 </body>
 </html>

@@ -58,9 +58,9 @@ public class PageController {
     }
 
     @GetMapping("/tutorial/{topicId}")
-    public String getPageOfTutorial(@PathVariable(name = "topicId") Long topicId) {
+    public String getPageOfTutorial(@PathVariable(name = "topicId") int topicId) {
         //todo протестить
-        return "tutorial_" + topicId.toString();
+        return "page" + String.valueOf(topicId) + ".html";
     }
 
     @GetMapping("/settings")

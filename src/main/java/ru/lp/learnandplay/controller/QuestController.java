@@ -72,16 +72,13 @@ public class QuestController {
 
     //todo страничка с завершением квеста
     @GetMapping("/successQuest")
-    public boolean successQuest(SessionStatus status) {
-        if (quest != null & questService.isSuccessQuest(quest)) {
-            userService.addExp(2);
-            questService.successTopicQuest(quest);
-            quest = null;
-            //todo не работает очищение объекта
-            status.setComplete();
-            return true;
-        }
-        return false;
+    public boolean successQuest() {
+        return questService.successTopicQuest(quest);
+    }
+
+    @GetMapping("/isEndQuest")
+    public boolean isEndQuest() {
+        return questService.isSuccessQuest(quest);
     }
 
 }

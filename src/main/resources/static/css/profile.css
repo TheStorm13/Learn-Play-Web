@@ -19,21 +19,21 @@
 .user_name{
     display: flex;
     height: 5%;
-    width: 98%;
+    width: 70%;
     margin: 1%;
-    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    /*padding: 1%;*/
     align-items: center;
     border-bottom: 1px solid #ccc;
 }
 
 .img_user_name {
-    height: 50%;
+    height: 100%;
     padding-right: 1%;
-
 }
 
 .user_img {
-
     position: relative;
     align-items: center;
     margin-left: auto;
@@ -44,14 +44,76 @@
     background-color: #9041CE;
     border-radius: 8px;
 }
-
+img {
+    margin: 1%;
+    margin-top: 0;
+}
 .button_user_img {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
+    padding: 1.7%;
     background: #9041CE;
-    border: black;
+    background: no-repeat;
     border-radius: 5px;
     cursor: pointer;
+    background-image: url("../images/pen.png");
+    height: 20px;
+    border: black 2px solid;
+    background-position: center;
+}
+
+.statistic{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+   p{
+      margin-top: 2%;
+   }
+    margin-bottom: 3%;
+}
+
+.container_block {
+    display: flex;
+    justify-content: center;
+}
+
+.block {
+    width: 50%;
+    height: 100px;
+    border-radius: 10px;
+    border: white 2px solid;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+h1{
+padding-left: 2%;
+}
+
+.back-text{
+    color: rgba(255, 255, 255, 0.7);
+    margin: 2%;
+}
+
+.progress-bar {
+    width: 96%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 2%;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+}
+
+.block-progress{
+    margin-left: auto;
+    margin-right: auto;
+    border: white 2px solid;
+    border-radius: 10px;
 }

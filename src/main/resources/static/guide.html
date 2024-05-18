@@ -54,7 +54,17 @@
 </div>
 
 
-<script src="./js/counter.js"></script>
+<script>
+    document.querySelectorAll('.guide_btn').forEach(button => {
+        button.addEventListener('click', function() {
+            if (button.textContent === 'Вероятность и статистика') {
+                window.location.href = '/tutorial/1'; // Переход на соответствующую страницу
+            } else if (button.textContent === 'Алгебраические выражения. Степени и корни') {
+                window.location.href = '/tutorial/2'; // Переход на соответствующую страницу
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
