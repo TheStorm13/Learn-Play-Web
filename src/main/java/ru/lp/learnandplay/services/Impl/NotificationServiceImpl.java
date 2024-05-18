@@ -66,7 +66,7 @@ public class NotificationServiceImpl implements NotificationService {
             notificationObject.setDateNote(LocalDate.now());
             notificationObject.setLabel("Ежедневный квест");
             notificationObject.setMessage("Юный исследователь по имени Элис решает встать на защиту своего родного места и отправляется в эпическое путешествие, чтобы разгадать загадку возросшей опасности. Она собирает команду отважных путешественников и отправляется на поиски древних артефактов, способных защитить деревню от темных сил.");
-            notificationObject.setLink("/");
+            notificationObject.setLink("/tasks");
             //todo Добавить текст для уведомления дейлика
             notificationObjectRepository.save(notificationObject);
         }
