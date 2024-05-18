@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import ru.lp.learnandplay.model.Notification;
 import ru.lp.learnandplay.model.NotificationObject;
 import ru.lp.learnandplay.model.User;
+import ru.lp.learnandplay.repository.NotificationObjectRepository;
 import ru.lp.learnandplay.repository.NotificationRepository;
 import ru.lp.learnandplay.services.NotificationService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,12 +21,14 @@ public class NotificationServiceImpl implements NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    @Autowired
+    private NotificationObjectRepository notificationObjectRepository;
+
 
     @Override
     public List<NotificationObject> getListNotification() {
         User user = userService.getUser();
-        //todo возвращать по user активные уведомления
-        return null;
+        return notificationObjectRepository.findActiveAllByUser(user.getId());
     }
 
     @Override
@@ -32,6 +36,14 @@ public class NotificationServiceImpl implements NotificationService {
         Notification notification = new Notification();
         User user = userService.getUser();
         notification.setUser(user);
+        notificationRepository.save(notification);
+
+        NotificationObject notificationObject = new NotificationObject();
+        notificationObject.setDateNote(LocalDate.now());
+
+        notificationObjectRepository.save(notificationObject);
+
+        notification.setNotificationObject(notificationObject);
         notificationRepository.save(notification);
         return notification;
     }
@@ -48,16 +60,32 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public void isTodayDaily() {
         User user = userService.getUser();
-        //todo проверяем для user дейлик на сегодня
-        //todo если его нет, то создаем
+        NotificationObject notificationObject = notificationObjectRepository.findByCurrentDate();
+        if (notificationObject == null) {
+            notificationObject = new NotificationObject();
+            notificationObject.setDateNote(LocalDate.now());
+            notificationObject.setLabel("Ежедневный квест");
+            notificationObject.setMessage("Юный исследователь по имени Элис решает встать на защиту своего родного места и отправляется в эпическое путешествие, чтобы разгадать загадку возросшей опасности. Она собирает команду отважных путешественников и отправляется на поиски древних артефактов, способных защитить деревню от темных сил.");
+            notificationObject.setLink("/");
+            //todo Добавить текст для уведомления дейлика
+            notificationObjectRepository.save(notificationObject);
+        }
+        Notification notification = notificationRepository.findByUserAndNotificationObject(user.getId(), notificationObject.getId());
+        if (notification == null) {
+            notification = new Notification();
+            notification.setUser(user);
+            notification.setNotificationObject(notificationObject);
+            notificationRepository.save(notification);
+        }
 
     }
 
     @Override
-    public void viewedNotification(NotificationObject notificationObject) {
+    public void viewedNotification(Long noteObjId) {
         User user = userService.getUser();
-        //todo найти у user уведомление с notificationObject и изменить его статус на прочитано
-
+        Notification notification = notificationRepository.findByUserAndNotificationObject(user.getId(), noteObjId);
+        notification.setView(true);
+        notificationRepository.save(notification);
     }
 
 

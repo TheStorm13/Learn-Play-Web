@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class NotificationController {
-
+    //todo удалять старые уведомления спустя неделю
     @Autowired
     private NotificationServiceImpl notificationService;
 
@@ -20,18 +20,9 @@ public class NotificationController {
         return notificationService.getListNotification();
     }
 
-    @PutMapping("/viewedNotification")
-    public boolean viewedNotification(@RequestBody Notification notification) {
-        //todo обновлять статус у уведомления у конкретного пользователя на прочитано
-        
-        return false;
+    @PutMapping("/viewedNotification/{note_obj_id}")
+    public void viewedNotification(@PathVariable(name = "note_obj_id") Long noteObjId) {
+        notificationService.viewedNotification(noteObjId);
     }
 
-
-//    @GetMapping("/getDailyNotification")
-//    public Task getDailyNotification() {
-//        //проверить, сделан ли дейлик
-//        //если да, то вернуть уведомление "вы не сделали дейлик"
-//        return null;
-//    }
 }

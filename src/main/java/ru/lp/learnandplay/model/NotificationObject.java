@@ -11,28 +11,24 @@ public class NotificationObject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "note_obj_id")
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "note_id")
-    private Notification notification;
     @Column(name = "label")
     private String label;
-    @Column(name = "message")
+    @Column(name = "message",columnDefinition = "text")
     private String message;
     @Column(name = "link")
     private String link;
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "date_note")
+    private LocalDate dateNote;
 
     public NotificationObject() {
     }
 
-    public NotificationObject(Long id, Notification notification, String label, String message, String link, LocalDate date) {
+    public NotificationObject(Long id, String label, String message, String link, LocalDate dateNote) {
         this.id = id;
-        this.notification = notification;
         this.label = label;
         this.message = message;
         this.link = link;
-        this.date = date;
+        this.dateNote = dateNote;
     }
 
     public Long getId() {
@@ -41,14 +37,6 @@ public class NotificationObject {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Notification getNotification() {
-        return notification;
-    }
-
-    public void setNotification(Notification notification) {
-        this.notification = notification;
     }
 
     public String getLabel() {
@@ -75,11 +63,11 @@ public class NotificationObject {
         this.link = link;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDateNote() {
+        return dateNote;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateNote(LocalDate dateNote) {
+        this.dateNote = dateNote;
     }
 }

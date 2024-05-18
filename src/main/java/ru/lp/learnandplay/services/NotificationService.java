@@ -14,5 +14,5 @@ public interface NotificationService {
 
     public void isTodayDaily();
 
-    public void viewedNotification(NotificationObject notificationObject);
+    public void viewedNotification(Long noteObjId);
 }

@@ -14,7 +14,7 @@ import java.nio.file.Files;
 public class DatabaseInitializationService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+/*
     @PostConstruct
     public void initDatabase() {
         long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM heroes", Long.class);
@@ -42,4 +42,6 @@ public class DatabaseInitializationService {
         String heroName = "Superman";
         jdbcTemplate.update(sql, heroId, imagePath, heroName);
     }
+
+ */
 }

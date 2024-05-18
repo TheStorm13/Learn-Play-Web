@@ -28,6 +28,10 @@ public class Progress {
         this.count = count;
     }
 
+    public Progress() {
+
+    }
+
     public User getUser() {
         return user;
     }

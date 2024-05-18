@@ -1,33 +1,29 @@
 async function start(initialNum) {
 
     // Запрашиваем данные с сервера
-    const response = await fetch('http://localhost:8080/getNewTask'+initialNum);
+    const response = await fetch('http://localhost:8080/getNewTask' + initialNum);
     const data = await response.json();
-  
+
     // Загружаем полученные данные на страницу
     createTask(data);
-  
+
     // Принимаем действие пользователя
     const userAction = await getUserAction();
-  
+
     // Получаем новое значение
     const newValue = calculateNewValue(data.content, userAction);
-  
+
     // Проверяем достижение условия остановки
     if (newValue === 0) {
-      return;
+        return;
     }
-  
+
     // Вызываем функцию заново с новым значением
     start(newValue);
-  }
+}
 
 
-
-
-
-
-function createTask (data) {
+function createTask(data) {
     var elemBefore = document.getElementById("button");
     let div = document.querySelector('a');
     const text_task = document.createElement('h1');
@@ -58,7 +54,7 @@ function createTask (data) {
 
 //работающая штука
 var data_server;
-const object ={
+const object = {
     idTopic: 1,
     step: 1
 };

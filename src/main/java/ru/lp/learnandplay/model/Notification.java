@@ -3,7 +3,7 @@ package ru.lp.learnandplay.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "notification")
+@Table(name = "notification",uniqueConstraints= @UniqueConstraint(columnNames={"user_id", "note_obj_id"}))
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

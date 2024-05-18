@@ -1,4 +1,4 @@
-document.querySelector('form').addEventListener('submit', async function(event) {
+document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const name = document.getElementById('name').value;
@@ -7,11 +7,10 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     const password2 = document.getElementById('password2').value;
 
     if (password != password2) {
-    const errorMessageElement = document.getElementById('error-message');
-    errorMessageElement.textContent = 'Пароли не совпадают!';
-    }
-    else {
-    const userData = {
+        const errorMessageElement = document.getElementById('error-message');
+        errorMessageElement.textContent = 'Пароли не совпадают!';
+    } else {
+        const userData = {
             name: name,
             email: email,
             password: password
