@@ -19,6 +19,7 @@ public class QuestServiceImpl implements QuestService {
     @Autowired
     private ProgressServiceImpl progressService;
 
+
     @Override
     public Quest createUserQuest(UserQuestDTO userQuestDTO) {
         return new Quest(userQuestDTO.getListTask());
@@ -39,7 +40,7 @@ public class QuestServiceImpl implements QuestService {
 
     @Override
     public boolean successTaskInQuest(Quest quest, Long taskId) {
-        if (quest==null)
+        if (quest == null)
             return false;
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
@@ -50,7 +51,7 @@ public class QuestServiceImpl implements QuestService {
 
     @Override
     public boolean failedTaskInQuest(Quest quest, Long taskId) {
-        if (quest==null)
+        if (quest == null)
             return false;
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
@@ -59,15 +60,20 @@ public class QuestServiceImpl implements QuestService {
     }
 
     @Override
-    public boolean isSuccessQuest(Quest quest) {
-        return (quest.getSuccessTask() + quest.getFailedTask()) == quest.getAllTask() & (quest.getSuccessTask() >= quest.getFailedTask());
+    public boolean isEndQuest(Quest quest) {
+        return (quest.getSuccessTask() + quest.getFailedTask()) == quest.getAllTask();
     }
 
     @Override
-    public boolean successTopicQuest(Quest quest) {
-        ProgressDTO progressDTO = quest.getIsTopicQuest();
-        if (progressDTO != null) {
-            progressService.incrementStep(progressDTO.getTopicId(), progressDTO.getStep());
+    public boolean isSuccessQuest(Quest quest) {
+        if (quest == null)
+            return false;
+        ProgressDTO isTopicQuest = quest.getIsTopicQuest();
+        if (quest.getSuccessTask() >= quest.getFailedTask()){
+            if (isTopicQuest != null) {
+                progressService.incrementStep(isTopicQuest.getTopicId(), isTopicQuest.getStep());
+            }
+            userService.addExp(2);
             return true;
         }
         return false;

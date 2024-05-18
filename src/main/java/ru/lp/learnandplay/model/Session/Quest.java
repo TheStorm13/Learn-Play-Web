@@ -35,7 +35,7 @@ public class Quest {
     public Quest(Long topicId, int count, int step) {
         this.listTaskByTopics = new ArrayList<QueueTaskByTopic>();
         this.isTopicQuest = new ProgressDTO(topicId, null, step);
-        int exp = (step / 3);
+        int exp = (step / 3) + 1;
         allTask += count;
         this.listTaskByTopics.add(new QueueTaskByTopic(topicId, count, exp));
     }
