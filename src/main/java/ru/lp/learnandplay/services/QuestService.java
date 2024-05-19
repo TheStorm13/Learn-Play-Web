@@ -13,10 +13,7 @@ public interface QuestService {
     public Task getTaskQuest(Quest quest);
 
     public boolean successTaskInQuest(Quest quest, Long taskId);
-
+    boolean isEndQuest(Quest quest);
     public boolean failedTaskInQuest(Quest quest, Long taskId);
-
     public boolean isSuccessQuest(Quest quest);
-
-    public boolean successTopicQuest(Quest quest);
 }

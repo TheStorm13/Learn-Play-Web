@@ -25,8 +25,8 @@ async function getNewTask() {
         button.setAttribute('type', 'button');
         button.innerHTML = 'Нанести удар';
         button.addEventListener('click', async function() {
-            if (data_server['answer'] == document.getElementById('user_answer').value) {
-                labelResult.innerHTML = data_server['answer'];
+            if (parseFloat(data_server['answer']) == parseFloat(document.getElementById('user_answer').value)) {
+                labelResult.innerHTML = parseFloat(data_server['answer']);
                 labelResult.setAttribute('style', 'margin-left:64%; margin-right:2%; color:green; ');
                 try {
                     let response = await fetch(`/quest/successTask/${data_server.idTask}`, {
@@ -41,7 +41,7 @@ async function getNewTask() {
                     console.error('Ошибка отправки PUT-запроса:', err);
                 }
             } else {
-                labelResult.innerHTML = data_server['answer'];
+                labelResult.innerHTML = parseFloat(data_server['answer']);
                 labelResult.setAttribute('style', 'margin-left:64%; margin-right:2%; color:#ff0000');
                 try {
                     let response = await fetch(`/quest/failedTask/${data_server.idTask}`, {

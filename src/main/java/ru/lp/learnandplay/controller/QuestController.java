@@ -43,7 +43,6 @@ public class QuestController {
         return quest;
     }
 
-
     @GetMapping("/historyQuest")
     public Task getHistoryQuest() {
         //todo
@@ -70,15 +69,17 @@ public class QuestController {
         return true;
     }
 
-    //todo страничка с завершением квеста
     @GetMapping("/successQuest")
-    public boolean successQuest() {
-        return questService.successTopicQuest(quest);
+    public boolean successQuest(SessionStatus status) {
+        //todo не работает очищение объекта
+        boolean res = questService.isSuccessQuest(quest);
+        quest = null;
+        return res;
     }
 
     @GetMapping("/isEndQuest")
     public boolean isEndQuest() {
-        return questService.isSuccessQuest(quest);
+        return questService.isEndQuest(quest);
     }
 
 }
