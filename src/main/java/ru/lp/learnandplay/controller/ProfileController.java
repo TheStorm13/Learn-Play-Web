@@ -26,4 +26,9 @@ public class ProfileController {
     public void changeName(@PathVariable(name = "newName")String newName) {
         profileService.changeName(newName);
     }
+
+    @GetMapping("/getIsDailyQuest")
+    public boolean getIsDailyQuest() {
+        return profileService.getIsDailyQuest();
+    }
 }

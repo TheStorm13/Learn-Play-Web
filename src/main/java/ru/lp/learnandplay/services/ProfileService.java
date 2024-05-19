@@ -8,4 +8,6 @@ public interface ProfileService {
     boolean changeHero(Long heroId);
 
     void changeName(String name);
+
+    public boolean getIsDailyQuest();
 }

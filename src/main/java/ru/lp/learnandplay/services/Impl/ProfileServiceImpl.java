@@ -45,4 +45,8 @@ public class ProfileServiceImpl implements ProfileService {
         user.setHero(hero.get());
         return true;
     }
+    @Override
+    public boolean getIsDailyQuest(){
+        return userService.getUser().isDailyQuest();
+    }
 }

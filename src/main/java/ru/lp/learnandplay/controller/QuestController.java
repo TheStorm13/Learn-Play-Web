@@ -39,6 +39,7 @@ public class QuestController {
         quest = new Quest();
         return quest;
     }
+    //todo добавить рандомное задание
 
     @GetMapping("/getQuest")
     public Quest getQuest() {
