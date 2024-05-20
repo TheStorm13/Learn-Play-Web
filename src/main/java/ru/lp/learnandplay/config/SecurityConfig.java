@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .formLogin((form) -> form
                         .loginPage("/entry")
                         .permitAll()
+                        .defaultSuccessUrl("/education")
                         .successHandler((request, response, authentication) -> {
                             response.setStatus(HttpServletResponse.SC_OK);
                         })
@@ -43,6 +44,10 @@ public class SecurityConfig {
                         })
                 )
                 .logout((logout) -> logout.permitAll())
+                /*.and() // Добавляем дополнительные настройки (хз)
+                .exceptionHandling((exceptionHandling) -> exceptionHandling
+                        .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/education")) // Перенаправляем на /education в случае неавторизованного доступа к /registration и /entry
+                )*/
                 .build();
     }
 

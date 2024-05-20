@@ -15,6 +15,9 @@ async function getNewTask() {
         const head = document.createElement('p');
         head.innerHTML = data['quotation'];
         div.append(head);
+        const image = document.createElement('img');
+        image.src = './images/pictures/' + data['image']; // Укажите путь к вашему изображению
+        div.append(image);
         M.parseMath(div);
 
         let form = document.createElement('form');
