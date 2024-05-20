@@ -2,10 +2,8 @@ package ru.lp.learnandplay.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "notification")
+@Table(name = "notification",uniqueConstraints= @UniqueConstraint(columnNames={"user_id", "note_obj_id"}))
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,25 +12,21 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Column(name = "label")
-    private String label;
-    @Column(name = "message")
-    private String message;
-    @Column(name = "link")
-    private String link;
-    @Column(name = "date")
-    private LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "note_obj_id")
+    private NotificationObject notificationObject;
+    @Column(name = "viewed")
+    private boolean viewed;
+
 
     public Notification() {
     }
 
-    public Notification(Long id, User user, String label, String message, String link, LocalDate date) {
+    public Notification(Long id, User user, NotificationObject notificationObject, boolean viewed) {
         this.id = id;
         this.user = user;
-        this.label = label;
-        this.message = message;
-        this.link = link;
-        this.date = date;
+        this.notificationObject = notificationObject;
+        this.viewed = viewed;
     }
 
     public Long getId() {
@@ -51,35 +45,19 @@ public class Notification {
         this.user = user;
     }
 
-    public String getLabel() {
-        return label;
+    public NotificationObject getNotificationObject() {
+        return notificationObject;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setNotificationObject(NotificationObject notificationObject) {
+        this.notificationObject = notificationObject;
     }
 
-    public String getMessage() {
-        return message;
+    public boolean isView() {
+        return viewed;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setView(boolean viewed) {
+        this.viewed = viewed;
     }
 }

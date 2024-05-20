@@ -5,12 +5,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.lp.learnandplay.model.Notification;
+import ru.lp.learnandplay.model.NotificationObject;
 import ru.lp.learnandplay.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface NotificationRepository extends JpaRepository<Notification,Long> {
-    @Query("SELECT n FROM Notification n WHERE n.user = :user ORDER BY n.date DESC")
-    List<Notification> findAllByUserOrderByDateDesc(@Param("user") User user);
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+    @Query(value = "SELECT * FROM notification WHERE user_id = :userID AND note_obj_id = :notificationObjectID", nativeQuery = true)
+    Notification findByUserAndNotificationObject(Long userID, Long notificationObjectID);
+
+    @Query("SELECT n FROM Notification n WHERE n.user = :user ")
+    List<Notification> findTodayNotificationsByUser(User user);
 }
