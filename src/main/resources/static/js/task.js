@@ -1,5 +1,6 @@
 //работающая штука
 var data_server;
+let num = 1;
 async function getNewTask() {
     fetch('/quest/getNewTask')
         .then((response) => {
@@ -10,14 +11,16 @@ async function getNewTask() {
         let div = document.querySelector('.task');
         div.innerHTML = ''; // Очищаем содержимое div
         const text_task = document.createElement('h1');
-        text_task.innerHTML = `Задание ${data['idTask']}`;
+        text_task.innerHTML = `Задание ` + num++;
         div.append(text_task);
         const head = document.createElement('p');
         head.innerHTML = data['quotation'];
         div.append(head);
-        const image = document.createElement('img');
-        image.src = './images/pictures/' + data['image']; // Укажите путь к вашему изображению
-        div.append(image);
+        if (data['image'] !== null) {
+            const image = document.createElement('img');
+            image.src = './images/pictures/' + data['image']; // Укажите путь к вашему изображению
+            div.append(image);
+        }
         M.parseMath(div);
 
         let form = document.createElement('form');
