@@ -58,14 +58,13 @@ public class PageController {
     }
 
     @GetMapping("/tutorial_page/{num}")
-    public String getPageOfTutorial(@PathVariable(name = "num") String num) {
-        return "index2"+".html";
+    public String getPageOfTutorial(@PathVariable String num) {
+        String str="index" + num;
+        return str;
     }
 
-    @GetMapping("/settings")
+    @GetMapping("/setting")
     public String getSettingsPage() {
-        return "settings";
+        return "setting";
     }
-
-
 }

@@ -6,8 +6,10 @@ import ru.lp.learnandplay.dto.request.QuestDTO;
 import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.dto.response.ProgressDTO;
+import ru.lp.learnandplay.model.Progress;
 import ru.lp.learnandplay.model.Session.Quest;
 import ru.lp.learnandplay.model.Task;
+import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.services.QuestService;
 
 @Service
@@ -18,6 +20,8 @@ public class QuestServiceImpl implements QuestService {
     private UserServiceImpl userService;
     @Autowired
     private ProgressServiceImpl progressService;
+    @Autowired
+    private ProgressRepository progressRepository;
 
 
     @Override
@@ -46,6 +50,10 @@ public class QuestServiceImpl implements QuestService {
         quest.downCountTopic(topicId);
         quest.setSuccessTask(quest.getSuccessTask() + 1);
         userService.addExp(taskService.getExp(taskId));
+
+        Progress progress=progressRepository.findByUserIdAndTopicId(userService.getUser().getId(),topicId);
+        progress.setCount(progress.getCount()+1);
+        progressRepository.save(progress);
         return true;
     }
 
