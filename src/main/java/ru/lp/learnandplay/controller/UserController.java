@@ -19,6 +19,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
-
     //todo rating
 }
