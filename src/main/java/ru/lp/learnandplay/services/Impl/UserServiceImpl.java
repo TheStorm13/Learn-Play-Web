@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean changePassword(String oldPassword, String newPassword) {
         User user = getUser();
-        if (user.getPassword().equals(encryptPassword(oldPassword))) {
-            user.setPassword(encryptPassword(newPassword));
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(newPassword));
             userRepository.save(user);
             return true;
         }
