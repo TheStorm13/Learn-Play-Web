@@ -45,6 +45,15 @@ async function getListProgress() {
           const btn = document.createElement('button');
           btn.classList.add('btn');
           btn.textContent = 'Справочник';
+        // Добавляем обработчик события для клика по кнопке
+        btn.addEventListener('click', function() {
+            // Переход на другую страницу
+            if(progress.topicId === 1) {
+                window.location.href = '/tutorialOne';
+            } else {
+                window.location.href = '/tutorialTwo';
+            }
+        });
 
           chapterElemDiv.appendChild(chapterElemTitle);
           chapterElemDiv.appendChild(btn);

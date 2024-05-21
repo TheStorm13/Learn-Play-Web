@@ -22,25 +22,28 @@ counters.forEach(counter => {
 });
 console.log(arr);
 
-
 const callback = () => {
-    fetch('/quest/startUserQuest', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ listTask: arr })
-    }).then(response => {
-        if(response.ok) {
-            // Обработка успешного ответа
-            window.location.href = '/quest';
-        } else {
-            // Обработка ошибки
-            console.error('Ошибка:', response.status);
-        }
-    });
-    /*alert("Hello, World!");*/
+    if (arr.every(element => element === 0)) {
+        alert('Выберите задания');
+    } else {
+        fetch('/quest/startUserQuest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ listTask: arr })
+        }).then(response => {
+            if(response.ok) {
+                // Обработка успешного ответа
+                window.location.href = '/quest';
+            } else {
+                // Обработка ошибки
+                console.error('Ошибка:', response.status);
+            }
+        });
+    }
 };
+
 const button = document.querySelector('#GET_btn');
 button.addEventListener('click', callback);
 

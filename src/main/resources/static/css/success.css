@@ -1,0 +1,55 @@
+*{
+    background: #251135;
+
+}
+
+p{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 64px;
+    color: white;
+    position: relative;
+    background: none;
+    display: block;
+    text-align: center;
+}
+
+.btn_continue{
+    background: #713073;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 11px 38px;
+    font-size: 41px;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    text-decoration:none;
+    position: relative;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.fixed_block{
+    position: absolute;
+    margin: 15%;
+    margin-top: 11%;
+    width: 70%;
+    height: 50%;
+    background-color: #2D0B49;
+    border-radius: 50px;
+}
+
+img {
+    margin-top: 10%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+
+}

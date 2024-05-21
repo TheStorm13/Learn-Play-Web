@@ -57,10 +57,13 @@ public class PageController {
         return "guide.html";
     }
 
-    @GetMapping("/tutorial/{topicId}")
-    public String getPageOfTutorial(@PathVariable(name = "topicId") int topicId) {
-        //todo протестить
-        return "page" + String.valueOf(topicId) + ".html";
+    @GetMapping("/tutorialOne")
+    public String getPage1OfTutorial() {
+        return "page1.html";
+    }
+    @GetMapping("/tutorialTwo")
+    public String getPage2OfTutorial() {
+        return "page2.html";
     }
 
     @GetMapping("/settings")

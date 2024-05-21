@@ -35,6 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
     public void changeName(String name) {
         User user = userService.getUser();
         user.setName(name);
+        userRepository.save(user);
     }
 
     @Override
