@@ -22,7 +22,6 @@ async function getNewTask() {
             div.append(image);
         }
         M.parseMath(div);
-
         let form = document.createElement('form');
         const labelResult = document.createElement('label');
         form.append(labelResult);
@@ -46,6 +45,35 @@ async function getNewTask() {
                 } catch (err) {
                     console.error('Ошибка отправки PUT-запроса:', err);
                 }
+                // Находим элемент изображения по его ID
+                let imageToRemove = document.getElementById('anim');
+                // Проверяем, существует ли элемент
+                if (imageToRemove) {
+                    imageToRemove.parentNode.removeChild(imageToRemove); // Удаляем найденный элемент из его родительского элемента
+                } else {
+                    console.log('Изображение не найдено');
+                }
+                // Создаем новый элемент для анимации Lottie
+                let lottieAnimation = document.createElement('div');
+                lottieAnimation.id = 'lottie-animation'; // Устанавливаем ID для нового элемента
+                lottieAnimation.style.width = '565px'; // Ширина анимации
+                lottieAnimation.style.height = '306px'; // Высота анимации
+                // Добавляем элемент в тег body
+                document.body.appendChild(lottieAnimation);
+
+                // Загружаем и добавляем анимацию Lottie из файла 1.json
+                fetch('./images/animation/1.json')
+                    .then(response => response.json()) // Парсим JSON-данные
+                    .then(animationData => {
+                    bodymovin.loadAnimation({
+                        container: lottieAnimation, // Ссылка на элемент
+                        renderer: 'svg',
+                        loop: false, // или false
+                        autoplay: true, // или false
+                        animationData: animationData // Данные анимации Lottie JSON
+                    });
+                })
+                    .catch(error => console.log('Ошибка загрузки анимации:', error));
             } else {
                 labelResult.innerHTML = parseFloat(data_server['answer']);
                 labelResult.setAttribute('style', 'margin-left:64%; margin-right:2%; color:#ff0000');
@@ -61,6 +89,35 @@ async function getNewTask() {
                 } catch (err) {
                     console.error('Ошибка отправки PUT-запроса:', err);
                 }
+                // Находим элемент изображения по его ID
+                let imageToRemove = document.getElementById('anim');
+                // Проверяем, существует ли элемент
+                if (imageToRemove) {
+                    imageToRemove.parentNode.removeChild(imageToRemove); // Удаляем найденный элемент из его родительского элемента
+                } else {
+                    console.log('Изображение не найдено');
+                }
+                // Создаем новый элемент для анимации Lottie
+                let lottieAnimation = document.createElement('div');
+                lottieAnimation.id = 'lottie-animation'; // Устанавливаем ID для нового элемента
+                lottieAnimation.style.width = '565px'; // Ширина анимации
+                lottieAnimation.style.height = '306px'; // Высота анимации
+                // Добавляем элемент в тег body
+                document.body.appendChild(lottieAnimation);
+
+                // Загружаем и добавляем анимацию Lottie из файла 2.json
+                fetch('./images/animation/2.json')
+                    .then(response => response.json()) // Парсим JSON-данные
+                    .then(animationData => {
+                    bodymovin.loadAnimation({
+                        container: lottieAnimation, // Ссылка на элемент
+                        renderer: 'svg',
+                        loop: false, // или false
+                        autoplay: true, // или false
+                        animationData: animationData // Данные анимации Lottie JSON
+                    });
+                })
+                    .catch(error => console.log('Ошибка загрузки анимации:', error));
             }
             label.remove();
             form.removeChild(input);
@@ -69,6 +126,13 @@ async function getNewTask() {
             continueButton.innerHTML = 'Продолжить';
             continueButton.setAttribute('type', 'button');
             continueButton.addEventListener('click', async function() {
+                let lottieAnimationToRemove = document.getElementById('lottie-animation');
+                // Проверяем, существует ли элемент
+                if (lottieAnimationToRemove) {
+                    lottieAnimationToRemove.parentNode.removeChild(lottieAnimationToRemove); // Удаляем найденный элемент из его родительского элемента
+                } else {
+                    console.log('Элемент анимации не найден');
+                }
                 fetch('/quest/isEndQuest')
                     .then(response => {
                     if (response.ok) {
@@ -101,6 +165,10 @@ async function getNewTask() {
         form.append(input);
         form.append(button);
         div.appendChild(form);
+        let newImage = document.createElement('img');
+        newImage.src = './images/аnim.png'; // Устанавливаем атрибут src для указания пути к изображению
+        newImage.id = 'anim';
+        document.body.appendChild(newImage);
     });
 }
 
