@@ -65,7 +65,7 @@ public class PageController {
 
     @GetMapping("/settings")
     public String getSettingsPage() {
-        return "settings";
+        return "setting.html";
     }
 
     @GetMapping("/success")
