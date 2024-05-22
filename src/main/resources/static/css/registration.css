@@ -98,7 +98,7 @@ img {
 }
 
 
-input[type=password], input[type=text] {
+input[type=password], input[type=text], input[type=email] {
     background-color: #621A84;
     color: white;
     font-size: 18px;
