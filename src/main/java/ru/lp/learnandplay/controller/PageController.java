@@ -33,7 +33,7 @@ public class PageController {
 
     @GetMapping("/rating")
     public String getRatingPage() {
-        return "rating";
+        return "rating.html";
     }
 
     @GetMapping("/tasks")
