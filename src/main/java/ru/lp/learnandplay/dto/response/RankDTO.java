@@ -5,12 +5,12 @@ import ru.lp.learnandplay.model.User;
 public class RankDTO {
 
     private String userName;
-    private int rank_place;
+    private int rankPlace;
     private int exp;
 
     public RankDTO(String userName, int rank_place, int exp) {
         this.userName = userName;
-        this.rank_place = rank_place;
+        this.rankPlace = rank_place;
         this.exp = exp;
     }
 
@@ -18,7 +18,7 @@ public class RankDTO {
     }
     public RankDTO(User user) {
         this.userName=user.getName();
-        this.rank_place=user.getRankPlace();
+        this.rankPlace=user.getRankPlace();
         this.exp=user.getExp();
     }
 
@@ -31,11 +31,11 @@ public class RankDTO {
     }
 
     public int getRank_place() {
-        return rank_place;
+        return rankPlace;
     }
 
     public void setRank_place(int rank_place) {
-        this.rank_place = rank_place;
+        this.rankPlace = rank_place;
     }
 
     public int getExp() {
