@@ -21,7 +21,6 @@ fetch('/getListNotification')
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
-                        console.log('Уведомление помечено как просмотренное');
                     })
                     .catch(error => {
                         console.error('Ошибка просмотра уведомления:', error);

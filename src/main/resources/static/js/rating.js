@@ -35,7 +35,6 @@ fetch('/rank/getRank')
         ratingExpElement.classList.add('rating_exp');
         ratingExpElement.textContent = `${data['exp']} exp`;
         persRatingDiv.appendChild(ratingExpElement);
-        console.log(data); // Делаем что-то с полученными данными о рейтинге
 
         if (data['exp']<100){
         let img_scale = document.getElementById('1');
@@ -110,6 +109,4 @@ fetch('/rank/getRankList')
 
         persRatingDiv.appendChild(iDiv);
     }
-
-    console.log(data); // Делаем что-то с полученными данными о рейтинге
 });

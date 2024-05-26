@@ -140,7 +140,6 @@ async function getNewTask() {
                     }
                 })
                     .then(data => {
-                    console.log(data)
                     if (data) {
                         // Обработка, если квест завершен
                         window.location.href = '/success';

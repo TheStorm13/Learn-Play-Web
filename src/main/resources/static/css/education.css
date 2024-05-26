@@ -104,9 +104,9 @@ img {
     text-align: left;
   }
 
-  h1{
-    text-align: center;
-  }
+.h1_center{
+  text-align: center;
+}
 
   .modul {
     color: #FFFFFF;

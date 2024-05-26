@@ -27,7 +27,6 @@ async function getListProgress() {
       throw new Error('Network response was not ok');
     }
     const progressList = await response.json(); // Получаем данные в формате JSON
-    console.log(progressList)
     const mainParent = document.querySelector('.main');
     progressList.forEach(progress => {
           const chapterDiv = document.createElement('div');

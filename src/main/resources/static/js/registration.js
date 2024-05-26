@@ -43,7 +43,6 @@ document.querySelector('form').addEventListener('submit', async function(event) 
                     if (response.status === 200) {
                         window.location.href = '/education';
                     }
-                    console.log(response.text())
                 } catch (error) {
                     console.error('Ошибка при выполнении запроса:', error);
                 }

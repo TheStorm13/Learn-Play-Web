@@ -16,8 +16,6 @@ document.getElementById('email').addEventListener('submit', function(event) {
         throw new Error('Network response was not ok.');
     })
         .then(data => {
-        // Обрабатываем успешный ответ от сервера
-        console.log(data);
         if (data) {
             // Ваша логика обработки успешного изменения почты
             alert("Почта успешно изменена!");

@@ -20,7 +20,6 @@ counters.forEach(counter => {
         arr[id-1] = value;
     });
 });
-console.log(arr);
 
 const callback = () => {
     if (arr.every(element => element === 0)) {
