@@ -15,7 +15,8 @@ public class DatabaseInitializationService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @PostConstruct
+    //Раскомментировать этот метод перед инциализацией бд(update -> create)
+    /*@PostConstruct
     public void initDatabase() {
         long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM heroes", Long.class);
         if (count == 0) insertHeroRecord();
@@ -23,7 +24,7 @@ public class DatabaseInitializationService {
         if (count == 0) executeSqlScript("topic.sql");
         count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM tasks", Long.class);
         if (count == 0) executeSqlScript("task.sql");
-    }
+    }*/
 
     private void executeSqlScript(String fileName) {
         try {
