@@ -1443,4 +1443,3 @@ INSERT INTO public.tasks VALUES (3, 1045, 18, NULL, '0.6', 'A1214m90z.svg', '<p>
 INSERT INTO public.tasks VALUES (3, 1046, 18, NULL, '0.6', '67999_5306038264492729.png', '<p>На рисунке изображена трапеция $ABCD$. Используя рисунок, найдите $cos∠ABH$.</p>') ON CONFLICT DO NOTHING;
 INSERT INTO public.tasks VALUES (3, 1047, 18, NULL, '2.0', '67960_5301189221541469.png', '<p>Найдите тангенс угла $ABC$, изображённого на рисунке</p>') ON CONFLICT DO NOTHING;
 INSERT INTO public.tasks VALUES (3, 1048, 18, NULL, '0.6', '67979_5302495458220788.png', '<p>На рисунке изображена трапеция $ABCD$. Используя рисунок, найдите $sin∠ABH$.</p>') ON CONFLICT DO NOTHING;
-

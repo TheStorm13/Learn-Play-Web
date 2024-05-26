@@ -16,6 +16,11 @@
     width: 100%;
 }
 
+.edit_button {
+    border: none;
+    padding: 3px 10px 18px;
+}
+
 .user_name{
     display: flex;
     height: 5%;
@@ -97,27 +102,49 @@ padding-left: 2%;
     margin: 2%;
 }
 
-.progress-bar {
-    width: 96%;
-    height: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    margin: 2%;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 10px;
-}
 
 .block-progress{
     margin-left: auto;
+    width: 70%;
     margin-right: auto;
     border: white 2px solid;
     border-radius: 10px;
+    margin-bottom: 1%;
 }
 
 #img {
     margin: 3%;
+}
+
+.progress-container {
+    width: 96%;
+    height: 15px;
+    background-color: grey;
+    margin: 2%;
+    border-radius: 10px;
+    position: relative; /* Добавлено */
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #EFDE47, #EB5D0E);
+    text-align: center;
+    line-height: 15px; /* Изменено */
+    color: grey;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: "Montagu Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10px;
+    background: none;
 }

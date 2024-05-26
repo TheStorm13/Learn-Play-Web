@@ -27,7 +27,7 @@ public class User {
     private Hero hero;
     @Column(name = "role")
     private String role;
-    @Column(name = "rank_place")
+    @Column(name = "rank_place", unique = true)
     private int rankPlace;
 
     public User() {
