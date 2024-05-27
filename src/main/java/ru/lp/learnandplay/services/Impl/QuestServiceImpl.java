@@ -85,6 +85,7 @@ public class QuestServiceImpl implements QuestService {
             }
             if (quest.getTypeQuest()== TypeQuest.Daily){
                 userService.upMultiplier();
+                userService.switchDaily();
             }
             userService.addExp(2);
             return true;

@@ -22,5 +22,6 @@ public interface UserService {
     public void updateRankPlace(User user);
 
     public void upMultiplier();
+    public void switchDaily();
 
 }

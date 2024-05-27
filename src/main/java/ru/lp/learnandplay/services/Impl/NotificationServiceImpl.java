@@ -76,6 +76,7 @@ public class NotificationServiceImpl implements NotificationService {
             notification.setUser(user);
             notification.setNotificationObject(notificationObject);
             notificationRepository.save(notification);
+            userService.switchDaily();
         }
 
     }

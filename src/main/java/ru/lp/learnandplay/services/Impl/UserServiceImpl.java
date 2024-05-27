@@ -113,4 +113,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void switchDaily(){
+        User user = getUser();
+        user.setDailyQuest(!user.isDailyQuest());
+        userRepository.save(user);
+    }
+
 }
