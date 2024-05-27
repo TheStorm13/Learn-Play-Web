@@ -24,6 +24,18 @@
     text-align: left;
 }
 
+.list-element{ /* Стиль для элемента списков */
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+    background-color: #251135;
+    border: none;
+    font-weight: 100;
+    font-size: 23px;
+    width: 100%; /* Ширина контента = 100% ширины экрана - ширина сайдбара */
+    text-align: left;
+}
+
 .h1-text {
     color: white;
     font-size: 43px;
