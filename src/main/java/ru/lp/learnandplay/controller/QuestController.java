@@ -43,6 +43,7 @@ public class QuestController {
     @PostMapping("/startRandomQuest")
     public Quest startRandomQuest() {
         quest = new Quest();
+        quest.setAllTask(1);
         quest.setTypeQuest(TypeQuest.Random);
         return quest;
     }
