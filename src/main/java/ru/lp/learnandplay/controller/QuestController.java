@@ -39,6 +39,7 @@ public class QuestController {
         quest.setTypeQuest(TypeQuest.Daily);
         return quest;
     }
+
     @PostMapping("/startRandomQuest")
     public Quest startRandomQuest() {
         quest = new Quest();
@@ -81,8 +82,9 @@ public class QuestController {
     @GetMapping("/successQuest")
     public boolean successQuest(SessionStatus status) {
         //todo не работает очищение объекта
+        boolean isSucsessQuest = questService.isSuccessQuest(quest);
         quest = null;
-        return questService.isSuccessQuest(quest);
+        return isSucsessQuest;
     }
 
     @GetMapping("/isEndQuest")
