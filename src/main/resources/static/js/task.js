@@ -16,6 +16,31 @@ async function getNewTask() {
         const head = document.createElement('p');
         head.innerHTML = data['quotation'];
         div.append(head);
+
+
+            if (data['addText'] !== null) {
+                const details = document.createElement('details');
+                const summary = document.createElement('summary');
+                summary.id = "summary";
+                summary.textContent = 'Развернуть';
+
+                const addText = document.createElement('p');
+                addText.innerHTML = data['addText'];
+
+                details.appendChild(summary);
+                details.appendChild(addText);
+                div.appendChild(details);
+
+                summary.addEventListener('click', function() {
+                    if (details.open) {
+                        summary.textContent = 'Развернуть';
+                    } else {
+                        summary.textContent = 'Свернуть';
+                    }
+                });
+            }
+
+
         if (data['image'] !== null) {
             const image = document.createElement('img');
             image.src = './images/pictures/' + data['image']; // Укажите путь к вашему изображению
@@ -172,4 +197,3 @@ async function getNewTask() {
 }
 
 getNewTask();
-
