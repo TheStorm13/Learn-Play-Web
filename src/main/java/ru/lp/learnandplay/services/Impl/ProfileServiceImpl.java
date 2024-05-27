@@ -28,7 +28,7 @@ public class ProfileServiceImpl implements ProfileService {
     public ProfileDTO profileInfo() {
         User user = userService.getUser();
         List<Object[]> achievement = progressRepository.findTopicsWithResolvedTasksByUser(user);
-        return new ProfileDTO(user.getName(), user.getExp(), user.getMultiplier(),user.getRankPlace(), achievement);
+        return new ProfileDTO(user.getName(), (int) user.getExp(), user.getMultiplier(),user.getRankPlace(), achievement);
     }
 
     @Override

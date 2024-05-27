@@ -17,7 +17,7 @@ public class User {
     @Column(name = "password")
     private String password;
     @Column(name = "exp")
-    private int exp=0;
+    private float exp=0;
     @Column(name = "is_daily")
     private boolean dailyQuest = false;
     @Column(name = "multiplier")
@@ -27,13 +27,13 @@ public class User {
     private Hero hero;
     @Column(name = "role")
     private String role;
-    @Column(name = "rank_place", unique = true)
+    @Column(name = "rank_place")
     private int rankPlace;
 
     public User() {
     }
 
-    public User(String name, String email, String password, int exp, boolean dailyQuest, float multiplier, Hero hero, int rankPlace) {
+    public User(String name, String email, String password, float exp, boolean dailyQuest, float multiplier, Hero hero, int rankPlace) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -76,11 +76,11 @@ public class User {
         this.password = password;
     }
 
-    public int getExp() {
+    public float getExp() {
         return exp;
     }
 
-    public void setExp(int exp) {
+    public void setExp(float exp) {
         this.exp = exp;
     }
 

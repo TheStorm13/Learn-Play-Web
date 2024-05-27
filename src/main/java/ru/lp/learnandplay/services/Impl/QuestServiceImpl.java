@@ -8,6 +8,7 @@ import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.dto.response.ProgressDTO;
 import ru.lp.learnandplay.model.Progress;
 import ru.lp.learnandplay.model.Session.Quest;
+import ru.lp.learnandplay.model.Session.TypeQuest;
 import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.services.QuestService;
@@ -21,7 +22,8 @@ public class QuestServiceImpl implements QuestService {
     @Autowired
     private ProgressServiceImpl progressService;
     @Autowired
-    ProgressRepository progressRepository;
+    private ProgressRepository progressRepository;
+
 
     @Override
     public Quest createUserQuest(UserQuestDTO userQuestDTO) {
@@ -32,7 +34,7 @@ public class QuestServiceImpl implements QuestService {
     public Quest createTopicQuest(TopicQuestDTO topicQuestDTO) {
         Long topicId = topicQuestDTO.getTopicId();
         int step = topicQuestDTO.getStep();
-        return new Quest(topicId, 5, step);
+        return new Quest(topicId, 10, step);
     }
 
     @Override
@@ -58,7 +60,7 @@ public class QuestServiceImpl implements QuestService {
 
     @Override
     public boolean failedTaskInQuest(Quest quest, Long taskId) {
-        if (quest==null)
+        if (quest == null)
             return false;
         Long topicId = taskService.getTopicId(taskId);
         quest.downCountTopic(topicId);
@@ -75,14 +77,19 @@ public class QuestServiceImpl implements QuestService {
     public boolean isSuccessQuest(Quest quest) {
         if (quest == null)
             return false;
-        ProgressDTO isTopicQuest = quest.getIsTopicQuest();
+
         if (quest.getSuccessTask() >= quest.getFailedTask()){
-            if (isTopicQuest != null) {
+            if (quest.getTypeQuest()== TypeQuest.Topic) {
+                ProgressDTO isTopicQuest = quest.getIsTopicQuest();
                 progressService.incrementStep(isTopicQuest.getTopicId(), isTopicQuest.getStep());
+            }
+            if (quest.getTypeQuest()== TypeQuest.Daily){
+                userService.upMultiplier();
             }
             userService.addExp(2);
             return true;
         }
         return false;
     }
+
 }

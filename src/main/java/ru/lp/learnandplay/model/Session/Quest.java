@@ -14,6 +14,7 @@ import java.util.Random;
 @SessionScope
 public class Quest {
     private List<QueueTaskByTopic> listTaskByTopics = null;
+    private TypeQuest typeQuest;
     private ProgressDTO isTopicQuest = null;
     private int successTask = 0;
     private int failedTask = 0;
@@ -100,6 +101,14 @@ public class Quest {
 
     public void setListTaskByTopics(List<QueueTaskByTopic> listTaskByTopics) {
         this.listTaskByTopics = listTaskByTopics;
+    }
+
+    public TypeQuest getTypeQuest() {
+        return typeQuest;
+    }
+
+    public void setTypeQuest(TypeQuest typeQuest) {
+        this.typeQuest = typeQuest;
     }
 
     public ProgressDTO getIsTopicQuest() {
