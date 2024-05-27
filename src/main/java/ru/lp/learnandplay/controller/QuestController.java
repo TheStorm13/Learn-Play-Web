@@ -34,7 +34,6 @@ public class QuestController {
 
     @PostMapping("/startDailyQuest")
     public Quest startDailyQuest() {
-        //todo добавить логику на увеличение множителя после дейлика
         quest = new Quest();
         quest.setTypeQuest(TypeQuest.Daily);
         return quest;
