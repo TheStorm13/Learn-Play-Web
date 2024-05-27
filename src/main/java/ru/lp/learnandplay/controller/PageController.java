@@ -25,7 +25,7 @@ public class PageController {
 
     @GetMapping("/registration")
     public String getRegistrationPage() {
-        if (SecurityContextHolder.getContext().getAuthentication().getName() == "anonymousUser")
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
             return "registration.html";
         return "education.html";
     }
