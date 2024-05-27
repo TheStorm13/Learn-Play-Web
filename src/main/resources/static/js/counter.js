@@ -61,3 +61,19 @@ buttonDaily.addEventListener('click', () => {
         }
     })
 });
+
+const buttonRandom = document.querySelector('.btn_left');
+buttonRandom.addEventListener('click', () => {
+    fetch('/quest/startRandomQuest', {
+        method: 'POST',
+    })
+        .then(response => {
+        if(response.ok) {
+            // Если запрос выполнен успешно, перенаправляем пользователя
+            window.location.href = '/quest';
+        } else {
+            // Обрабатываем ошибку, если не удалось выполнить запрос
+            console.error('Ошибка:', response.status);
+        }
+    })
+});

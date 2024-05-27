@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = """
             SELECT * FROM users 
             ORDER BY exp DESC
-            LIMIT 2
+            LIMIT 20
             """, nativeQuery = true)
     List<User> findTop3ByOrderByRankPlaceDesc();
 

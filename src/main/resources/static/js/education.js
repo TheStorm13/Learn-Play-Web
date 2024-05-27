@@ -47,61 +47,7 @@ async function getListProgress() {
         // Добавляем обработчик события для клика по кнопке
         btn.addEventListener('click', function() {
             // Переход на другую страницу
-            if(progress.topicId === 1) {
-                window.location.href = '/tutorialOne';
-            }
-            else if(progress.topicId === 2) {
-                window.location.href = '/tutorialTwo';
-            }
-            else if(progress.topicId === 3) {
-                window.location.href = '/tutorialThree';
-            }
-            else if(progress.topicId === 4) {
-                window.location.href = '/tutorialFour';
-            }
-            else if(progress.topicId === 5) {
-                window.location.href = '/tutorialFive';
-            }
-            else if(progress.topicId === 6) {
-                window.location.href = '/tutorialSix';
-            }
-            else if(progress.topicId === 7) {
-                window.location.href = '/tutorialSeven';
-            }
-            else if(progress.topicId === 8) {
-                window.location.href = '/tutorialEight';
-            }
-            else if(progress.topicId === 9) {
-                window.location.href = '/tutorialNine';
-            }
-            if(progress.topicId === 10) {
-                window.location.href = '/tutorialTen';
-            }
-            else if(progress.topicId === 11) {
-                window.location.href = '/tutorialEleven';
-            }
-            else if(progress.topicId === 12) {
-                window.location.href = '/tutorialTwelve';
-            }
-            else if(progress.topicId === 13) {
-                window.location.href = '/tutorialThirteen';
-            }
-            else if(progress.topicId === 14) {
-                window.location.href = '/tutorialFourteen';
-            }
-            else if(progress.topicId === 15) {
-                window.location.href = '/tutorialFifteen';
-            }
-            else if(progress.topicId === 16) {
-                window.location.href = '/tutorialSixteen';
-            }
-            else if(progress.topicId === 17) {
-                window.location.href = '/tutorialSeventeen';
-            }
-            else if(progress.topicId === 18) {
-                window.location.href = '/tutorialEighteen';
-            }
-
+        window.location.href = '/tutorial/page' + progress.topicId + '.html';
         });
 
           chapterElemDiv.appendChild(chapterElemTitle);

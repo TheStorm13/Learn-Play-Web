@@ -23,7 +23,7 @@ fetch('/profile/info')
         let achievements = data['achievement'];
         let check= 0;
         achievements.forEach((achievement) => {
-            if (achievement[2] !== 0) {
+            //if (achievement[2] !== 0) {
                 check++;
                 // Создаем контейнер для прогресса
                 let blockProgress = document.createElement('div');
@@ -58,14 +58,14 @@ fetch('/profile/info')
 
                 // Добавляем контейнер на страницу
                 document.querySelector('.any_elem').appendChild(blockProgress);
-            }
+            //}
         });
-        if(check!==0) {
+        //if(check!==0) {
                 let textP = document.createElement('p');
                 textP.textContent = `Достижения`;
                 textP.classList.add('text');
                 document.querySelector('.statistic').appendChild(textP);
-        }
+        //}
     });
 
 // Получаем ссылку на элементы

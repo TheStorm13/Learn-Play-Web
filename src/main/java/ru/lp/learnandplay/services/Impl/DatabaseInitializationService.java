@@ -16,15 +16,15 @@ public class DatabaseInitializationService {
     private JdbcTemplate jdbcTemplate;
 
     //Раскомментировать этот метод перед инциализацией бд(update -> create)
-//    @PostConstruct
-//    public void initDatabase() {
-//        long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM heroes", Long.class);
-//        if (count == 0) insertHeroRecord();
-//        count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM topics", Long.class);
-//        if (count == 0) executeSqlScript("topic.sql");
-//        count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM tasks", Long.class);
-//        if (count == 0) executeSqlScript("task.sql");
-//    }
+    /*@PostConstruct
+    public void initDatabase() {
+        long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM heroes", Long.class);
+        if (count == 0) insertHeroRecord();
+        count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM topics", Long.class);
+        if (count == 0) executeSqlScript("topic.sql");
+        count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM tasks", Long.class);
+        if (count == 0) executeSqlScript("task.sql");
+    }*/
 
     private void executeSqlScript(String fileName) {
         try {

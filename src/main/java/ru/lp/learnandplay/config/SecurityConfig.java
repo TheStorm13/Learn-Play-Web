@@ -28,8 +28,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/registration", "/entry").anonymous()
-                        .requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration/addUser").permitAll()
+                        .requestMatchers("/entry").anonymous()
+                        .requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration/addUser", "/registration").permitAll()
                         .requestMatchers("/**").authenticated())
                 /*.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)*/
                 .formLogin((form) -> form
@@ -44,10 +44,6 @@ public class SecurityConfig {
                         })
                 )
                 .logout((logout) -> logout.permitAll())
-                /*.and() // Добавляем дополнительные настройки (хз)
-                .exceptionHandling((exceptionHandling) -> exceptionHandling
-                        .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/education")) // Перенаправляем на /education в случае неавторизованного доступа к /registration и /entry
-                )*/
                 .build();
     }
 
