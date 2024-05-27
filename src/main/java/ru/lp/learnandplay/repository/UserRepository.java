@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             LIMIT 2
             """, nativeQuery = true)
     List<User> findTop3ByOrderByRankPlaceDesc();
+
+    User findByRankPlace(int rankPlace);
 }

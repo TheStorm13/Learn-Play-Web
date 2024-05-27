@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean changePassword(String oldPassword, String newPassword) {
         User user = getUser();
-        String encryptedPassword1=user.getPassword();
+        String encryptedPassword1 = user.getPassword();
         String encryptedPassword2 = encryptPassword(oldPassword);
         if (user.getPassword().equals(encryptPassword(oldPassword))) {
             user.setPassword(encryptPassword(newPassword));
@@ -79,18 +79,39 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RankDTO> getRankList() {
-         List<User> listUser=userRepository.findTop3ByOrderByRankPlaceDesc();
-         List<RankDTO> listUserDTO=new ArrayList<RankDTO>();
-         for (User user:listUser) {
-             listUserDTO.add(new RankDTO(user));
-         }
-         return listUserDTO;
+        List<User> listUser = userRepository.findTop3ByOrderByRankPlaceDesc();
+        List<RankDTO> listUserDTO = new ArrayList<RankDTO>();
+        for (User user : listUser) {
+            listUserDTO.add(new RankDTO(user));
+        }
+        return listUserDTO;
     }
 
     @Override
-    public void addExp(int exp){
+    public void addExp(int exp) {
         User user = getUser();
-        user.setExp(user.getExp()+exp);
+        user.setExp(user.getExp() + exp * user.getMultiplier());
+        updateRankPlace(user);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void updateRankPlace(User user) {
+        if (user.getRankPlace() > 1) {
+            User higherUser = userRepository.findByRankPlace(user.getRankPlace() - 1);
+            if (higherUser.getExp() < user.getExp()) {
+                higherUser.setRankPlace(user.getRankPlace());
+                user.setRankPlace(user.getRankPlace() - 1);
+                userRepository.save(user);
+                userRepository.save(higherUser);
+            }
+        }
+    }
+
+    @Override
+    public void upMultiplier() {
+        User user = getUser();
+        user.setMultiplier((float) (user.getMultiplier() + 0.1));
         userRepository.save(user);
     }
 }

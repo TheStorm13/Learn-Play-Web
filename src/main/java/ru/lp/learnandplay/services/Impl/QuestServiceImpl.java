@@ -8,6 +8,7 @@ import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.dto.response.ProgressDTO;
 import ru.lp.learnandplay.model.Progress;
 import ru.lp.learnandplay.model.Session.Quest;
+import ru.lp.learnandplay.model.Session.TypeQuest;
 import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.repository.ProgressRepository;
 import ru.lp.learnandplay.services.QuestService;
@@ -76,10 +77,14 @@ public class QuestServiceImpl implements QuestService {
     public boolean isSuccessQuest(Quest quest) {
         if (quest == null)
             return false;
-        ProgressDTO isTopicQuest = quest.getIsTopicQuest();
+
         if (quest.getSuccessTask() >= quest.getFailedTask()){
-            if (isTopicQuest != null) {
+            if (quest.getTypeQuest()== TypeQuest.Topic) {
+                ProgressDTO isTopicQuest = quest.getIsTopicQuest();
                 progressService.incrementStep(isTopicQuest.getTopicId(), isTopicQuest.getStep());
+            }
+            if (quest.getTypeQuest()== TypeQuest.Daily){
+                userService.upMultiplier();
             }
             userService.addExp(2);
             return true;
