@@ -4,7 +4,7 @@ fetch('/profile/info')
 })
     .then((data) => {
         document.getElementById('userName').innerText = data['userName'];
-        document.getElementById('percent').innerText = (data['multiplier'] * 100) + '%';
+        document.getElementById('percent').innerText = ((data['multiplier'] * 100) | 0) + '%';
         document.getElementById('exp').innerText = data['exp'];
         document.getElementById('top').innerText = data['rankPlace'];
         // Создание элемента изображения

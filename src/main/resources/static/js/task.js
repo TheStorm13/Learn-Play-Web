@@ -55,7 +55,7 @@ async function getNewTask() {
         button.setAttribute('type', 'button');
         button.innerHTML = 'Нанести удар';
         button.addEventListener('click', async function() {
-            if (parseFloat(data_server['answer']) == parseFloat(document.getElementById('user_answer').value)) {
+            if (parseFloat(data_server['answer']) == parseFloat(document.getElementById('user_answer').value.replace(',', '.'))) {
                 labelResult.innerHTML = parseFloat(data_server['answer']);
                 labelResult.setAttribute('style', 'margin-left:64%; margin-right:2%; color:green; ');
                 try {

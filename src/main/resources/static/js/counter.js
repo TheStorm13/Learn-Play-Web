@@ -48,18 +48,31 @@ button.addEventListener('click', callback);
 
 const buttonDaily = document.querySelector('.btn_right');
 buttonDaily.addEventListener('click', () => {
-    fetch('/quest/startDailyQuest', {
-        method: 'POST',
-    })
-        .then(response => {
-        if(response.ok) {
-            // Если запрос выполнен успешно, перенаправляем пользователя
-            window.location.href = '/quest';
+    fetch('/profile/isDailyQuest')
+        .then(response => response.json())
+        .then(isDailyQuest => {
+        console.log(isDailyQuest);
+        if (isDailyQuest) {
+            fetch('/quest/startDailyQuest', {
+                method: 'POST',
+            })
+                .then(response => {
+                if(response.ok) {
+                    // Если запрос выполнен успешно, перенаправляем пользователя
+                    window.location.href = '/quest';
+                } else {
+                    // Обрабатываем ошибку, если не удалось выполнить запрос
+                    console.error('Ошибка:', response.status);
+                }
+            })
         } else {
-            // Обрабатываем ошибку, если не удалось выполнить запрос
-            console.error('Ошибка:', response.status);
+            alert('Вы уже прошли ежедневный квест')
         }
     })
+        .catch((error) => {
+        console.error('Ошибка при выполнении запроса:', error);
+    });
+
 });
 
 const buttonRandom = document.querySelector('.btn_left');
