@@ -20,12 +20,10 @@ public class SettingController {
         return userService.changePassword(oldPassword, newPassword);
     }
 
-    public void changeDailyNotification(boolean active) {
-        //todo
+    @PutMapping("/switchDailyNotice/{active}")
+    public void changeDailyNotification(@PathVariable(name = "active")boolean active) {
+        userService.switchDailyNotice(active);
     }
 
-    public void changeQuestNotification(boolean active) {
-        //todo
-    }
 
 }

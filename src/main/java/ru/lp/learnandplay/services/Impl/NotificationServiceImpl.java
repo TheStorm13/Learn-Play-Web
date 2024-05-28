@@ -28,7 +28,9 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public List<NotificationObject> getListNotification() {
         User user = userService.getUser();
-        return notificationObjectRepository.findActiveAllByUser(user.getId());
+        if (user.isSendDailyNotice())
+            return notificationObjectRepository.findActiveAllByUser(user.getId());
+        return null;
     }
 
     @Override
@@ -52,7 +54,6 @@ public class NotificationServiceImpl implements NotificationService {
     public boolean deleteNotification() {
         //todo должно ли быть тело у запроса?
         //todo прописать необходимые функции в сервисах
-
         //todo удаляем старые уведомления спустя неделю при авторизации пользователя
         return false;
     }
@@ -67,7 +68,6 @@ public class NotificationServiceImpl implements NotificationService {
             notificationObject.setLabel("Ежедневный квест");
             notificationObject.setMessage("Выполни ежедневное задание, и повысь множитель очков.");
             notificationObject.setLink("/tasks");
-            //todo Добавить текст для уведомления дейлика
             notificationObjectRepository.save(notificationObject);
         }
         Notification notification = notificationRepository.findByUserAndNotificationObject(user.getId(), notificationObject.getId());

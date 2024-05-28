@@ -119,5 +119,11 @@ public class UserServiceImpl implements UserService {
         user.setDailyQuest(!user.isDailyQuest());
         userRepository.save(user);
     }
+    @Override
+    public void switchDailyNotice(boolean active){
+        User user = getUser();
+        user.setSendDailyNotice(active);
+        userRepository.save(user);
+    }
 
 }

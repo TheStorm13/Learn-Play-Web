@@ -29,7 +29,7 @@ public class SecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/entry").anonymous()
-                        .requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html", "/entry.html", "/", "/registration/addUser").permitAll()
+                        .requestMatchers("/css/**", "/images/**", "/js/**", "/main.html", "/registration.html","/registration", "/entry.html", "/", "/registration/addUser").permitAll()
                         .requestMatchers("/**").authenticated())
                 /*.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)*/
                 .formLogin((form) -> form

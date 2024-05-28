@@ -19,9 +19,13 @@ public interface UserService {
     public List<RankDTO> getRankList();
 
     public void addExp(int exp);
+
     public void updateRankPlace(User user);
 
     public void upMultiplier();
+
     public void switchDaily();
+
+    public void switchDailyNotice(boolean active);
 
 }

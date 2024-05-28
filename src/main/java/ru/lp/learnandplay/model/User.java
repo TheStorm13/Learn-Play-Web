@@ -18,6 +18,8 @@ public class User {
     private String password;
     @Column(name = "exp")
     private float exp=0;
+    @Column(name = "rank_place")
+    private int rankPlace;
     @Column(name = "is_daily")
     private boolean dailyQuest = false;
     @Column(name = "multiplier")
@@ -27,21 +29,24 @@ public class User {
     private Hero hero;
     @Column(name = "role")
     private String role;
-    @Column(name = "rank_place")
-    private int rankPlace;
+    @Column(name = "send_daily_notice")
+    private boolean sendDailyNotice=true;
 
     public User() {
     }
 
-    public User(String name, String email, String password, float exp, boolean dailyQuest, float multiplier, Hero hero, int rankPlace) {
+    public User(Long id, String name, String email, String password, float exp, int rankPlace, boolean dailyQuest, float multiplier, Hero hero, String role, boolean sendDailyNotice) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.exp = exp;
+        this.rankPlace = rankPlace;
         this.dailyQuest = dailyQuest;
         this.multiplier = multiplier;
         this.hero = hero;
-        this.rankPlace = rankPlace;
+        this.role = role;
+        this.sendDailyNotice = sendDailyNotice;
     }
 
     public Long getId() {
@@ -84,6 +89,14 @@ public class User {
         this.exp = exp;
     }
 
+    public int getRankPlace() {
+        return rankPlace;
+    }
+
+    public void setRankPlace(int rankPlace) {
+        this.rankPlace = rankPlace;
+    }
+
     public boolean isDailyQuest() {
         return dailyQuest;
     }
@@ -116,11 +129,11 @@ public class User {
         this.role = role;
     }
 
-    public int getRankPlace() {
-        return rankPlace;
+    public boolean isSendDailyNotice() {
+        return sendDailyNotice;
     }
 
-    public void setRankPlace(int rankPlace) {
-        this.rankPlace = rankPlace;
+    public void setSendDailyNotice(boolean sendDailyNotice) {
+        this.sendDailyNotice = sendDailyNotice;
     }
 }

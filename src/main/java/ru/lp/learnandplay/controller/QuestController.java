@@ -53,6 +53,7 @@ public class QuestController {
         return questService.getTaskQuest(quest);
     }
 
+    //task successfully completed
     @PutMapping("/successTask/{taskId}")
     public boolean successTask(@PathVariable(name = "taskId") Long taskId) {
         return questService.successTaskInQuest(quest, taskId);
@@ -61,12 +62,14 @@ public class QuestController {
         //todo поменять статус у задания для конкретного пользователя
     }
 
+    //task unsuccessfully completed
     @PutMapping("/failedTask/{taskId}")
     public boolean failedTask(@PathVariable(name = "taskId") Long taskId) {
         questService.failedTaskInQuest(quest, taskId);
         return true;
     }
 
+    //quest success check
     @GetMapping("/successQuest")
     public boolean successQuest(SessionStatus status) {
         //todo не работает очищение объекта
@@ -75,6 +78,7 @@ public class QuestController {
         return isSucsessQuest;
     }
 
+    //end of quest check
     @GetMapping("/isEndQuest")
     public boolean isEndQuest() {
         return questService.isEndQuest(quest);
