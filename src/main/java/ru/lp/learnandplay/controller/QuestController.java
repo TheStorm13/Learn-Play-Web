@@ -17,6 +17,7 @@ import ru.lp.learnandplay.services.Impl.QuestServiceImpl;
 public class QuestController {
     @Autowired
     private QuestServiceImpl questService;
+
     @Autowired
     Quest quest;
 
@@ -82,6 +83,11 @@ public class QuestController {
     @GetMapping("/isEndQuest")
     public boolean isEndQuest() {
         return questService.isEndQuest(quest);
+    }
+
+    @GetMapping("/getQuest")
+    public String getQuest() {
+        return quest.toString();
     }
 
 }
