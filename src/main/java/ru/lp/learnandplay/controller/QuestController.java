@@ -47,18 +47,6 @@ public class QuestController {
         return quest;
     }
 
-    @GetMapping("/getQuest")
-    public Quest getQuest() {
-        return quest;
-    }
-
-
-    @GetMapping("/historyQuest")
-    public Task getHistoryQuest() {
-        //todo
-        return null;
-    }
-
     //должен возвращать рандомную задачу на определенную тему определенного уровня
     @GetMapping("/getNewTask")
     public Task getNewTask() {
