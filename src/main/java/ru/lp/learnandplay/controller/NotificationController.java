@@ -14,12 +14,14 @@ public class NotificationController {
     @Autowired
     private NotificationServiceImpl notificationService;
 
+    //get a list of unread notifications
     @GetMapping("/getListNotification")
     public List<NotificationObject> getListNotification() {
         notificationService.isTodayDaily();
         return notificationService.getListNotification();
     }
 
+    //notification viewed
     @PutMapping("/viewedNotification/{note_obj_id}")
     public void viewedNotification(@PathVariable(name = "note_obj_id") Long noteObjId) {
         notificationService.viewedNotification(noteObjId);

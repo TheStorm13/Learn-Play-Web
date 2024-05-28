@@ -17,6 +17,7 @@ public class EducationController {
     @Autowired
     private ProgressServiceImpl progressService;
 
+    //gives a list of where the user is on the education progress
     @GetMapping("/getListProgress")
     public List<ProgressDTO> getListProgress() {
         return progressService.getListProgress();

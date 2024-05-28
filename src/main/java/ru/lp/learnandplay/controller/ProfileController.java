@@ -14,12 +14,13 @@ public class ProfileController {
     @Autowired
     private UserServiceImpl userService;
 
-
+    //get data for the profile page
     @GetMapping("/info")
     public ProfileDTO profilePage() {
         return profileService.profileInfo();
     }
 
+    //get a daily quest completion status
     @GetMapping("/isDailyQuest")
     public boolean isDailyQuest() {
         return userService.getUser().isDailyQuest();
