@@ -13,12 +13,13 @@ import ru.lp.learnandplay.services.Impl.QuestServiceImpl;
 
 @RestController()
 @RequestMapping("/quest")
-
+@SessionAttributes("quest")
 public class QuestController {
     @Autowired
     private QuestServiceImpl questService;
+
     @Autowired
-    Quest quest;
+    private Quest quest;
 
     @PostMapping("/startTopicQuest")
     public void startQuest(@RequestBody TopicQuestDTO topicQuestDTO) {
@@ -82,6 +83,11 @@ public class QuestController {
     @GetMapping("/isEndQuest")
     public boolean isEndQuest() {
         return questService.isEndQuest(quest);
+    }
+
+    @GetMapping("/getQuest")
+    public String getQuest() {
+        return quest.toString();
     }
 
 }
