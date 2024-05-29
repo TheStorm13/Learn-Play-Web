@@ -91,7 +91,7 @@ document.getElementById('exit_btn').addEventListener('click', function() {
 });
 
 
-// Получаем ссылку на кнопку
+/*// Получаем ссылку на кнопку
 const notificationButton = document.querySelector('.notification-button');
 
 // Инициализируем переменную для хранения состояния кнопки
@@ -119,4 +119,4 @@ notificationButton.addEventListener('change', function() {
         .catch(error => {
         console.error('Произошла ошибка:', error);
     });
-});
+});*/
