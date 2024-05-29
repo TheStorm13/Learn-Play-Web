@@ -46,7 +46,7 @@
     margin-top: 2%;
     width: 70%;
     height: 300px;
-    background-image: url("../images/background-pers.png");
+    background-image: url("../images/Intersect.png");
     background-size: cover;
     border-radius: 8px;
 }
@@ -145,4 +145,14 @@ padding-left: 2%;
     color: white;
     font-size: 10px;
     background: none;
+}
+
+.pers_style {
+    position: absolute;
+    left: 50%;
+    top: 9%;
+    background: none;
+    height: 80%;
+    transform: translateX(-50%);
+
 }
