@@ -100,21 +100,23 @@ let notificationsEnabled = false;
 // Добавляем обработчик события на изменение состояния кнопки
 notificationButton.addEventListener('change', function() {
     // Обновляем состояние переменной в зависимости от состояния кнопки
-    notificationsEnabled = this.checked;
-    fetch('/path/to/your/server', {
-        method: 'POST', // Тип запроса
+    fetch('/setting/switchDailyNotice/' + this.checked, {
+        method: 'PUT',
         headers: {
-            'Content-Type': 'application/json' // Тип данных
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({notificationsEnabled}) // Данные для отправки
+        body: JSON.stringify({
+            // Если нужно передать дополнительные данные в теле запроса, добавьте их сюда
+        })
     })
         .then(response => {
-            // Обработка успешного ответа от сервера
-            console.log('Request sent successfully');
-            console.log(JSON.stringify({notificationsEnabled}));
-        })
+        if(response.ok) {
+            console.log('PUT запрос выполнен успешно');
+        } else {
+            console.error('Ошибка при выполнении PUT запроса');
+        }
+    })
         .catch(error => {
-            // Обработка ошибки
-            console.log('Error sending request: ' + error);
-        });
+        console.error('Произошла ошибка:', error);
+    });
 });
