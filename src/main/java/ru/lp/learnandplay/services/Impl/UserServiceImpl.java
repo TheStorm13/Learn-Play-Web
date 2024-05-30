@@ -89,8 +89,8 @@ public class UserServiceImpl implements UserService {
     public void addExp(int exp) {
         User user = getUser();
         user.setExp(user.getExp() + exp * user.getMultiplier());
-        updateRankPlace(user);
         userRepository.save(user);
+        updateRankPlace(user);
     }
 
     @Override
