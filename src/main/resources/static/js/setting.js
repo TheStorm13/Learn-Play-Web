@@ -98,25 +98,25 @@ const notificationButton = document.querySelector('.notification-button');
 let notificationsEnabled = false;
 
 // Добавляем обработчик события на изменение состояния кнопки
-notificationButton.addEventListener('change', function() {
-    // Обновляем состояние переменной в зависимости от состояния кнопки
-    fetch('/setting/switchDailyNotice/' + this.checked, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            // Если нужно передать дополнительные данные в теле запроса, добавьте их сюда
-        })
-    })
-        .then(response => {
-        if(response.ok) {
-            console.log('PUT запрос выполнен успешно');
-        } else {
-            console.error('Ошибка при выполнении PUT запроса');
-        }
-    })
-        .catch(error => {
-        console.error('Произошла ошибка:', error);
-    });
-});
+// notificationButton.addEventListener('change', function() {
+//     // Обновляем состояние переменной в зависимости от состояния кнопки
+//     fetch('/setting/switchDailyNotice/' + this.checked, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             // Если нужно передать дополнительные данные в теле запроса, добавьте их сюда
+//         })
+//     })
+//         .then(response => {
+//         if(response.ok) {
+//             console.log('PUT запрос выполнен успешно');
+//         } else {
+//             console.error('Ошибка при выполнении PUT запроса');
+//         }
+//     })
+//         .catch(error => {
+//         console.error('Произошла ошибка:', error);
+//     });
+// });
