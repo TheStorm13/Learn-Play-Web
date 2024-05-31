@@ -95,13 +95,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateRankPlace(User user) {
-        if (user.getRankPlace() > 1) {
-            User higherUser = userRepository.findByRankPlace(user.getRankPlace() - 1);
-            if (higherUser.getExp() < user.getExp()) {
+        User currentUser = user;
+        if (currentUser.getRankPlace() > 1) {
+            User higherUser = userRepository.findByRankPlace(currentUser.getRankPlace() - 1);
+            while (higherUser.getExp() < user.getExp()) {
                 higherUser.setRankPlace(user.getRankPlace());
                 user.setRankPlace(user.getRankPlace() - 1);
                 userRepository.save(user);
                 userRepository.save(higherUser);
+                currentUser = higherUser;
+                higherUser = userRepository.findByRankPlace(currentUser.getRankPlace() - 1);
             }
         }
     }
