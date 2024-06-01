@@ -90,33 +90,20 @@ document.getElementById('exit_btn').addEventListener('click', function() {
     });
 });
 
+/*
+function sendDailyNoticeRequest() {
+    let checkbox = document.querySelector('.notification-buttton');
+    let active = checkbox.checked;
 
-// Получаем ссылку на кнопку
-const notificationButton = document.querySelector('.notification-button');
-
-// Инициализируем переменную для хранения состояния кнопки
-let notificationsEnabled = false;
-
-// Добавляем обработчик события на изменение состояния кнопки
-notificationButton.addEventListener('change', function() {
-    // Обновляем состояние переменной в зависимости от состояния кнопки
-    fetch('/setting/switchDailyNotice/' + this.checked, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            // Если нужно передать дополнительные данные в теле запроса, добавьте их сюда
-        })
-    })
-        .then(response => {
-        if(response.ok) {
-            console.log('PUT запрос выполнен успешно');
+    fetch(`/setting/switchDailyNotice/${active}`, {
+        method: 'PUT'
+    }).then(response => {
+        if (response.ok) {
+            console.log('Статус ежедневного уведомления обновлен');
         } else {
-            console.error('Ошибка при выполнении PUT запроса');
+            console.error('Ошибка при обновлении статуса');
         }
-    })
-        .catch(error => {
-        console.error('Произошла ошибка:', error);
+    }).catch(error => {
+        console.error('Ошибка:', error);
     });
-});
+}*/
