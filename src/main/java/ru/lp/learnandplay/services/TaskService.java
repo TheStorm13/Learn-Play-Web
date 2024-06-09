@@ -14,8 +14,6 @@ public interface TaskService {
 
     public int getExp(Long taskId);
 
-    public void addTask();
-
     public Long getTopicId(Long taskId);
     public Task getTask(Long task_id);
 }
