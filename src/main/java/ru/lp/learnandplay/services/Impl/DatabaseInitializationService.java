@@ -12,11 +12,10 @@ import java.nio.file.Files;
 
 @Service
 public class DatabaseInitializationService {
-   /*
     @Autowired
     private JdbcTemplate jdbcTemplate;
     //Раскомментировать этот метод перед инциализацией бд(update -> create)
-    /*@PostConstruct
+    @PostConstruct
     public void initDatabase() {
         long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM heroes", Long.class);
         if (count == 0) insertHeroRecord();
@@ -44,5 +43,4 @@ public class DatabaseInitializationService {
         jdbcTemplate.update(sql, heroId, imagePath, heroName);
     }
 
-    */
 }
