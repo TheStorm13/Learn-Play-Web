@@ -40,6 +40,7 @@ public class QuestServiceImpl implements QuestService {
     public List<Task> getListTaskQuest() {
         return List.of();
     }
+
     @Override
     public void isUnique() {
         Quest quest = getQuest();
@@ -78,16 +79,19 @@ public class QuestServiceImpl implements QuestService {
         List<Integer> listCountTopic = new ArrayList<>(userQuestDTO.getListTask());
         Random random = new Random();
         for (int i = 0; i < listCountTopic.size(); i++) {
-            listTask = taskService.getListRandomTask((long) i, random.nextInt(3) + 1, listCountTopic.get(i));
-            for (Task task : listTask) {
-                listTaskId.add(task.getIdTask());
+            if(listCountTopic.get(i)>0){
+                listTask = taskService.getListRandomTask((long) (i+1), random.nextInt(3) + 1, listCountTopic.get(i));
+                for (Task task : listTask) {
+                    listTaskId.add(task.getIdTask());
+                }
             }
-
 
         }
         quest.setListTask(listTaskId);
         quest.setAllTask(listTaskId.size());
         questRepository.save(quest);
+        System.out.println("init"+quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
+
     }
 
     @Override
@@ -121,6 +125,7 @@ public class QuestServiceImpl implements QuestService {
         quest.setListTask(listTaskId);
         quest.setAllTask(listTaskId.size());
         questRepository.save(quest);
+        System.out.println(quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
 
 
     }
@@ -150,6 +155,7 @@ public class QuestServiceImpl implements QuestService {
         Progress progress = progressRepository.findByUserIdAndTopicId(userService.getUser().getId(), topicId);
         progress.setCount(progress.getCount() + 1);
         progressRepository.save(progress);
+        System.out.println(quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
         return true;
     }
 
@@ -158,18 +164,19 @@ public class QuestServiceImpl implements QuestService {
         Quest quest = getQuest();
         if (quest == null)
             return false;
-        Long topicId = taskService.getTopicId(taskId);
         List<Long> listTasks = quest.getListTask();
         listTasks.remove(taskId);
         quest.setListTask(listTasks);
         quest.setFailedTask(quest.getFailedTask() + 1);
         questRepository.save(quest);
+        System.out.println(quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
         return true;
     }
 
     @Override
     public boolean isEndQuest() {
         Quest quest = getQuest();
+        System.out.println(quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
         return (quest.getSuccessTask() + quest.getFailedTask()) == quest.getAllTask();
     }
 
@@ -188,10 +195,11 @@ public class QuestServiceImpl implements QuestService {
                 userService.switchDaily();
             }
             userService.addExp(2);
-            questRepository.delete(quest);
+            System.out.println(quest.getAllTask()+" "+quest.getSuccessTask()+" "+quest.getFailedTask());
             return true;
         }
         return false;
+
     }
 
 }

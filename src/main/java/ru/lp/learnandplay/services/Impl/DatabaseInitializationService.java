@@ -24,7 +24,7 @@ public class DatabaseInitializationService {
         if (count == 0) executeSqlScript("topic.sql");
         count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM tasks", Long.class);
         if (count == 0) executeSqlScript("task.sql");
-    }*/
+    }
 
     private void executeSqlScript(String fileName) {
         try {
