@@ -12,6 +12,7 @@ import java.nio.file.Files;
 
 @Service
 public class DatabaseInitializationService {
+   /*
     @Autowired
     private JdbcTemplate jdbcTemplate;
     //Раскомментировать этот метод перед инциализацией бд(update -> create)
@@ -42,4 +43,6 @@ public class DatabaseInitializationService {
         String heroName = "Superman";
         jdbcTemplate.update(sql, heroId, imagePath, heroName);
     }
+
+    */
 }

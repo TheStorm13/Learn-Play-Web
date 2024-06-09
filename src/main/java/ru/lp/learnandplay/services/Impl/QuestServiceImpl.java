@@ -2,16 +2,21 @@ package ru.lp.learnandplay.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.lp.learnandplay.dto.request.QuestDTO;
+import ru.lp.learnandplay.model.User;
 import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
 import ru.lp.learnandplay.dto.response.ProgressDTO;
 import ru.lp.learnandplay.model.Progress;
-import ru.lp.learnandplay.model.Session.Quest;
-import ru.lp.learnandplay.model.Session.TypeQuest;
+import ru.lp.learnandplay.model.Quest;
+import ru.lp.learnandplay.model.TypeQuest;
 import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.repository.ProgressRepository;
+import ru.lp.learnandplay.repository.QuestRepository;
 import ru.lp.learnandplay.services.QuestService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Service
 public class QuestServiceImpl implements QuestService {
@@ -23,71 +28,167 @@ public class QuestServiceImpl implements QuestService {
     private ProgressServiceImpl progressService;
     @Autowired
     private ProgressRepository progressRepository;
-
+    @Autowired
+    private QuestRepository questRepository;
 
     @Override
-    public Quest createUserQuest(UserQuestDTO userQuestDTO) {
-        return new Quest(userQuestDTO.getListTask());
+    public Quest getQuest() {
+        return questRepository.findByUser(userService.getUser());
     }
 
     @Override
-    public Quest createTopicQuest(TopicQuestDTO topicQuestDTO) {
-        Long topicId = topicQuestDTO.getTopicId();
-        int step = topicQuestDTO.getStep();
-        return new Quest(topicId, 10, step);
+    public List<Task> getListTaskQuest() {
+        return List.of();
+    }
+    @Override
+    public void isUnique() {
+        Quest quest = getQuest();
+        if (quest != null) {
+            questRepository.delete(quest);
+        }
     }
 
     @Override
-    public Task getTaskQuest(Quest quest) {
-        QuestDTO questDTO = quest.getRandomTask();
-        return taskService.getRandomTask(questDTO.getTopicId(), questDTO.getExp());
+    public void initTopicQuest(TopicQuestDTO topicQuestDTO) {
+        isUnique();
+        Quest quest = new Quest();
+        quest.setUser(userService.getUser());
+        quest.setTypeQuest(TypeQuest.Topic);
+        quest.setTopicId(topicQuestDTO.getTopicId());
+        quest.setTopicStep(topicQuestDTO.getStep());
+        quest.setAllTask(10);
+        List<Long> listTaskId = new ArrayList<>();
+        List<Task> listTask = taskService.getListRandomTask(topicQuestDTO.getTopicId(), (topicQuestDTO.getStep() / 3) + 1, 10);
+        for (Task task : listTask) {
+            listTaskId.add(task.getIdTask());
+        }
+
+        quest.setListTask(listTaskId);
+        questRepository.save(quest);
     }
 
     @Override
-    public boolean successTaskInQuest(Quest quest, Long taskId) {
+    public void initUserQuest(UserQuestDTO userQuestDTO) {
+        isUnique();
+        Quest quest = new Quest();
+        quest.setUser(userService.getUser());
+        quest.setTypeQuest(TypeQuest.User);
+        List<Long> listTaskId = new ArrayList<>();
+        List<Task> listTask;
+        List<Integer> listCountTopic = new ArrayList<>(userQuestDTO.getListTask());
+        Random random = new Random();
+        for (int i = 0; i < listCountTopic.size(); i++) {
+            listTask = taskService.getListRandomTask((long) i, random.nextInt(3) + 1, listCountTopic.get(i));
+            for (Task task : listTask) {
+                listTaskId.add(task.getIdTask());
+            }
+
+
+        }
+        quest.setListTask(listTaskId);
+        quest.setAllTask(listTaskId.size());
+        questRepository.save(quest);
+    }
+
+    @Override
+    public void initRandomQuest() {
+        isUnique();
+        Quest quest = new Quest();
+        quest.setUser(userService.getUser());
+        quest.setTypeQuest(TypeQuest.Random);
+        quest.setAllTask(1);
+        Random random = new Random();
+        List<Long> listTaskId = new ArrayList<>();
+        listTaskId.add(taskService.getRandomTask((long) (random.nextInt(18) + 1), random.nextInt(3) + 1).getIdTask());
+        quest.setListTask(listTaskId);
+        questRepository.save(quest);
+    }
+
+    @Override
+    public void initDailyQuest() {
+        isUnique();
+        Quest quest = new Quest();
+        quest.setUser(userService.getUser());
+        quest.setTypeQuest(TypeQuest.Daily);
+        quest.setAllTask(10);
+        Random random = new Random();
+        List<Long> listTaskId = new ArrayList<>();
+        for (int i = 0; i < 18; i++) {
+            if (random.nextBoolean()) {
+                listTaskId.add(taskService.getRandomTask((long) (i), random.nextInt(3) + 1).getIdTask());
+            }
+        }
+        quest.setListTask(listTaskId);
+        quest.setAllTask(listTaskId.size());
+        questRepository.save(quest);
+
+
+    }
+
+    @Override
+    public Task getTaskQuest() {
+        Random random = new Random();
+        Quest quest = getQuest();
+        List<Long> listTaskQuest = quest.getListTask();
+        int index = random.nextInt(listTaskQuest.size());
+        return taskService.getTask(listTaskQuest.get(index));
+    }
+
+    @Override
+    public boolean successTaskInQuest(Long taskId) {
+        Quest quest = getQuest();
         if (quest == null)
             return false;
         Long topicId = taskService.getTopicId(taskId);
-        quest.downCountTopic(topicId);
+        List<Long> listTasks = quest.getListTask();
+        listTasks.remove(taskId);
+        quest.setListTask(listTasks);
         quest.setSuccessTask(quest.getSuccessTask() + 1);
+        questRepository.save(quest);
         userService.addExp(taskService.getExp(taskId));
 
-        Progress progress=progressRepository.findByUserIdAndTopicId(userService.getUser().getId(),topicId);
-        progress.setCount(progress.getCount()+1);
+        Progress progress = progressRepository.findByUserIdAndTopicId(userService.getUser().getId(), topicId);
+        progress.setCount(progress.getCount() + 1);
         progressRepository.save(progress);
         return true;
     }
 
     @Override
-    public boolean failedTaskInQuest(Quest quest, Long taskId) {
+    public boolean failedTaskInQuest(Long taskId) {
+        Quest quest = getQuest();
         if (quest == null)
             return false;
         Long topicId = taskService.getTopicId(taskId);
-        quest.downCountTopic(topicId);
+        List<Long> listTasks = quest.getListTask();
+        listTasks.remove(taskId);
+        quest.setListTask(listTasks);
         quest.setFailedTask(quest.getFailedTask() + 1);
+        questRepository.save(quest);
         return true;
     }
 
     @Override
-    public boolean isEndQuest(Quest quest) {
+    public boolean isEndQuest() {
+        Quest quest = getQuest();
         return (quest.getSuccessTask() + quest.getFailedTask()) == quest.getAllTask();
     }
 
     @Override
-    public boolean isSuccessQuest(Quest quest) {
+    public boolean isSuccessQuest() {
+        Quest quest = getQuest();
         if (quest == null)
             return false;
 
-        if (quest.getSuccessTask() >= quest.getFailedTask()){
-            if (quest.getTypeQuest()== TypeQuest.Topic) {
-                ProgressDTO isTopicQuest = quest.getIsTopicQuest();
-                progressService.incrementStep(isTopicQuest.getTopicId(), isTopicQuest.getStep());
+        if (quest.getSuccessTask() >= quest.getFailedTask()) {
+            if (quest.getTypeQuest() == TypeQuest.Topic) {
+                progressService.incrementStep(quest.getTopicId(), quest.getTopicStep());
             }
-            if (quest.getTypeQuest()== TypeQuest.Daily){
+            if (quest.getTypeQuest() == TypeQuest.Daily) {
                 userService.upMultiplier();
                 userService.switchDaily();
             }
             userService.addExp(2);
+            questRepository.delete(quest);
             return true;
         }
         return false;

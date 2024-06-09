@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/rank")
 public class RankController {
-    private int lengthList = 10;
     @Autowired
     private UserService userService;
 

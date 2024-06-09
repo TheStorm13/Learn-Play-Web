@@ -2,7 +2,6 @@ package ru.lp.learnandplay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.lp.learnandplay.model.Notification;
 import ru.lp.learnandplay.model.NotificationObject;
 import ru.lp.learnandplay.services.Impl.NotificationServiceImpl;
 
@@ -10,7 +9,6 @@ import java.util.List;
 
 @RestController
 public class NotificationController {
-    //todo удалять старые уведомления спустя неделю
     @Autowired
     private NotificationServiceImpl notificationService;
 

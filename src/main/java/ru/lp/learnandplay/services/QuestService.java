@@ -2,21 +2,33 @@ package ru.lp.learnandplay.services;
 
 import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
-import ru.lp.learnandplay.model.Session.Quest;
+import ru.lp.learnandplay.model.Quest;
 import ru.lp.learnandplay.model.Task;
 
+import java.util.List;
+
 public interface QuestService {
-    public Quest createUserQuest(UserQuestDTO userQuestDTO);
+    public Quest getQuest();
 
-    public Quest createTopicQuest(TopicQuestDTO topicQuestDTO);
+    public void initTopicQuest(TopicQuestDTO topicQuestDTO);
 
-    public Task getTaskQuest(Quest quest);
+    public void initUserQuest(UserQuestDTO userQuestDTO);
 
-    public boolean successTaskInQuest(Quest quest, Long taskId);
+    public void isUnique();
 
-    public boolean failedTaskInQuest(Quest quest, Long taskId);
+    public void initRandomQuest();
 
-    public boolean isEndQuest(Quest quest);
+    public void initDailyQuest();
 
-    public boolean isSuccessQuest(Quest quest);
+    public List<Task> getListTaskQuest();
+
+    public boolean successTaskInQuest(Long taskId);
+
+    public boolean failedTaskInQuest(Long taskId);
+
+    public boolean isEndQuest();
+
+    public boolean isSuccessQuest();
+
+    public Task getTaskQuest();
 }

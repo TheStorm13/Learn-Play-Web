@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import ru.lp.learnandplay.dto.request.TopicQuestDTO;
 import ru.lp.learnandplay.dto.request.UserQuestDTO;
-import ru.lp.learnandplay.model.Session.Quest;
-import ru.lp.learnandplay.model.Session.TypeQuest;
+import ru.lp.learnandplay.model.Quest;
+import ru.lp.learnandplay.model.TypeQuest;
 import ru.lp.learnandplay.model.Task;
 import ru.lp.learnandplay.services.Impl.QuestServiceImpl;
+import ru.lp.learnandplay.services.Impl.TaskServiceImpl;
+
+import java.util.List;
 
 @RestController()
 @RequestMapping("/quest")
@@ -17,76 +20,58 @@ public class QuestController {
     @Autowired
     private QuestServiceImpl questService;
     @Autowired
-    private Quest quest;
+    private TaskServiceImpl taskService;
 
 
     @PostMapping("/startTopicQuest")
     public void startQuest(@RequestBody TopicQuestDTO topicQuestDTO) {
-        quest = questService.createTopicQuest(topicQuestDTO);
-        quest.setTypeQuest(TypeQuest.Topic);
+        questService.initTopicQuest(topicQuestDTO);
     }
 
     @PostMapping("/startUserQuest")
     public void startUserQuest(@RequestBody UserQuestDTO userQuestDTO) {
-        quest = questService.createUserQuest(userQuestDTO);
-        quest.setTypeQuest(TypeQuest.User);
+        questService.initUserQuest(userQuestDTO);
     }
 
     @PostMapping("/startDailyQuest")
-    public Quest startDailyQuest() {
-        quest = new Quest();
-        quest.setTypeQuest(TypeQuest.Daily);
-        return quest;
+    public void startDailyQuest() {
+        questService.initDailyQuest();
     }
 
     @PostMapping("/startRandomQuest")
-    public Quest startRandomQuest() {
-        quest = new Quest();
-        quest.setAllTask(1);
-        quest.setTypeQuest(TypeQuest.Random);
-        return quest;
+    public void startRandomQuest() {
+        questService.initRandomQuest();
     }
 
     //должен возвращать рандомную задачу на определенную тему определенного уровня
     @GetMapping("/getNewTask")
     public Task getNewTask() {
-        return questService.getTaskQuest(quest);
+        return questService.getTaskQuest();
     }
 
     //task successfully completed
     @PutMapping("/successTask/{taskId}")
     public boolean successTask(@PathVariable(name = "taskId") Long taskId) {
-        return questService.successTaskInQuest(quest, taskId);
-        //получить пользователя
-        //++count в ResolvedTasks конкретного задания и пользователя
-        //todo поменять статус у задания для конкретного пользователя
+        return questService.successTaskInQuest( taskId);
     }
 
     //task unsuccessfully completed
     @PutMapping("/failedTask/{taskId}")
     public boolean failedTask(@PathVariable(name = "taskId") Long taskId) {
-        questService.failedTaskInQuest(quest, taskId);
+        questService.failedTaskInQuest( taskId);
         return true;
     }
 
     //quest success check
     @GetMapping("/successQuest")
     public boolean successQuest(SessionStatus status) {
-        //todo не работает очищение объекта
-        boolean isSucsessQuest = questService.isSuccessQuest(quest);
-        quest = null;
-        return isSucsessQuest;
+        return questService.isSuccessQuest();
     }
 
     //end of quest check
     @GetMapping("/isEndQuest")
     public boolean isEndQuest() {
-        return questService.isEndQuest(quest);
-    }
-
-    @GetMapping("/getQuest")
-    public String getQuest() {
-        return quest.toString();
+        return questService.isEndQuest();
     }
 
 }

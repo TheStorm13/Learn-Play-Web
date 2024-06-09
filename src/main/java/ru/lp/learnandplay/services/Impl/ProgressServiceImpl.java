@@ -23,7 +23,6 @@ public class ProgressServiceImpl implements ProgressService {
         User user = userService.getUser();
         List<ProgressDTO> listProgressDTO = new ArrayList<>();
         List<Progress> listProgress = progressRepository.findByUserOrderById(user);
-        //todo успростить, может упростить запрос sql
         for (Progress progress : listProgress) {
             listProgressDTO.add(new ProgressDTO(progress));
         }
@@ -40,5 +39,5 @@ public class ProgressServiceImpl implements ProgressService {
             userService.addExp(2);
         }
     }
-
 }
+

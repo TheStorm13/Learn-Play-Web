@@ -11,11 +11,16 @@ public class Topic {
     private Long idTopic;
     @Column(name = "name_topic")
     private String nameTopic;
-
     @Column(name = "count_task")
     private int countTask;
 
     public Topic() {
+    }
+
+    public Topic(Long idTopic, String nameTopic, int countTask) {
+        this.idTopic = idTopic;
+        this.nameTopic = nameTopic;
+        this.countTask = countTask;
     }
 
     public String getNameTopic() {
